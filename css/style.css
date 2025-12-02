@@ -230,25 +230,12 @@ ol {
 }
 
 .glass-surface::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(130deg, rgba(255, 255, 255, 0.22) 0%, rgba(39, 204, 188, 0.12) 100%);
-  opacity: 0.3;
-  pointer-events: none;
+  content: none;
 }
 
 .glass-surface::after {
-  content: "";
-  position: absolute;
-  top: 8%;
-  left: 10%;
-  width: 60%;
-  height: 35%;
-  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.35), transparent 65%);
-  opacity: 0.6;
-  pointer-events: none;
-  transform: rotate(-4deg);
+  content: none;
+  display: none;
 }
 
 .btn {
