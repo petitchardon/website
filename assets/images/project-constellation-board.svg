@@ -1,0 +1,40 @@
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pc-board-bg" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#0F0E54" />
+      <stop offset="100%" stop-color="#091143" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" rx="36" fill="url(#pc-board-bg)" />
+  <rect x="72" y="86" width="256" height="176" rx="24" fill="#101A4F" opacity="0.9" />
+  <rect x="360" y="72" width="288" height="192" rx="24" fill="#141E5C" opacity="0.9" />
+  <rect x="72" y="292" width="288" height="156" rx="24" fill="#27CCBC" opacity="0.65" />
+  <rect x="392" y="292" width="256" height="156" rx="24" fill="#BFF7E9" opacity="0.65" />
+  <g fill="#D9F20C" opacity="0.75">
+    <path d="M154 160l14 24 26 4-18 18 4 26-24-12-24 12 4-26-18-18 26-4z" />
+    <path d="M546 140l10 18 20 3-14 14 3 20-19-9-18 9 3-20-14-14 20-3z" />
+  </g>
+  <circle cx="200" cy="164" r="14" fill="#BFF7E9" />
+  <circle cx="248" cy="196" r="10" fill="#27CCBC" />
+  <circle cx="472" cy="146" r="12" fill="#27CCBC" />
+  <circle cx="520" cy="178" r="10" fill="#BFF7E9" />
+  <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.7">
+    <path d="M408 328h184" />
+    <path d="M408 364h216" />
+    <path d="M408 400h160" />
+  </g>
+  <path
+    d="M112 330l68-72 92 48 56-60 88 92"
+    stroke="#FFFFFF"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    opacity="0.75"
+  />
+  <g fill="#27CCBC">
+    <circle cx="160" cy="276" r="12" />
+    <circle cx="232" cy="314" r="12" />
+    <circle cx="296" cy="258" r="12" />
+  </g>
+</svg>

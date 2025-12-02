@@ -1,0 +1,51 @@
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a-mockup-bg" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#04051D" />
+      <stop offset="100%" stop-color="#10195F" />
+    </linearGradient>
+    <linearGradient id="a-mockup-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27CCBC" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0F0E54" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" rx="36" fill="url(#a-mockup-bg)" />
+  <rect x="96" y="84" width="296" height="192" rx="24" fill="#FFFFFF" opacity="0.08" />
+  <rect x="132" y="120" width="224" height="120" rx="18" fill="url(#a-mockup-card)" />
+  <circle cx="244" cy="180" r="36" fill="#FFFFFF" opacity="0.85" />
+  <circle cx="266" cy="156" r="12" fill="#D9F20C" opacity="0.7" />
+  <rect x="432" y="140" width="216" height="300" rx="28" fill="#FFFFFF" opacity="0.08" />
+  <rect x="456" y="168" width="168" height="180" rx="20" fill="#0F0E54" opacity="0.9" />
+  <rect x="456" y="366" width="168" height="48" rx="16" fill="#27CCBC" opacity="0.85" />
+  <path
+    d="M476 198c18-12 48-12 66 0 18 12 48 12 66 0"
+    stroke="#BFF7E9"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.7"
+  />
+  <path
+    d="M476 234c18-10 48-10 66 0 18 10 48 10 66 0"
+    stroke="#D9F20C"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.6"
+  />
+  <rect x="168" y="340" width="220" height="96" rx="22" fill="#27CCBC" opacity="0.45" />
+  <path
+    d="M192 374h172"
+    stroke="#FFFFFF"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+  <path
+    d="M192 408h144"
+    stroke="#BFF7E9"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+</svg>
