@@ -80,13 +80,14 @@
           <img src="assets/images/logo-petitchardon.svg" alt="petitchardon logo" width="160" height="64" />
         </a>
         <nav class="site-nav" aria-label="Navigation principale">
-          <ul>
-            <li><a href="#hero" data-i18n-en="home">accueil</a></li>
-            <li><a href="#processus" data-i18n-en="workflow">workflow</a></li>
-            <li><a href="#portfolio" data-i18n-en="portfolio">portfolio</a></li>
-            <li><a href="#contact" data-i18n-en="contact">contact</a></li>
-          </ul>
-        </nav>
+            <ul>
+              <li><a href="#hero" data-i18n-en="home">accueil</a></li>
+              <li><a href="#processus" data-i18n-en="workflow">workflow</a></li>
+              <li><a href="#portfolio" data-i18n-en="portfolio">portfolio</a></li>
+              <li><a href="#about" data-i18n-en="about">à propos</a></li>
+              <li><a href="#contact" data-i18n-en="contact">contact</a></li>
+            </ul>
+          </nav>
         <div class="header__actions">
           <button
             class="lang-toggle"
@@ -142,9 +143,10 @@
               Je façonne des identités comme on raconte une histoire : la vôtre. J'accompagne les marques audacieuses qui
               veulent s'imprimer durablement dans l'imaginaire collectif.
             </p>
+            <p class="hero__services">Logo - Charte graphique - Support print et digital - Site internet - Réseaux sociaux - Illustration</p>
             <div class="hero__cta">
               <a class="btn btn--primary" href="#portfolio" data-i18n-en="view projects">voir les projets</a>
-              <a class="btn btn--ghost" href="#contact" data-i18n-en="let’s talk about your story"
+              <a class="btn btn--ghost" href="#contact" data-i18n-en="let's talk about your story"
                 >parlons du vôtre</a
               >
             </div>
@@ -152,66 +154,7 @@
         </div>
       </section>
 
-      <section id="about" class="storyline section-divider" data-animate="fade-in">
-        <div class="container storyline__inner">
-          <div class="storyline__column">
-            <div class="storyline__intro glass-surface">
-            <h2 data-i18n-en="i'm anne">moi, c'est anne</h2>
-            <p
-              data-i18n-en="I’m Anne, the designer behind petitchardon. Since childhood, creation has been my playground: inventing worlds, telling stories, imagining adventures."
-            >
-              la graphiste derrière petitchardon. Depuis l’enfance, mon terrain de jeu est la création :
-              inventer des mondes, créer des histoires, imaginer des aventures.
-            </p>
-            <p
-              data-i18n-en="&lt;strong&gt;Today I channel that creativity into your narratives to turn them into remarkable, memorable visual identities.&lt;/strong&gt;"
-            >
-              <strong
-                >Aujourd'hui, je mets cette créativité au service de vos récits afin de les traduire en identités visuelles
-                remarquables et mémorables.</strong
-              >
-            </p>
-            <p
-              data-i18n-en="My approach is direct, warm and action-oriented: I guide you towards a vision that feels true to you and impossible to ignore."
-            >
-              Mon approche est directe, chaleureuse et tournée vers l'action : je vous guide pour faire émerger une vision qui
-              vous ressemble et vous rend incontournable.
-            </p>
-            </div>
-          </div>
-          <div class="storyline__steps">
-            <article class="storyline__step is-active" data-scroll-step>
-              <h3 data-i18n-en="human-scale studio">un studio à taille humaine</h3>
-              <br />
-              <p data-i18n-en="You speak, I listen. Honest, fluid conversations turn your intuitions into tangible creative directions.">
-                <strong>Vous parlez, j’écoute. Les échanges sont francs et fluides pour transformer vos intuitions en directions créatives tangibles.</strong><br />
-                <br />
-                Mes connaissances en psychologie me permettent de vous accompagner dans la spécification de votre demande et de vos besoins.
-                Petit chardon devient votre coéquipier, pour vous faire connaître et remarquer !
-              </p>
-            </article>
-            <article class="storyline__step" data-scroll-step>
-              <h3 data-i18n-en="augmented creativity">créativité augmentée</h3><br />
-              <p data-i18n-en="Design, illustration and copywriting blend together to build vibrant, cohesive worlds - from logo to manifesto.">
-                <strong>Graphisme, illustration, rédaction : je mélange les disciplines pour composer des univers vivants et cohérents,
-                du logotype au manifeste.</strong><br />
-                <br />
-                De la création d'une identité visuelle à la communication sur les réseaux, la cohérence sera votre point fort. Créons ensemble votre langage de communication signature. 
-              </p>
-            </article>
-            <article class="storyline__step" data-scroll-step>
-              <h3 data-i18n-en="ready-to-launch assets">livrables prêts à l'emploi</h3><br />
 
-              <p data-i18n-en="Brand kits, guidelines, templates and editorial content: leave with concrete deliverables ready to amplify your voice.">
-                <strong>Logotype, charte graphique, templates réseaux sociaux, site web, contenus éditoriaux :</strong> vous repartez avec des supports concrets, prêts à
-                déployer votre nouvelle communication.<br />
-                <br />
-                Sur la durée, petit chardon vous accompagne également dans la gestion de vos réseaux sociaux. 
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
 
       <section id="processus" class="process" data-animate="fade-up">
         <div class="container">
@@ -374,6 +317,74 @@
         </div>
       </section>
 
+      <section id="about" class="about section-divider" data-animate="fade-in">
+        <div class="container">
+          <h2 class="about__title" data-i18n-en="i'm anne">à propos</h2>
+          <div class="about__bio">
+            <div class="about__photo">
+              <img src="assets/images/anne-portrait.jpg" alt="Portrait d'Anne, graphiste petitchardon" loading="lazy" />
+            </div>
+            <div class="about__text">
+              <p data-i18n-en="I'm Anne, the designer behind petitchardon. Since childhood, creation has been my playground: inventing worlds, telling stories, imagining adventures.">
+                Je suis Anne, la graphiste derrière petitchardon. Depuis l'enfance, mon terrain de jeu est la création : inventer des
+                mondes, créer des histoires, imaginer des aventures.
+              </p>
+              <p class="about__highlight" data-i18n-en="Today I channel that creativity into your narratives to turn them into remarkable, memorable visual identities.">
+                <strong>Au<span style="white-space: nowrap">jourd'hui</span>, je mets cette créativité au service de vos récits afin de les traduire en identités visuelles
+                remarquables et mémorables.</strong>
+              </p>
+              <p data-i18n-en="My approach is direct, warm and action-oriented: I guide you towards a vision that feels true to you and impossible to ignore.">
+                Mon approche est directe, chaleureuse et tournée vers l'action : je vous guide pour faire émerger une vision qui vous
+                ressemble et vous rend incontournable.
+              </p>
+            </div>
+          </div>
+
+          <div class="about__carousel">
+            <button class="about__nav about__nav--prev" type="button" aria-label="Voir la carte précédente" data-about-prev>&lsaquo;</button>
+            <div class="about__pillars" data-about-track>
+              <article class="about__pillar glass-surface">
+                <div class="about__content">
+                  <h3 data-i18n-en="human-scale studio">un studio à taille humaine</h3>
+                  <p data-i18n-en="You speak, I listen. Honest, fluid conversations turn your intuitions into tangible creative directions.">
+                    <strong>Vous parlez, j'écoute. Les échanges sont francs et fluides pour transformer vos intuitions en directions créatives tangibles.</strong>
+                  </p>
+                  <p data-i18n-en="My background in psychology helps refine your needs. petit chardon becomes your teammate to get you noticed.">
+                    Mes connaissances en psychologie me permettent de vous accompagner dans la spécification de votre demande et de vos besoins. Petit chardon devient votre coéquipier, pour vous faire connaître et remarquer !
+                  </p>
+                </div>
+                <img class="about__icon" src="assets/icons/a-propos-1.svg" alt="" width="96" height="96" loading="lazy" />
+              </article>
+              <article class="about__pillar glass-surface">
+                <div class="about__content">
+                  <h3 data-i18n-en="augmented creativity">créativité augmentée</h3>
+                  <p data-i18n-en="Design, illustration and copywriting blend together to build vibrant, cohesive worlds - from logo to manifesto.">
+                    <strong>Graphisme, illustration, rédaction : je mélange les disciplines pour composer des univers vivants et cohérents, du logotype au manifeste.</strong>
+                  </p>
+                  <p data-i18n-en="From identity to social media, coherence is your strength. Let's craft your signature language.">
+                    De la création d'une identité visuelle à la communication sur les réseaux, la cohérence sera votre point fort. Créons ensemble votre langage de communication signature.
+                  </p>
+                </div>
+                <img class="about__icon" src="assets/icons/a-propos-2.svg" alt="" width="96" height="96" loading="lazy" />
+              </article>
+              <article class="about__pillar glass-surface">
+                <div class="about__content">
+                  <h3 data-i18n-en="ready-to-launch assets">livrables prêts à l'emploi</h3>
+                  <p data-i18n-en="Brand kits, guidelines, templates and editorial content: leave with concrete deliverables ready to amplify your voice.">
+                    <strong>Logotype, charte graphique, templates réseaux sociaux, site web, contenus éditoriaux : vous repartez avec des supports concrets, prêts à déployer votre nouvelle communication.</strong>
+                  </p>
+                  <p data-i18n-en="I stay by your side to run and grow your social channels over time.">
+                    Sur la durée, petit chardon vous accompagne également dans la gestion de vos réseaux sociaux.
+                  </p>
+                </div>
+                <img class="about__icon" src="assets/icons/a-propos-3.svg" alt="" width="96" height="96" loading="lazy" />
+              </article>
+            </div>
+            <button class="about__nav about__nav--next" type="button" aria-label="Voir la carte suivante" data-about-next>&rsaquo;</button>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="contact" data-animate="fade-up">
         <div class="container contact__inner">
           <div class="contact__intro glass-surface">
@@ -498,6 +509,7 @@
             <li><a href="#hero" data-i18n-en="home">accueil</a></li>
             <li><a href="#processus" data-i18n-en="workflow">workflow</a></li>
             <li><a href="#portfolio" data-i18n-en="portfolio">portfolio</a></li>
+            <li><a href="#about" data-i18n-en="about">à propos</a></li>
             <li><a href="#contact" data-i18n-en="contact">contact</a></li>
           </ul>
         </div>
@@ -524,5 +536,6 @@
     <script src="js/main.js" defer></script>
   </body>
 </html>
+
 
 

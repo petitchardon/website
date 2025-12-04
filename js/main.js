@@ -173,6 +173,18 @@ docReady(() => {
     yearEl.textContent = new Date().getFullYear();
   }
 
+  const aboutTrack = document.querySelector("[data-about-track]");
+  const aboutPrev = document.querySelector("[data-about-prev]");
+  const aboutNext = document.querySelector("[data-about-next]");
+  if (aboutTrack && aboutPrev && aboutNext) {
+    const scrollCarousel = (direction = 1) => {
+      const slideWidth = aboutTrack.clientWidth;
+      aboutTrack.scrollBy({ left: slideWidth * direction, behavior: "smooth" });
+    };
+    aboutPrev.addEventListener("click", () => scrollCarousel(-1));
+    aboutNext.addEventListener("click", () => scrollCarousel(1));
+  }
+
   const contactForm = document.querySelector("[data-form]");
   if (contactForm) {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
