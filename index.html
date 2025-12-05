@@ -4,20 +4,34 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>petitchardon · graphisme, illustration & rédaction freelance</title>
+    <title>petitchardon | graphisme, illustration & rédaction freelance</title>
     <meta
       name="description"
       content="Graphiste-illustratrice-rédactrice freelance, petitchardon imagine des identités visuelles immersives et responsables qui racontent votre histoire."
     />
-    <meta name="keywords" content="graphiste freelance, identité visuelle, illustration, rédaction, storytelling, petitchardon" />
-    <meta property="og:title" content="petitchardon · studio graphisme & storytelling visuel" />
+    <meta
+      name="keywords"
+      content="graphiste freelance, identité visuelle, illustration, rédaction, storytelling, direction artistique, branding, studio créatif, petitchardon"
+    />
+    <meta name="author" content="Anne Della Gaspera" />
+    <meta property="og:title" content="petitchardon | studio graphisme & storytelling visuel" />
     <meta
       property="og:description"
       content="Je façonne des identités comme on raconte une histoire : la vôtre. Découvrez mon univers, mon processus et mes projets."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.petitchardon.fr/" />
-    <meta property="og:image" content="https://www.petitchardon.fr/assets/images/preview.jpg" />
+    <meta property="og:image" content="https://www.petitchardon.fr/assets/images/anne-portrait.jpg" />
+    <meta property="og:site_name" content="petitchardon" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="petitchardon | studio graphisme & storytelling visuel" />
+    <meta
+      name="twitter:description"
+      content="Je façonne des identités comme on raconte une histoire : la vôtre. Découvrez mon univers, mon processus et mes projets."
+    />
+    <meta name="twitter:image" content="https://www.petitchardon.fr/assets/images/anne-portrait.jpg" />
     <meta name="theme-color" content="#0f0e54" />
     <link rel="canonical" href="https://www.petitchardon.fr/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -28,40 +42,63 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Anne · petitchardon",
-        "jobTitle": "Graphiste, illustratrice et rédactrice freelance",
-        "url": "https://www.petitchardon.fr/",
-        "image": "https://www.petitchardon.fr/assets/images/anne-portrait.jpg",
-        "description": "Studio de création visuelle qui façonne des identités de marque comme on raconte une histoire.",
-        "sameAs": [
-          "https://www.instagram.com/petitchardon",
-          "https://www.behance.net/petitchardon",
-          "https://www.linkedin.com/in/petitchardon"
-        ],
-        "knowsAbout": [
-          "identité visuelle",
-          "direction artistique",
-          "illustration",
-          "stratégie de marque",
-          "rédaction créative"
-        ],
-        "areaServed": ["France", "Europe"],
-        "makesOffer": [
+        "@graph": [
           {
-            "@type": "Offer",
-            "name": "Création d'identité visuelle",
-            "url": "https://www.petitchardon.fr/#processus"
+            "@type": "WebSite",
+            "@id": "https://www.petitchardon.fr/#website",
+            "url": "https://www.petitchardon.fr/",
+            "name": "petitchardon",
+            "inLanguage": ["fr-FR", "en"],
+            "description": "Studio de création visuelle qui façonne des identités de marque comme on raconte une histoire.",
+            "publisher": { "@id": "https://www.petitchardon.fr/#organization" }
           },
           {
-            "@type": "Offer",
-            "name": "Illustration éditoriale",
-            "url": "https://www.petitchardon.fr/#portfolio"
+            "@type": "Organization",
+            "@id": "https://www.petitchardon.fr/#organization",
+            "name": "petitchardon",
+            "url": "https://www.petitchardon.fr/",
+            "logo": "https://www.petitchardon.fr/assets/images/logo-petitchardon.svg",
+            "image": "https://www.petitchardon.fr/assets/images/anne-portrait.jpg",
+            "sameAs": [
+              "https://www.instagram.com/petitchardon",
+              "https://www.behance.net/petitchardon",
+              "https://www.linkedin.com/in/petitchardon"
+            ],
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "anne@petitchardon.fr",
+                "telephone": "+33627548035",
+                "areaServed": ["FR", "EU"],
+                "availableLanguage": ["fr", "en"]
+              }
+            ],
+            "areaServed": ["France", "Europe"],
+            "slogan": "Studio de création visuelle responsable"
           },
           {
-            "@type": "Offer",
-            "name": "Rédaction stratégique",
-            "url": "https://www.petitchardon.fr/#contact"
+            "@type": "Person",
+            "@id": "https://www.petitchardon.fr/#anne",
+            "name": "Anne — petitchardon",
+            "jobTitle": "Graphiste, illustratrice et rédactrice freelance",
+            "url": "https://www.petitchardon.fr/",
+            "image": "https://www.petitchardon.fr/assets/images/anne-portrait.jpg",
+            "description": "Studio de création visuelle qui façonne des identités de marque comme on raconte une histoire.",
+            "sameAs": [
+              "https://www.instagram.com/petitchardon",
+              "https://www.behance.net/petitchardon",
+              "https://www.linkedin.com/in/petitchardon"
+            ],
+            "knowsAbout": [
+              "identité visuelle",
+              "direction artistique",
+              "illustration",
+              "stratégie de marque",
+              "rédaction créative"
+            ],
+            "areaServed": ["France", "Europe"],
+            "worksFor": { "@id": "https://www.petitchardon.fr/#organization" }
           }
         ]
       }
