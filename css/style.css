@@ -1461,13 +1461,6 @@ html[data-theme="dark"] .site-footer {
 }
 
 .site-header .brand img {
-  transition: transform 0.6s ease;
-}
-
-.site-header.is-top .brand img {
-  transform: scale(1.1);
-}
-
-.site-header.is-scrolled .brand img {
-  transform: scale(0.95);
+  transition: none;
+  transform: none;
 }
