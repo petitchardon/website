@@ -786,6 +786,7 @@ main > section {
   display: grid;
   gap: clamp(1.5rem, 3vw, 2.5rem);
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-items: center;
 }
 
 .process__item {
@@ -794,12 +795,14 @@ main > section {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: min(210px, 100%);
+  padding: 1.2rem 1rem 1.3rem;
 }
 
 .process__item figure {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 1.5rem;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -807,6 +810,8 @@ main > section {
 
 .process__item p {
   color: var(--color-muted);
+  font-size: 0.98rem;
+  line-height: 1.45;
 }
 
 .process__commitments {
@@ -1394,9 +1399,9 @@ html[data-theme="dark"] .site-footer {
   }
 
   .process__item figure {
-    width: 140px;
-    height: 140px;
-    margin-bottom: 1rem;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 0.8rem;
   }
 
   .footer__inner {
