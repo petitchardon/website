@@ -210,6 +210,61 @@ docReady(() => {
     aboutNext.addEventListener("click", () => scrollCarousel(1));
   }
 
+  const aboutDotsSetup = () => {
+    if (!window.matchMedia("(max-width: 720px)").matches) return;
+    const track = document.querySelector("[data-about-track]");
+    if (!track) return;
+    if (track.parentElement?.querySelector(".about__dots")) return;
+    const slides = Array.from(track.querySelectorAll(".about__pillar"));
+    if (!slides.length) return;
+
+    const dotsWrapper = document.createElement("div");
+    dotsWrapper.className = "about__dots";
+
+    const dots = slides.map((slide, index) => {
+      const dot = document.createElement("span");
+      dot.className = "about__dot";
+      dot.setAttribute("aria-hidden", "true");
+      dot.dataset.index = String(index);
+      dot.addEventListener("click", () => {
+        slide.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      dotsWrapper.appendChild(dot);
+      return dot;
+    });
+
+    track.parentElement?.appendChild(dotsWrapper);
+
+    const markActive = (activeIndex) => {
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("is-active", idx === activeIndex);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = slides.indexOf(entry.target);
+            if (idx !== -1) {
+              markActive(idx);
+            }
+          }
+        });
+      },
+      { root: track, threshold: 0.6 }
+    );
+
+    slides.forEach((slide, idx) => {
+      observer.observe(slide);
+      if (idx === 0) {
+        markActive(0);
+      }
+    });
+  };
+
+  aboutDotsSetup();
+
   const contactForm = document.querySelector("[data-form]");
   if (contactForm) {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
