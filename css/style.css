@@ -54,7 +54,7 @@ html[data-theme="dark"] {
 }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
   scroll-behavior: smooth;
 }
 
@@ -1697,16 +1697,6 @@ html[data-theme="dark"] .site-footer {
 }
 
 
-
-.site-header.is-top {
-  padding: 1.8rem 0;
-  border-bottom-color: transparent;
-}
-
-.site-header.is-scrolled {
-  padding: 0.6rem 0;
-  border-bottom-color: rgba(15, 14, 84, 0.12);
-}
 
 .site-header .brand img {
   transition: none;

@@ -325,15 +325,3 @@ docReady(() => {
     }
   });
 });
-  const header = document.querySelector(".site-header");
-  const logo = document.querySelector(".site-header .brand img");
-  if (header && logo) {
-    header.classList.add("is-top");
-    const handleScroll = () => {
-      const isTop = window.scrollY < 50;
-      header.classList.toggle("is-top", isTop);
-      header.classList.toggle("is-scrolled", !isTop);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-  }
