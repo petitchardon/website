@@ -814,6 +814,18 @@ main > section {
   line-height: 1.6;
 }
 
+@media (min-width: 1081px) {
+  .process__grid {
+    gap: clamp(2rem, 3vw, 2.8rem);
+    justify-items: center;
+  }
+
+  .process__item {
+    width: 260px;
+    padding: 1.3rem 1.4rem 1.5rem;
+  }
+}
+
 .process__commitments {
   margin-top: clamp(3.5rem, 6vw, 5rem);
   display: grid;
