@@ -1,0 +1,62 @@
+---
+import type { Lang } from '../i18n';
+import { getDict, alternateUrl } from '../i18n';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  ogType?: string;
+  pathname: string;
+  lang: Lang;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/assets/images/anne-portrait.jpg',
+  ogType = 'website',
+  pathname,
+  lang,
+  noindex = false,
+} = Astro.props;
+
+const dict = getDict(lang);
+const siteUrl = 'https://www.petitchardon.fr';
+const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
+const canonical = `${siteUrl}${path}`;
+const absoluteImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+const altPath = alternateUrl(lang, path);
+const altLang: Lang = lang === 'fr' ? 'en' : 'fr';
+const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
+const ogLocaleAlt = lang === 'fr' ? 'en_US' : 'fr_FR';
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="Anne Della Gaspera" />
+{noindex && <meta name="robots" content="noindex" />}
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:site_name" content="petitchardon" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={ogLocaleAlt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImage} />
+
+<meta name="theme-color" content="#0f0e54" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#06051f" media="(prefers-color-scheme: dark)" />
+
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang={lang} href={canonical} />
+<link rel="alternate" hreflang={altLang} href={`${siteUrl}${altPath}`} />
+<link rel="alternate" hreflang="x-default" href={`${siteUrl}${lang === 'fr' ? path : altPath}`} />

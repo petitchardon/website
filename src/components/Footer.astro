@@ -1,0 +1,44 @@
+---
+import type { Lang } from '../i18n';
+import { getDict, homeUrl } from '../i18n';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const dict = getDict(lang);
+const home = homeUrl(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img src="/assets/images/logo-petitchardon.svg" alt="petitchardon" width="140" height="56" />
+      <p>{dict.footer.brandTagline}</p>
+    </div>
+    <div class="footer__links">
+      <h3>{dict.footer.explore}</h3>
+      <ul>
+        <li><a href={`${home}#hero`}>{dict.nav.home}</a></li>
+        <li><a href={`${home}#processus`}>{dict.nav.workflow}</a></li>
+        <li><a href={`${home}#portfolio`}>{dict.nav.portfolio}</a></li>
+        <li><a href={`${home}#about`}>{dict.nav.about}</a></li>
+        <li><a href={`${home}#contact`}>{dict.nav.contact}</a></li>
+      </ul>
+    </div>
+    <div class="footer__social">
+      <h3>{dict.footer.stayConnected}</h3>
+      <ul>
+        <li><a href="https://www.instagram.com/petitchardon" target="_blank" rel="noreferrer">instagram</a></li>
+        <li><a href="https://www.behance.net/petitchardon" target="_blank" rel="noreferrer">behance</a></li>
+        <li><a href="https://www.linkedin.com/in/petitchardon" target="_blank" rel="noreferrer">linkedin</a></li>
+      </ul>
+    </div>
+    <div class="footer__legal" id="mentions-legales">
+      <h3>{dict.footer.legal}</h3>
+      <p>© <span id="annee-actuelle">{year}</span> {dict.footer.legalText}</p>
+    </div>
+  </div>
+</footer>
