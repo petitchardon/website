@@ -178,6 +178,8 @@ docReady(() => {
   };
 
   const defaultLanguage = (() => {
+    const urlLang = new URLSearchParams(window.location.search).get("lang");
+    if (urlLang === "en" || urlLang === "fr") return urlLang;
     const stored = localStorage.getItem(LANGUAGE_KEY);
     if (stored) return stored;
     const browser = (navigator.language || "fr").slice(0, 2).toLowerCase();

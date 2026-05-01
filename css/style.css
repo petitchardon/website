@@ -71,7 +71,8 @@ body {
     color var(--transition-base);
 }
 
-.seo-hidden {
+.seo-hidden,
+.form-field--honeypot {
   position: absolute;
   width: 1px;
   height: 1px;

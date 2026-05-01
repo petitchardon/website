@@ -1,0 +1,20 @@
+# Code owners — petitchardon/website
+#
+# Every change to this repository must be reviewed and approved by Anne
+# before merge. The pattern below makes Anne the default reviewer on
+# every PR.
+#
+# This file alone does NOT block merges. To enforce blocking, an admin
+# must enable the following in repo Settings → Branches → Branch
+# protection rule for `main`:
+#
+#   - Require a pull request before merging
+#   - Require approvals: 1
+#   - Require review from Code Owners
+#   - Dismiss stale pull request approvals when new commits are pushed
+#   - Do not allow bypassing the above settings (covers admins too)
+#
+# Until that rule is configured, CODEOWNERS only auto-assigns Anne as
+# reviewer; merges remain technically possible without her approval.
+
+* @annedellagaspera
