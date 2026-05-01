@@ -1,8 +1,5 @@
 name: CI
 
-# Validates the static HTML site on every PR and main push.
-# Replaced by PR2's Astro-aware ci.yml when that PR merges.
-
 on:
   pull_request:
   push:
@@ -16,63 +13,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: validate static site
+  build:
+    name: build & check
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Java (for vnu.jar)
-        uses: actions/setup-java@v4
+      - uses: actions/setup-node@v4
         with:
-          distribution: temurin
-          java-version: "21"
+          node-version: 20
+          cache: npm
 
-      - name: Install validators
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends libxml2-utils
-          # vnu-jar (npm) wraps the W3C Nu HTML Checker from validator/validator.
-          # Maintained by the upstream team, tracks releases — bumping is
-          # `npm install vnu-jar@latest`. Avoids the dead html5validator pypi
-          # wrapper that ships vnu 20.6.30 from 2020.
-          npm install --no-save --no-audit --no-fund --silent vnu-jar
-          java -jar node_modules/vnu-jar/build/dist/vnu.jar --version
+      - name: install
+        run: npm ci
 
-      - name: JSON syntax (site.webmanifest)
-        run: python3 -m json.tool site.webmanifest > /dev/null
+      - name: type-check
+        run: npm run check
 
-      - name: XML syntax (sitemap.xml, favicon.svg)
-        run: |
-          xmllint --noout sitemap.xml
-          xmllint --noout favicon.svg
-
-      - name: JS syntax (js/*.js)
-        run: |
-          for f in $(find js -name '*.js'); do
-            echo "Checking $f"
-            node -c "$f"
-          done
-
-      - name: HTML5 + SVG validation (W3C Nu)
-        run: |
-          mapfile -t targets < <(find . -type f \( -name '*.html' -o -name '*.svg' \) \
-            -not -path './node_modules/*' \
-            -not -path './.git/*' \
-            -not -path './.github/*')
-          printf 'Validating %d files\n' "${#targets[@]}"
-          java -jar node_modules/vnu-jar/build/dist/vnu.jar --also-check-svg "${targets[@]}"
-
-      - name: Internal link integrity
-        uses: lycheeverse/lychee-action@v2
-        with:
-          args: |
-            --no-progress
-            --offline
-            --include-fragments
-            --root-dir ${{ github.workspace }}
-            index.html
-            projects/*.html
-            404.html
-          fail: true
+      - name: build
+        run: npm run build
