@@ -1,0 +1,16 @@
+# Claude Code worktrees and local session artifacts
+.claude/worktrees/
+.claude/settings.local.json
+
+# Editor/OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Node (used from PR2 onwards once Astro lands)
+node_modules/
+dist/
+.astro/
+.env
+.env.local
