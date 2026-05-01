@@ -219,6 +219,10 @@ const dict = getDict(lang);
       method="POST"
       data-form
     >
+      <div class="form-field form-field--honeypot" aria-hidden="true">
+        <label for="_honey">Leave this field empty</label>
+        <input id="_honey" name="_honey" type="text" tabindex="-1" autocomplete="off" />
+      </div>
       <div class="form-field">
         <label for="nom">{dict.contact.fieldName}</label>
         <input
