@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HomePage from '../../components/HomePage.astro';
+import { getDict } from '../../i18n';
+
+const lang = 'en' as const;
+const dict = getDict(lang);
+---
+<BaseLayout
+  lang={lang}
+  title={dict.site.title}
+  description={dict.site.description}
+  pathname="/en/"
+  bodyPage="home"
+  showStructuredData={true}
+>
+  <HomePage lang={lang} />
+</BaseLayout>
