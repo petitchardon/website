@@ -1,25 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page en construction | petitchardon</title>
-    <meta name="description" content="Cette page projet est en construction. Revenez bientot pour decouvrir le contenu." />
-    <meta name="author" content="petitchardon" />
-    <meta property="og:title" content="Page en construction | petitchardon" />
-    <meta property="og:description" content="Cette page projet est en construction. Revenez bientot pour decouvrir le contenu." />
-    <meta property="og:type" content="website" />
+    <title>atelier origines — étude de cas | petitchardon</title>
+    <meta name="description" content="Atelier origines : direction artistique et storytelling pour une maison de parfum sur-mesure. Étude de cas en préparation." />
+    <meta name="author" content="Anne Della Gaspera" />
+    <meta property="og:title" content="atelier origines — étude de cas | petitchardon" />
+    <meta property="og:description" content="Direction artistique et storytelling pour une maison de parfum sur-mesure. Étude de cas en préparation." />
+    <meta property="og:type" content="article" />
     <meta property="og:url" content="https://www.petitchardon.fr/projects/atelier-origines.html" />
-    <meta property="og:image" content="https://www.petitchardon.fr/assets/images/logo-petitchardon.svg" />
+    <meta property="og:image" content="https://www.petitchardon.fr/assets/images/portfolio-origines.svg" />
     <meta property="og:site_name" content="petitchardon" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Page en construction | petitchardon" />
-    <meta name="twitter:description" content="Cette page projet est en construction. Revenez bientot pour decouvrir le contenu." />
-    <meta name="twitter:image" content="https://www.petitchardon.fr/assets/images/logo-petitchardon.svg" />
+    <meta name="twitter:title" content="atelier origines — étude de cas | petitchardon" />
+    <meta name="twitter:description" content="Direction artistique et storytelling pour une maison de parfum sur-mesure." />
+    <meta name="twitter:image" content="https://www.petitchardon.fr/assets/images/portfolio-origines.svg" />
+    <meta name="theme-color" content="#0f0e54" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#06051f" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href="https://www.petitchardon.fr/projects/atelier-origines.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.petitchardon.fr/projects/atelier-origines.html" />
+    <link rel="alternate" hreflang="en" href="https://www.petitchardon.fr/projects/atelier-origines.html?lang=en" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="../site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="../assets/fonts/Roca-Font/Roca%20Black.ttf" as="font" type="font/ttf" crossorigin />
@@ -43,6 +49,7 @@
             <li><a href="../index.html#hero" data-i18n-en="home">accueil</a></li>
             <li><a href="../index.html#processus" data-i18n-en="workflow">workflow</a></li>
             <li><a href="../index.html#portfolio" data-i18n-en="portfolio">portfolio</a></li>
+            <li><a href="../index.html#about" data-i18n-en="about">à propos</a></li>
             <li><a href="../index.html#contact" data-i18n-en="contact">contact</a></li>
           </ul>
         </nav>
@@ -56,17 +63,7 @@
             aria-label="Changer la langue"
             data-i18n-en-aria-label="Switch language"
           >
-            <span data-i18n-en="en | fr">fr | en</span>
-          </button>
-          <button
-            class="theme-toggle"
-            type="button"
-            data-theme-toggle
-            aria-label="Basculer le theme"
-            data-i18n-en-aria-label="Toggle theme"
-          >
-            <span class="theme-toggle__icon" data-theme-icon aria-hidden="true"></span>
-            <span class="theme-toggle__label" data-i18n-en="mode">mode</span>
+            <span data-i18n-en="en · fr">fr · en</span>
           </button>
         </div>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile">
@@ -79,29 +76,9 @@
           <li><a href="../index.html#hero" data-i18n-en="home">accueil</a></li>
           <li><a href="../index.html#processus" data-i18n-en="workflow">workflow</a></li>
           <li><a href="../index.html#portfolio" data-i18n-en="portfolio">portfolio</a></li>
+          <li><a href="../index.html#about" data-i18n-en="about">à propos</a></li>
           <li><a href="../index.html#contact" data-i18n-en="contact">contact</a></li>
         </ul>
-        <div class="menu-mobile__toggles">
-          <button
-            class="lang-toggle lang-toggle--mobile"
-            type="button"
-            data-lang-toggle
-            aria-label="Changer la langue"
-            data-i18n-en-aria-label="Switch language"
-          >
-            <span data-i18n-en="en | fr">fr | en</span>
-          </button>
-          <button
-            class="theme-toggle theme-toggle--mobile"
-            type="button"
-            data-theme-toggle
-            aria-label="Basculer le theme"
-            data-i18n-en-aria-label="Toggle theme"
-          >
-            <span class="theme-toggle__icon" data-theme-icon aria-hidden="true"></span>
-            <span class="theme-toggle__label" data-i18n-en="toggle theme">basculer le theme</span>
-          </button>
-        </div>
       </nav>
     </header>
 
@@ -110,17 +87,14 @@
         <div class="container project-hero__inner">
           <div class="project-hero__intro glass-surface">
             <p class="breadcrumb" data-i18n-en="portfolio">portfolio</p>
-            <h1 data-i18n-en="page under construction">page en construction</h1>
-            <p data-i18n-en="This project page is being assembled. Check back soon for details.">
-              Cette page projet est en construction. Revenez bientot pour decouvrir le contenu.
+            <h1 data-i18n-en="atelier origines">atelier origines</h1>
+            <p class="hero__tag" data-i18n-en="art direction · storytelling · perfume house">direction artistique · storytelling · maison de parfum</p>
+            <p data-i18n-en="The full case study is being assembled. In the meantime, write to me to discover the project: research, mood-boards, decision logs and final deliverables.">
+              L’étude de cas complète est en préparation. En attendant, écrivez-moi pour découvrir le projet : recherches, mood-boards, journal de décisions et livrables finaux.
             </p>
             <div class="project-cta__actions">
-              <a class="btn btn--primary" href="../index.html#portfolio" data-i18n-en="back to portfolio">
-                retour au portfolio
-              </a>
-              <a class="btn btn--ghost" href="../index.html#contact" data-i18n-en="contact">
-                contact
-              </a>
+              <a class="btn btn--primary" href="../index.html#portfolio" data-i18n-en="back to portfolio">retour au portfolio</a>
+              <a class="btn btn--ghost" href="../index.html#contact" data-i18n-en="get in touch">me contacter</a>
             </div>
           </div>
         </div>
@@ -132,7 +106,7 @@
         <div class="footer__brand">
           <img src="../assets/images/logo-petitchardon.svg" alt="petitchardon" width="140" height="56" />
           <p data-i18n-en="Creative studio crafting bold brand identities, illustrations and storytelling.">
-            Studio creatif pour identites visuelles, illustrations et recits de marque a forte personnalite.
+            Studio créatif pour identités visuelles, illustrations et récits de marque à forte personnalité.
           </p>
         </div>
         <div class="footer__links">
@@ -141,11 +115,12 @@
             <li><a href="../index.html#hero" data-i18n-en="home">accueil</a></li>
             <li><a href="../index.html#processus" data-i18n-en="workflow">workflow</a></li>
             <li><a href="../index.html#portfolio" data-i18n-en="portfolio">portfolio</a></li>
+            <li><a href="../index.html#about" data-i18n-en="about">à propos</a></li>
             <li><a href="../index.html#contact" data-i18n-en="contact">contact</a></li>
           </ul>
         </div>
         <div class="footer__social">
-          <h3 data-i18n-en="stay connected">restez connecte</h3>
+          <h3 data-i18n-en="stay connected">restez connecté·e</h3>
           <ul>
             <li><a href="https://www.instagram.com/petitchardon" target="_blank" rel="noreferrer">instagram</a></li>
             <li><a href="https://www.behance.net/petitchardon" target="_blank" rel="noreferrer">behance</a></li>
@@ -153,12 +128,9 @@
           </ul>
         </div>
         <div class="footer__legal" id="mentions-legales">
-          <h3 data-i18n-en="legal">mentions legales</h3>
-          <p
-            data-i18n-en="© <span id=\"annee-actuelle\"></span> petitchardon | All rights reserved | SIREN 000 000 000. Data used only to reply to your request. Hosting: to be completed. Publisher: Anne, petitchardon."
-          >
-            © <span id="annee-actuelle"></span> petitchardon | Tous droits reserves | SIREN 000 000 000. Donnees utilisees
-            uniquement pour repondre a votre demande. Hebergement : a completer. Responsable de publication : Anne, petitchardon.
+          <h3 data-i18n-en="legal">mentions légales</h3>
+          <p data-i18n-en="© petitchardon · All rights reserved · SIRET 81438124000021. Data used only to reply to your request. Hosting: GitHub Pages. Publisher: Anne Della Gaspera.">
+            © <span id="annee-actuelle"></span> petitchardon · Tous droits réservés · SIRET 81438124000021. Données utilisées uniquement pour répondre à votre demande. Hébergement : GitHub Pages. Responsable de publication : Anne Della Gaspera.
           </p>
         </div>
       </div>
