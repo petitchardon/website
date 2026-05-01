@@ -20,8 +20,14 @@
     <meta name="twitter:title" content="petitchardon | studio graphisme & storytelling visuel" />
     <meta\n      name="twitter:description"\n      content="Studio créatif à Rambouillet (Yvelines) : je façonne des identités comme on raconte une histoire, la vôtre."\n    />
     <meta name="twitter:image" content="https://www.petitchardon.fr/assets/images/anne-portrait.jpg" />
-    <meta name="theme-color" content="#0f0e54" />
+    <meta name="theme-color" content="#0f0e54" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#06051f" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href="https://www.petitchardon.fr/" />
+    <link rel="alternate" hreflang="fr" href="https://www.petitchardon.fr/" />
+    <link rel="alternate" hreflang="en" href="https://www.petitchardon.fr/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://www.petitchardon.fr/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="assets/fonts/Roca-Font/Roca%20Black.ttf" as="font" type="font/ttf" crossorigin />
@@ -195,7 +201,7 @@
               class="hero__intro"
               data-i18n-en="I craft a brand identity like telling a story: yours. Make it stick in the collective imagination."
             >
-              Faconner une identite, comme une histoire : la votre. S'imprimer durablement dans l'imaginaire collectif.
+              Façonner une identité, comme une histoire : la vôtre. S'imprimer durablement dans l'imaginaire collectif.
             </p>
             <p class="hero__services">logo - identité visuelle - site web - réseaux sociaux - illustration</p>
             <div class="hero__cta">
@@ -275,7 +281,7 @@
               <li
                 data-i18n-en="Lightweight assets and progressive loading keep the experience fast and energy-conscious."
               >
-                Visuels légers et chargements progressifs pour une expérience rapide et plus économe en énergie. Choix des papiers et des encres pour une meilleure utilsation des ressources.
+                Visuels légers et chargements progressifs pour une expérience rapide et plus économe en énergie. Choix des papiers et des encres pour une meilleure utilisation des ressources.
               </li>
               <li
                 data-i18n-en="Inclusive tone and multilingual paths invite every audience to step into your universe."
@@ -311,9 +317,9 @@
                 />
               </figure>
               <div class="portfolio__content">
-                <h3 data-i18n-en="aurora borealis">Luke's Iced Coffees</h3>
+                <h3 data-i18n-en="aurore boréale">aurore boréale</h3>
                 <p data-i18n-en="Immersive identity for a luminous and sensorial experience.">
-                  Création du logotype et des déclinaisons produits.
+                  Identité immersive pour une expérience lumineuse et sensorielle.
                 </p>
                 <span class="portfolio__link" data-i18n-en="view project">voir le projet</span>
               </div>
@@ -329,9 +335,9 @@
                 />
               </figure>
               <div class="portfolio__content">
-                <h3 data-i18n-en="atelier origines">Intelligences Atypiques</h3>
+                <h3 data-i18n-en="atelier origines">atelier origines</h3>
                 <p data-i18n-en="Art direction and storytelling for a bespoke perfume house.">
-                  Création de l'identité visuelle et définition d'une stratégie pour les réseaux sociaux.
+                  Direction artistique et storytelling pour une maison de parfum sur-mesure.
                 </p>
                 <span class="portfolio__link" data-i18n-en="view project">voir le projet</span>
               </div>
@@ -347,9 +353,9 @@
                 />
               </figure>
               <div class="portfolio__content">
-                <h3 data-i18n-en="constellation">cocobot</h3>
+                <h3 data-i18n-en="constellation">constellation</h3>
                 <p data-i18n-en="Illustrated universe for a collective of children’s authors.">
-                  Définition du calendrier éditorial pour LinkedIn, création des templates et gestion des posts.
+                  Univers illustré pour un collectif d’auteurs et autrices jeunesse.
                 </p>
                 <span class="portfolio__link" data-i18n-en="view project">voir le projet</span>
               </div>
@@ -449,11 +455,11 @@
             <ul class="contact__highlights">
               <li>
                 <strong data-i18n-en="email">email</strong>
-                <a href="mailto:bonjour@petitchardon.fr">anne@petitchardon.fr</a>
+                <a href="mailto:anne@petitchardon.fr">anne@petitchardon.fr</a>
               </li>
               <li>
                 <strong data-i18n-en="phone">téléphone</strong>
-                <a href="tel:+33612345678">+33&nbsp;6&nbsp;27&nbsp;54&nbsp;80&nbsp;35</a>
+                <a href="tel:+33627548035">+33&nbsp;6&nbsp;27&nbsp;54&nbsp;80&nbsp;35</a>
               </li>
               <li>
                 <strong data-i18n-en="based in">basée à</strong>
@@ -514,6 +520,11 @@
               </label>
             </div>
             <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <p class="form-field--honeypot" aria-hidden="true">
+              <label for="_honey">Laissez ce champ vide</label>
+              <input id="_honey" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+            </p>
             <input
               type="hidden"
               name="_subject"
