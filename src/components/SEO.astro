@@ -25,6 +25,9 @@ const {
 const dict = getDict(lang);
 const siteUrl = 'https://www.petitchardon.fr';
 const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
+// Canonical / hreflang point at the production URL even from a preview
+// build, so search engines never associate the preview subdirectory with
+// the brand. Combined with the auto-noindex below, previews stay invisible.
 const canonical = `${siteUrl}${path}`;
 const absoluteImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
@@ -32,12 +35,16 @@ const altPath = alternateUrl(lang, path);
 const altLang: Lang = lang === 'fr' ? 'en' : 'fr';
 const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
 const ogLocaleAlt = lang === 'fr' ? 'en_US' : 'fr_FR';
+
+// Any deploy under /preview/pr-N/ is a PR preview — never let it index.
+const isPreview = import.meta.env.BASE_URL !== '/';
+const finalNoindex = noindex || isPreview;
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content="Anne Della Gaspera" />
-{noindex && <meta name="robots" content="noindex" />}
+{finalNoindex && <meta name="robots" content="noindex,nofollow" />}
 
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

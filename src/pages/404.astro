@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getDict } from '../i18n';
+import { getDict, homeUrl } from '../i18n';
 
 const lang = 'fr' as const;
 const dict = getDict(lang);
+const home = homeUrl(lang);
 ---
 <BaseLayout
   lang={lang}
@@ -22,8 +23,8 @@ const dict = getDict(lang);
         <h1>{dict.notFound.h1}</h1>
         <p>{dict.notFound.body}</p>
         <div class="project-cta__actions">
-          <a class="btn btn--primary" href="/">{dict.notFound.ctaHome}</a>
-          <a class="btn btn--ghost" href="/#contact">{dict.notFound.ctaContact}</a>
+          <a class="btn btn--primary" href={home}>{dict.notFound.ctaHome}</a>
+          <a class="btn btn--ghost" href={`${home}#contact`}>{dict.notFound.ctaContact}</a>
         </div>
       </div>
     </div>
