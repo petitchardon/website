@@ -45,11 +45,17 @@ jobs:
           done
 
       - name: HTML5 validation (W3C)
+        # `media` on <meta name="theme-color"> is spec-compliant per the
+        # HTML Living Standard (since 2021) and supported by every current
+        # browser. The vnu.jar bundled with html5validator 0.4.2 — the
+        # latest pypi release — predates that change and flags it as an
+        # error. We surgically suppress just that pattern via --ignore.
         run: |
           html5validator \
             --root . \
             --blacklist node_modules .git .github \
-            --also-check-svg
+            --also-check-svg \
+            --ignore 'Attribute "media" not allowed on element "meta"'
 
       - name: Internal link integrity
         uses: lycheeverse/lychee-action@v2
