@@ -15,11 +15,6 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# Pinned vnu.jar version. Bump deliberately when we want a fresher
-# validator. Releases: https://github.com/validator/validator/releases
-env:
-  VNU_VERSION: "23.4.11"
-
 jobs:
   validate:
     name: validate static site
@@ -38,16 +33,12 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends libxml2-utils
-          # W3C Nu HTML Checker — canonical validator from validator/validator,
-          # actively released. We download the jar directly because pypi's
-          # html5validator 0.4.2 (last release 2021) ships vnu 20.6.30 from
-          # 2020 and predates several spec changes (e.g. `media` on
-          # <meta name="theme-color">).
-          curl -fsSL "https://github.com/validator/validator/releases/download/${VNU_VERSION}/vnu.jar_${VNU_VERSION}.zip" -o vnu.zip
-          unzip -q vnu.zip
-          mv dist/vnu.jar vnu.jar
-          rm -rf vnu.zip dist
-          java -jar vnu.jar --version
+          # vnu-jar (npm) wraps the W3C Nu HTML Checker from validator/validator.
+          # Maintained by the upstream team, tracks releases — bumping is
+          # `npm install vnu-jar@latest`. Avoids the dead html5validator pypi
+          # wrapper that ships vnu 20.6.30 from 2020.
+          npm install --no-save --no-audit --no-fund --silent vnu-jar
+          java -jar node_modules/vnu-jar/build/dist/vnu.jar --version
 
       - name: JSON syntax (site.webmanifest)
         run: python3 -m json.tool site.webmanifest > /dev/null
@@ -71,7 +62,7 @@ jobs:
             -not -path './.git/*' \
             -not -path './.github/*')
           printf 'Validating %d files\n' "${#targets[@]}"
-          java -jar vnu.jar --also-check-svg "${targets[@]}"
+          java -jar node_modules/vnu-jar/build/dist/vnu.jar --also-check-svg "${targets[@]}"
 
       - name: Internal link integrity
         uses: lycheeverse/lychee-action@v2
