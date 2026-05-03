@@ -1,6 +1,6 @@
 ---
 import type { Lang } from '../i18n';
-import { getDict, alternateUrl, homeUrl } from '../i18n';
+import { getDict, alternateUrl, homeUrl, asset } from '../i18n';
 
 export interface Props {
   lang: Lang;
@@ -16,7 +16,7 @@ const altHref = alternateUrl(lang, pathname);
 <header class="site-header" data-animate="fade">
   <div class="container header__inner">
     <a class="brand" href={`${home}#hero`} aria-label={dict.common.brandAria}>
-      <img src="/assets/images/logo-petitchardon.svg" alt="petitchardon logo" width="160" height="64" />
+      <img src={asset('assets/images/logo-petitchardon.svg')} alt="petitchardon logo" width="160" height="64" />
     </a>
     <nav class="site-nav" aria-label={dict.common.navAriaPrimary}>
       <ul>

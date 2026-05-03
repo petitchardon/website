@@ -1,6 +1,6 @@
 ---
 import type { Lang } from '../i18n';
-import { getDict } from '../i18n';
+import { getDict, asset } from '../i18n';
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -53,13 +53,13 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
       lang={lang}
       noindex={noindex}
     />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href={asset('favicon.svg')} type="image/svg+xml" />
+    <link rel="manifest" href={asset('site.webmanifest')} />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/assets/fonts/Roca-Font/Roca%20Black.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href={asset('assets/fonts/Roca-Font/Roca%20Black.ttf')} as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href={asset('css/style.css')} />
     {showStructuredData && <StructuredData />}
   </head>
   <body data-page={bodyPage}>
@@ -70,6 +70,6 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
       <slot />
     </main>
     {showFooter && <Footer lang={lang} />}
-    <script src="/js/main.js" is:inline defer></script>
+    <script src={asset('js/main.js')} is:inline defer></script>
   </body>
 </html>

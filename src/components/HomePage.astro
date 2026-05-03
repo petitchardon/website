@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { Lang } from '../i18n';
-import { getDict, projectUrl } from '../i18n';
+import { getDict, projectUrl, asset } from '../i18n';
 import annePortrait from '../assets/images/anne-portrait.jpg';
 
 export interface Props {
@@ -39,28 +39,28 @@ const dict = getDict(lang);
     <div class="process__grid">
       <article class="process__item glass-surface" data-tilt>
         <figure>
-          <img src="/assets/icons/workflow-1.svg" alt="" role="presentation" width="200" height="200" loading="lazy" />
+          <img src={asset("assets/icons/workflow-1.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
         <h3>{dict.process.step1Title}</h3>
         <p>{dict.process.step1Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
         <figure>
-          <img src="/assets/icons/workflow-2.svg" alt="" role="presentation" width="200" height="200" loading="lazy" />
+          <img src={asset("assets/icons/workflow-2.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
         <h3>{dict.process.step2Title}</h3>
         <p>{dict.process.step2Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
         <figure>
-          <img src="/assets/icons/workflow-3.svg" alt="" role="presentation" width="200" height="200" loading="lazy" />
+          <img src={asset("assets/icons/workflow-3.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
         <h3>{dict.process.step3Title}</h3>
         <p>{dict.process.step3Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
         <figure>
-          <img src="/assets/icons/workflow-4.svg" alt="" role="presentation" width="200" height="200" loading="lazy" />
+          <img src={asset("assets/icons/workflow-4.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
         <h3>{dict.process.step4Title}</h3>
         <p>{dict.process.step4Body}</p>
@@ -89,7 +89,7 @@ const dict = getDict(lang);
       <a class="portfolio__card" href={projectUrl(lang, 'aurore-boreale')}>
         <figure>
           <img
-            src="/assets/images/portfolio-aurore.svg"
+            src={asset("assets/images/portfolio-aurore.svg")}
             alt={dict.portfolio.card1Alt}
             width="400"
             height="320"
@@ -105,7 +105,7 @@ const dict = getDict(lang);
       <a class="portfolio__card" href={projectUrl(lang, 'atelier-origines')}>
         <figure>
           <img
-            src="/assets/images/portfolio-origines.svg"
+            src={asset("assets/images/portfolio-origines.svg")}
             alt={dict.portfolio.card2Alt}
             width="400"
             height="320"
@@ -121,7 +121,7 @@ const dict = getDict(lang);
       <a class="portfolio__card" href={projectUrl(lang, 'constellation')}>
         <figure>
           <img
-            src="/assets/images/portfolio-constellation.svg"
+            src={asset("assets/images/portfolio-constellation.svg")}
             alt={dict.portfolio.card3Alt}
             width="400"
             height="320"
@@ -168,7 +168,7 @@ const dict = getDict(lang);
             <p><strong>{dict.about.pillar1Strong}</strong></p>
             <p>{dict.about.pillar1Body}</p>
           </div>
-          <img class="about__icon" src="/assets/icons/a-propos-1.svg" alt="" width="96" height="96" loading="lazy" />
+          <img class="about__icon" src={asset("assets/icons/a-propos-1.svg")} alt="" width="96" height="96" loading="lazy" />
         </article>
         <article class="about__pillar glass-surface">
           <div class="about__content">
@@ -176,7 +176,7 @@ const dict = getDict(lang);
             <p><strong>{dict.about.pillar2Strong}</strong></p>
             <p>{dict.about.pillar2Body}</p>
           </div>
-          <img class="about__icon" src="/assets/icons/a-propos-2.svg" alt="" width="96" height="96" loading="lazy" />
+          <img class="about__icon" src={asset("assets/icons/a-propos-2.svg")} alt="" width="96" height="96" loading="lazy" />
         </article>
         <article class="about__pillar glass-surface">
           <div class="about__content">
@@ -184,7 +184,7 @@ const dict = getDict(lang);
             <p><strong>{dict.about.pillar3Strong}</strong></p>
             <p>{dict.about.pillar3Body}</p>
           </div>
-          <img class="about__icon" src="/assets/icons/a-propos-3.svg" alt="" width="96" height="96" loading="lazy" />
+          <img class="about__icon" src={asset("assets/icons/a-propos-3.svg")} alt="" width="96" height="96" loading="lazy" />
         </article>
       </div>
       <button class="about__nav about__nav--next" type="button" aria-label={dict.about.carouselNext} data-about-next>&rsaquo;</button>
