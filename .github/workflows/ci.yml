@@ -1,0 +1,65 @@
+name: CI
+
+# Validates the static HTML site on every PR and main push.
+# Replaced by PR2's Astro-aware ci.yml when that PR merges.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: validate static site
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install validators
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libxml2-utils
+          pip install --quiet html5validator
+
+      - name: JSON syntax (site.webmanifest)
+        run: python3 -m json.tool site.webmanifest > /dev/null
+
+      - name: XML syntax (sitemap.xml, favicon.svg)
+        run: |
+          xmllint --noout sitemap.xml
+          xmllint --noout favicon.svg
+
+      - name: JS syntax (js/*.js)
+        run: |
+          for f in $(find js -name '*.js'); do
+            echo "Checking $f"
+            node -c "$f"
+          done
+
+      - name: HTML5 validation (W3C)
+        run: |
+          html5validator \
+            --root . \
+            --blacklist node_modules .git .github \
+            --also-check-svg
+
+      - name: Internal link integrity
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: |
+            --no-progress
+            --offline
+            --include-fragments
+            --root-dir ${{ github.workspace }}
+            index.html
+            projects/*.html
+            404.html
+          fail: true
