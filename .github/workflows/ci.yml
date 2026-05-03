@@ -15,6 +15,11 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Pinned vnu.jar version. Bump deliberately when we want a fresher
+# validator. Releases: https://github.com/validator/validator/releases
+env:
+  VNU_VERSION: "23.4.11"
+
 jobs:
   validate:
     name: validate static site
@@ -23,11 +28,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Java (for vnu.jar)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
       - name: Install validators
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends libxml2-utils
-          pip install --quiet html5validator
+          # W3C Nu HTML Checker — canonical validator from validator/validator,
+          # actively released. We download the jar directly because pypi's
+          # html5validator 0.4.2 (last release 2021) ships vnu 20.6.30 from
+          # 2020 and predates several spec changes (e.g. `media` on
+          # <meta name="theme-color">).
+          curl -fsSL "https://github.com/validator/validator/releases/download/${VNU_VERSION}/vnu.jar_${VNU_VERSION}.zip" -o vnu.zip
+          unzip -q vnu.zip
+          mv dist/vnu.jar vnu.jar
+          rm -rf vnu.zip dist
+          java -jar vnu.jar --version
 
       - name: JSON syntax (site.webmanifest)
         run: python3 -m json.tool site.webmanifest > /dev/null
@@ -44,18 +64,14 @@ jobs:
             node -c "$f"
           done
 
-      - name: HTML5 validation (W3C)
-        # `media` on <meta name="theme-color"> is spec-compliant per the
-        # HTML Living Standard (since 2021) and supported by every current
-        # browser. The vnu.jar bundled with html5validator 0.4.2 — the
-        # latest pypi release — predates that change and flags it as an
-        # error. We surgically suppress just that pattern via --ignore.
+      - name: HTML5 + SVG validation (W3C Nu)
         run: |
-          html5validator \
-            --root . \
-            --blacklist node_modules .git .github \
-            --also-check-svg \
-            --ignore 'Attribute "media" not allowed on element "meta"'
+          mapfile -t targets < <(find . -type f \( -name '*.html' -o -name '*.svg' \) \
+            -not -path './node_modules/*' \
+            -not -path './.git/*' \
+            -not -path './.github/*')
+          printf 'Validating %d files\n' "${#targets[@]}"
+          java -jar vnu.jar --also-check-svg "${targets[@]}"
 
       - name: Internal link integrity
         uses: lycheeverse/lychee-action@v2
