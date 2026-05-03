@@ -28,8 +28,12 @@ function mirrorEnIndex() {
 }
 
 // https://astro.build/config
+const previewPr = process.env.PREVIEW_PR_NUMBER;
+const base = previewPr ? `/preview/pr-${previewPr}/` : '/';
+
 export default defineConfig({
   site: 'https://www.petitchardon.fr',
+  base,
   output: 'static',
   compressHTML: true,
   build: {
