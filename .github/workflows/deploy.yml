@@ -1,0 +1,52 @@
+name: Deploy production
+
+# main is currently a static HTML site (post-PR1). This workflow
+# publishes its contents to the gh-pages branch root so GitHub Pages
+# can serve them when configured in branch-deploy mode.
+#
+# When PR2 (Astro migration) lands, this file will be replaced by an
+# Astro-aware version that runs `npm ci && npm run build` and
+# publishes `dist/` instead of the raw source.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Serialize all writes to gh-pages so prod and PR previews never race.
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stage publishable files
+        run: |
+          mkdir _stage
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='.claude' \
+            --exclude='README.md' \
+            --exclude='_stage' \
+            ./ _stage/
+
+      - name: Publish to gh-pages root (preserve preview/)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _stage
+          branch: gh-pages
+          clean: true
+          # Don't wipe live PR previews when refreshing prod.
+          clean-exclude: |
+            preview
+          commit-message: "deploy: prod ${{ github.sha }}"
