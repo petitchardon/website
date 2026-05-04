@@ -4819,11 +4819,11 @@
 </g>
 <defs>
 <linearGradient id="paint0_linear_109_2" x1="381.497" y1="240.7" x2="403.942" y2="241.506" gradientUnits="userSpaceOnUse">
-<stop stop-color="#8BA8E4"/>
+<stop offset="0" stop-color="#8BA8E4"/>
 <stop offset="1" stop-color="#C3C0F0"/>
 </linearGradient>
 <linearGradient id="paint1_linear_109_2" x1="382.759" y1="170.395" x2="379.97" y2="188.713" gradientUnits="userSpaceOnUse">
-<stop stop-color="#86C5EB"/>
+<stop offset="0" stop-color="#86C5EB"/>
 <stop offset="0.12" stop-color="#99BFED"/>
 <stop offset="0.5" stop-color="#838BE4"/>
 <stop offset="0.88" stop-color="#848BE3"/>
