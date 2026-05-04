@@ -1,0 +1,33 @@
+<svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pa-hero-bg" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#06051F" />
+      <stop offset="60%" stop-color="#0F0E54" />
+      <stop offset="100%" stop-color="#0D1D68" />
+    </linearGradient>
+    <radialGradient id="pa-hero-glow" cx="48%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#27CCBC" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#BFF7E9" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0F0E54" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="520" height="520" rx="40" fill="url(#pa-hero-bg)" />
+  <ellipse cx="260" cy="200" rx="230" ry="150" fill="url(#pa-hero-glow)" />
+  <path
+    d="M80 330c56-38 116-58 180-58 74 0 134 20 184 54 24 16-2 44-24 36-54-18-110-28-160-28-54 0-110 10-160 30-22 8-46-18-20-34z"
+    fill="#27CCBC"
+    opacity="0.25"
+  />
+  <path
+    d="M110 360c52-24 100-34 150-34s98 10 150 34"
+    stroke="#BFF7E9"
+    stroke-width="4"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.45"
+  />
+  <circle cx="186" cy="146" r="12" fill="#BFF7E9" opacity="0.7" />
+  <circle cx="364" cy="132" r="14" fill="#D9F20C" opacity="0.6" />
+  <circle cx="420" cy="220" r="9" fill="#FFFFFF" opacity="0.6" />
+  <circle cx="128" cy="212" r="9" fill="#27CCBC" opacity="0.6" />
+</svg>
