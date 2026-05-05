@@ -1,9 +1,9 @@
 ---
-title: "atelier origines"
+title: "Intelligences Atypiques"
 slugs:
-  fr: atelier-origines
-  en: atelier-origines
-tag: identité visuelle & social media
+  fr: intelligences-atypiques
+  en: intelligences-atypiques
+tag: identité visuelle & réseaux sociaux
 description:
   fr: Création de l'identité visuelle et définition d'une stratégie pour les réseaux sociaux.
   en: Visual identity design and social media strategy.

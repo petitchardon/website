@@ -1,9 +1,9 @@
 ---
-title: "constellation"
+title: "cocobot"
 slugs:
-  fr: constellation
-  en: constellation
-tag: social media & illustration
+  fr: cocobot
+  en: cocobot
+tag: social media & copywriting
 description:
   fr: Définition du calendrier éditorial pour LinkedIn, création des templates et gestion des posts.
   en: LinkedIn editorial calendar, template design and post management.
