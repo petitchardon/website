@@ -86,7 +86,7 @@ const dict = getDict(lang);
       <p>{dict.portfolio.intro}</p>
     </header>
     <div class="portfolio__grid">
-      <a class="portfolio__card" href={projectUrl(lang, 'aurore-boreale')}>
+      <a class="portfolio__card" href={projectUrl(lang, 'lukes-iced-coffees')}>
         <figure>
           <img
             src={asset("assets/images/portfolio-aurore.svg")}
@@ -102,7 +102,7 @@ const dict = getDict(lang);
           <span class="portfolio__link">{dict.portfolio.viewProject}</span>
         </div>
       </a>
-      <a class="portfolio__card" href={projectUrl(lang, 'atelier-origines')}>
+      <a class="portfolio__card" href={projectUrl(lang, 'intelligences-atypiques')}>
         <figure>
           <img
             src={asset("assets/images/portfolio-origines.svg")}
@@ -118,7 +118,7 @@ const dict = getDict(lang);
           <span class="portfolio__link">{dict.portfolio.viewProject}</span>
         </div>
       </a>
-      <a class="portfolio__card" href={projectUrl(lang, 'constellation')}>
+      <a class="portfolio__card" href={projectUrl(lang, 'cocobot')}>
         <figure>
           <img
             src={asset("assets/images/portfolio-constellation.svg")}
@@ -154,7 +154,7 @@ const dict = getDict(lang);
       </div>
       <div class="about__text">
         <p>{dict.about.p1}</p>
-        <p class="about__highlight"><strong set:html={dict.about.p2Strong} /></p>
+        <p class="about__highlight"><strong>{dict.about.p2Strong}</strong></p>
         <p>{dict.about.p3}</p>
       </div>
     </div>
@@ -264,6 +264,7 @@ const dict = getDict(lang);
       </div>
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_subject" value={dict.contact.subject} />
+      <input type="hidden" name="_next" value="https://www.petitchardon.fr/" />
       <button class="btn btn--primary" type="submit">{dict.contact.submit}</button>
       <p class="form-feedback" role="status" aria-live="polite" hidden>
         {dict.contact.feedbackSuccess}

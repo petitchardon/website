@@ -20,8 +20,12 @@ function mirrorEnIndex() {
         const src = path.join(distDir, 'en.html');
         const targetDir = path.join(distDir, 'en');
         const target = path.join(targetDir, 'index.html');
-        await mkdir(targetDir, { recursive: true });
-        await copyFile(src, target);
+        try {
+          await mkdir(targetDir, { recursive: true });
+          await copyFile(src, target);
+        } catch (err) {
+          throw new Error(`[mirror-en-index] Failed to copy en.html → en/index.html: ${err.message}`);
+        }
       },
     },
   };
