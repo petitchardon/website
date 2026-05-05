@@ -14,13 +14,16 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const lang = 'fr' as const;
 const pathname = `/projects/${project.data.slugs.fr}.html`;
+const { Content } = await project.render();
 ---
 <BaseLayout
   lang={lang}
   title={`${project.data.title} | petitchardon`}
   description={project.data.description.fr}
   pathname={pathname}
-  bodyPage="project-placeholder"
+  bodyPage="project"
 >
-  <ProjectPage lang={lang} projectTitle={project.data.title} body={project.data.description.fr} />
+  <ProjectPage lang={lang} project={project}>
+    <Content slot="body" />
+  </ProjectPage>
 </BaseLayout>
