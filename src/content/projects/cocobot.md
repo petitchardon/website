@@ -58,7 +58,7 @@ cocobot est un outil d'automatisation conversationnelle conçu pour les équipes
 
 ## Stratégie
 
-Avant de créer le moindre visuel, j'ai passé deux semaines à analyser le positionnement de cocobot : la concurrence, les thématiques qui performent dans la niche, le profil des lecteurs cibles. De cette analyse a émergé une structure en quatre piliers :
+Avant de créer le moindre visuelle, j'ai passé deux semaines à analyser le positionnement de cocobot : la concurrence, les thématiques qui performent dans la niche, le profil des lecteurs cibles. De cette analyse a émergé une structure en quatre piliers :
 
 - **Cas clients** — preuves concrètes de valeur
 - **Tips & méthodes** — contenu éducatif à forte valeur ajoutée
