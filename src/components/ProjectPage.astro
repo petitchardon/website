@@ -26,7 +26,7 @@ const hasSidenote = challengeText || outcomeText;
         <a href={`${home}#portfolio`}>{dict.project.breadcrumb}</a>
       </p>
       {tag && <span class="section-kicker">{tag}</span>}
-      <h1>{title}</h1>
+      <h1 transition:name={`title-${project.data.slugs[lang]}`}>{title}</h1>
       <p>{desc}</p>
       {services.length > 0 && (
         <dl class="project-meta">
@@ -38,7 +38,8 @@ const hasSidenote = challengeText || outcomeText;
       )}
     </div>
     <div class="project-hero__visual">
-      <img src={asset(cover.replace(/^\//, ''))} alt={title} loading="eager" />
+      <img src={asset(cover.replace(/^\//, ''))} alt={title} loading="eager"
+           transition:name={`cover-${project.data.slugs[lang]}`} />
     </div>
   </div>
 </section>

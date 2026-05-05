@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../i18n';
 import { getDict, asset } from '../i18n';
+import { ViewTransitions } from 'astro:transitions';
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -61,6 +62,7 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href={asset('css/style.css')} />
     {showStructuredData && <StructuredData />}
+    <ViewTransitions />
   </head>
   <body data-page={bodyPage}>
     <a class="skip-link" href="#contenu-principal">{dict.common.skipToContent}</a>

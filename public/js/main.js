@@ -1,12 +1,11 @@
-const docReady = (fn) => {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", fn);
-  } else {
-    fn();
-  }
-};
+let _initSignal = null;
 
-docReady(() => {
+function init() {
+  if (_initSignal) _initSignal.abort();
+  const controller = new AbortController();
+  _initSignal = controller;
+  const { signal } = controller;
+
   const root = document.documentElement;
   const body = document.body;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -58,7 +57,7 @@ docReady(() => {
         setNavState(false);
         navToggle.focus();
       }
-    });
+    }, { signal });
   }
 
   // ---------- Scroll-triggered animations ----------
@@ -205,7 +204,7 @@ docReady(() => {
     const feedback = contactForm.querySelector(".form-feedback");
     const lang = (root.getAttribute("lang") || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
     const labels = {
-      fr: { sending: "envoi en cours…", error: "le formulaire n’a pas pu être envoyé. réessayez ou écrivez-moi directement." },
+      fr: { sending: "envoi en cours…", error: "le formulaire n'a pas pu être envoyé. réessayez ou écrivez-moi directement." },
       en: { sending: "sending…", error: "sending failed. please try again or email me directly." },
     };
 
@@ -252,5 +251,7 @@ docReady(() => {
     if (event.key.toLowerCase() === "d" && event.shiftKey) {
       document.body.classList.toggle("layout-debug");
     }
-  });
-});
+  }, { signal });
+}
+
+document.addEventListener("astro:page-load", init);
