@@ -1,0 +1,66 @@
+{
+  "title": "petitchardon — Traffic & SEO",
+  "uid": "petitchardon-traffic-seo",
+  "tags": ["petitchardon"],
+  "timezone": "Europe/Paris",
+  "schemaVersion": 39,
+  "refresh": "30m",
+  "time": { "from": "now-7d", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Pageviews (24h)",
+      "gridPos": { "x": 0, "y": 0, "w": 6, "h": 4 },
+      "targets": [{ "datasource": { "type": "prometheus" }, "expr": "umami_pageviews_24h" }]
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Unique visitors (24h)",
+      "gridPos": { "x": 6, "y": 0, "w": 6, "h": 4 },
+      "targets": [{ "datasource": { "type": "prometheus" }, "expr": "umami_visitors_24h" }]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Sessions (24h)",
+      "gridPos": { "x": 12, "y": 0, "w": 6, "h": 4 },
+      "targets": [{ "datasource": { "type": "prometheus" }, "expr": "umami_visits_24h" }]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Bounce rate (24h)",
+      "gridPos": { "x": 18, "y": 0, "w": 6, "h": 4 },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus" },
+          "expr": "umami_bounces_24h / umami_visits_24h * 100"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percent" } }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Pageviews trend",
+      "gridPos": { "x": 0, "y": 4, "w": 12, "h": 8 },
+      "targets": [{ "datasource": { "type": "prometheus" }, "expr": "umami_pageviews_24h" }]
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Conversions — email_click / contact_click / project_view",
+      "description": "Custom events emitted via trackEvent() in src/lib/observability.ts.",
+      "gridPos": { "x": 12, "y": 4, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus" },
+          "expr": "umami_event_count{name=~\"email_click|contact_click|project_view\"}",
+          "legendFormat": "{{name}}"
+        }
+      ]
+    }
+  ]
+}

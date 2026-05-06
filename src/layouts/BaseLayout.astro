@@ -6,6 +6,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackgroundLayers from '../components/BackgroundLayers.astro';
 import StructuredData from '../components/StructuredData.astro';
+import Observability from '../components/Observability.astro';
 
 export interface Props {
   lang: Lang;
@@ -71,5 +72,6 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
     </main>
     {showFooter && <Footer lang={lang} />}
     <script src={asset('js/main.js')} is:inline defer></script>
+    <Observability />
   </body>
 </html>
