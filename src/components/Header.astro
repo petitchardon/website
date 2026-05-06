@@ -33,9 +33,9 @@ const altHref = alternateUrl(lang, pathname);
         href={altHref}
         data-lang-toggle
         hreflang={lang === 'fr' ? 'en' : 'fr'}
-        aria-label={dict.common.langToggleAria}
       >
         <span>{dict.common.langToggle}</span>
+        <span class="seo-hidden">{` — ${dict.common.langToggleAria}`}</span>
       </a>
     </div>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile">
@@ -43,7 +43,7 @@ const altHref = alternateUrl(lang, pathname);
       <span class="nav-toggle__icon" aria-hidden="true"></span>
     </button>
   </div>
-  <nav id="menu-mobile" class="site-nav--mobile" aria-label={dict.common.navAriaMobile} hidden>
+  <nav id="menu-mobile" class="site-nav--mobile" aria-label={dict.common.navAriaMobile} hidden inert>
     <ul>
       <li><a href={`${home}#hero`}>{dict.nav.home}</a></li>
       <li><a href={`${home}#processus`}>{dict.nav.workflow}</a></li>
@@ -57,9 +57,9 @@ const altHref = alternateUrl(lang, pathname);
         href={altHref}
         data-lang-toggle
         hreflang={lang === 'fr' ? 'en' : 'fr'}
-        aria-label={dict.common.langToggleAria}
       >
         <span>{dict.common.langToggle}</span>
+        <span class="seo-hidden">{` — ${dict.common.langToggleAria}`}</span>
       </a>
     </div>
   </nav>

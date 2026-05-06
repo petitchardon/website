@@ -21,6 +21,7 @@ docReady(() => {
     const setNavState = (open) => {
       navToggle.setAttribute("aria-expanded", String(open));
       mobileNav.setAttribute("aria-hidden", open ? "false" : "true");
+      mobileNav.toggleAttribute("inert", !open);
       if (open) {
         mobileNav.hidden = false;
       }
