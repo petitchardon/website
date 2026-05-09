@@ -1,0 +1,133 @@
+{
+  "site": {
+    "title": "petitchardon | graphisme, illustration & rédaction freelance",
+    "description": "Graphiste-illustratrice-rédactrice freelance à Rambouillet (Yvelines), petitchardon imagine des identités visuelles immersives et responsables qui racontent votre histoire.",
+    "ogTitle": "petitchardon | studio graphisme & storytelling visuel",
+    "ogDescription": "Studio créatif à Rambouillet (Yvelines) : je façonne des identités comme on raconte une histoire, la vôtre."
+  },
+  "common": {
+    "skipToContent": "passer au contenu",
+    "menu": "menu",
+    "langToggle": "fr · en",
+    "langToggleAria": "Changer la langue",
+    "navAriaPrimary": "Navigation principale",
+    "navAriaMobile": "Navigation mobile",
+    "brandAria": "petitchardon"
+  },
+  "nav": {
+    "home": "accueil",
+    "workflow": "workflow",
+    "portfolio": "portfolio",
+    "about": "à propos",
+    "contact": "contact"
+  },
+  "hero": {
+    "tag": "graphisme · illustration · rédaction",
+    "title": "faites-vous remarquer",
+    "location": "Graphiste & webdesigner à Rambouillet (Yvelines), je crée logos, identités visuelles et sites web.",
+    "intro": "Je façonne des identités comme on raconte une histoire : la vôtre. J'accompagne les marques audacieuses qui veulent s'imprimer durablement dans l'imaginaire collectif.",
+    "services": "logo - identité visuelle - site web - réseaux sociaux - illustration",
+    "ctaProjects": "voir les projets",
+    "ctaTalk": "parlons du vôtre"
+  },
+  "process": {
+    "kicker": "workflow",
+    "title": "de l’étincelle au lancement",
+    "intro": "Une méthode en quatre étapes pour faire émerger une identité alignée, singulière et mémorable.",
+    "step1Title": "on se rencontre",
+    "step1Body": "Vous formulez votre demande, je recueille votre besoin, vos objectifs et vos contraintes pour cadrer la mission.",
+    "step2Title": "je crée & j’affine",
+    "step2Body": "Je creuse, j’esquisse, je formalise des pistes visuelles et narratives pour donner corps à votre univers.",
+    "step3Title": "on en parle",
+    "step3Body": "Je vous présente les propositions, on échange en direct, vous faites vos retours pour affiner chaque détail.",
+    "step4Title": "on lance",
+    "step4Body": "J’apporte les dernières modifications, je prépare les livrables et nous lançons ensemble votre nouvelle communication.",
+    "commitTitle": "design inclusif & responsable",
+    "commitIntro": "Accessibilité, éco-conception et performance sont intégrées à chaque étape pour que votre histoire rayonne auprès de toutes et tous.",
+    "commit1": "Respect strict des normes d'accessibilité et de lisibilité pour vous rendre accessible.",
+    "commit2": "Visuels légers et chargements progressifs pour une expérience rapide et plus économe en énergie. Choix des papiers et des encres pour une meilleure utilisation des ressources.",
+    "commit3": "Ton inclusif et adapté à vos besoins pour inviter chaque audience à entrer dans votre univers."
+  },
+  "portfolio": {
+    "kicker": "portfolio",
+    "title": "identités qui marquent",
+    "intro": "Chaque projet est une exploration graphique nourrie par votre histoire. Découvrez quelques réalisations récentes.",
+    "viewProject": "voir le projet",
+    "card1Title": "Luke’s Iced Coffees",
+    "card1Body": "Création du logotype et des déclinaisons produits.",
+    "card1Alt": "Identité visuelle Luke’s Iced Coffees",
+    "card2Title": "Intelligences Atypiques",
+    "card2Body": "Création de l’identité visuelle et définition d’une stratégie pour les réseaux sociaux.",
+    "card2Alt": "Identité visuelle Intelligences Atypiques",
+    "card3Title": "cocobot",
+    "card3Body": "Définition du calendrier éditorial pour LinkedIn, création des templates et gestion des posts.",
+    "card3Alt": "Templates et identité cocobot",
+    "ctaTitle": "et votre histoire ?",
+    "ctaBody": "Prêt·e à faire vibrer votre identité ? Parlons de ce que nous pouvons imaginer ensemble.",
+    "ctaButton": "on se contacte ?"
+  },
+  "about": {
+    "title": "à propos",
+    "portraitAlt": "Portrait d'Anne, graphiste petitchardon",
+    "p1": "Je suis Anne, la graphiste derrière petitchardon. Depuis l'enfance, mon terrain de jeu est la création : inventer des mondes, créer des histoires, imaginer des aventures.",
+    "p2Strong": "Aujourd'hui, je mets cette créativité au service de vos récits afin de les traduire en identités visuelles remarquables et mémorables.",
+    "p3": "Mon approche est directe, chaleureuse et tournée vers l'action : je vous guide pour faire émerger une vision qui vous ressemble et vous rend incontournable.",
+    "carouselPrev": "Voir la carte précédente",
+    "carouselNext": "Voir la carte suivante",
+    "pillar1Title": "un studio à taille humaine",
+    "pillar1Strong": "Vous parlez, j'écoute. Les échanges sont francs et fluides pour transformer vos intuitions en directions créatives tangibles.",
+    "pillar1Body": "Mes connaissances en psychologie me permettent de vous accompagner dans la spécification de votre demande et de vos besoins. Petit chardon devient votre coéquipier, pour vous faire connaître et remarquer !",
+    "pillar2Title": "créativité augmentée",
+    "pillar2Strong": "Graphisme, illustration, rédaction : je mélange les disciplines pour composer des univers vivants et cohérents, du logotype au manifeste.",
+    "pillar2Body": "De la création d'une identité visuelle à la communication sur les réseaux, la cohérence sera votre point fort. Créons ensemble votre langage de communication signature.",
+    "pillar3Title": "livrables prêts à l'emploi",
+    "pillar3Strong": "Logotype, charte graphique, templates réseaux sociaux, site web, contenus éditoriaux : vous repartez avec des supports concrets, prêts à déployer votre nouvelle communication.",
+    "pillar3Body": "Sur la durée, petit chardon vous accompagne également dans la gestion de vos réseaux sociaux."
+  },
+  "contact": {
+    "kicker": "contact",
+    "title": "prenez rendez-vous avec votre future identité",
+    "intro": "Dites-moi ce que vous voulez raconter, je vous réponds sous 48 h avec une proposition claire, respectueuse et sur-mesure.",
+    "labelEmail": "email",
+    "labelPhone": "téléphone",
+    "labelLocation": "basée à",
+    "locationValue": "Rambouillet (Yvelines sud) · missions France & international",
+    "fieldName": "nom",
+    "fieldEmail": "email",
+    "fieldProject": "votre projet",
+    "placeholderName": "Votre nom",
+    "placeholderEmail": "vous@email.com",
+    "placeholderProject": "Identité visuelle, illustration, rédaction...",
+    "rgpdLead": "J’accepte que mes données soient utilisées uniquement pour être recontacté conformément à la",
+    "rgpdLink": "politique de confidentialité",
+    "submit": "envoyer ma demande",
+    "subject": "Nouveau message depuis petitchardon.fr",
+    "feedbackSuccess": "merci ! votre message est en route.",
+    "feedbackError": "le formulaire n’a pas pu être envoyé. réessayez ou écrivez-moi directement."
+  },
+  "footer": {
+    "brandTagline": "Studio créatif pour identités visuelles, illustrations et récits de marque à forte personnalité.",
+    "explore": "explorer",
+    "stayConnected": "restez connecté",
+    "legal": "mentions légales",
+    "legalText": "petitchardon · Tous droits réservés · SIRET 81438124000021. Données utilisées uniquement pour répondre à votre demande. Hébergement : GitHub Pages. Responsable de publication : Anne Della Gaspera."
+  },
+  "project": {
+    "breadcrumb": "portfolio",
+    "underConstruction": "page en construction",
+    "underConstructionBody": "Cette page projet est en construction. Revenez bientôt pour découvrir le contenu.",
+    "actionsHeading": "continuer l’exploration",
+    "backToPortfolio": "retour au portfolio",
+    "backToContact": "contact",
+    "metaTitle": "Page en construction | petitchardon",
+    "metaDescription": "Cette page projet est en construction. Revenez bientôt pour découvrir le contenu."
+  },
+  "notFound": {
+    "title": "404 — page introuvable | petitchardon",
+    "description": "Cette page n’existe pas (ou plus). Retrouvez le studio petitchardon depuis la page d’accueil.",
+    "h1": "cette page s’est perdue dans les ronces",
+    "body": "Le lien que vous suiviez est cassé, ou la page n’existe plus. Revenons à l’atelier.",
+    "ctaHome": "retour à l’accueil",
+    "ctaContact": "contact"
+  }
+}

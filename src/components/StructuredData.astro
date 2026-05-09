@@ -1,0 +1,94 @@
+---
+// JSON-LD structured data. Render only on the home page.
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.petitchardon.fr/#website",
+      "url": "https://www.petitchardon.fr/",
+      "name": "petitchardon",
+      "inLanguage": ["fr-FR", "en"],
+      "description": "Studio de création visuelle qui façonne des identités de marque comme on raconte une histoire.",
+      "publisher": { "@id": "https://www.petitchardon.fr/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.petitchardon.fr/#organization",
+      "name": "petitchardon",
+      "url": "https://www.petitchardon.fr/",
+      "logo": "https://www.petitchardon.fr/assets/images/logo-petitchardon.svg",
+      "image": "https://www.petitchardon.fr/assets/images/anne-portrait.jpg",
+      "sameAs": [
+        "https://www.instagram.com/petitchardon",
+        "https://www.behance.net/petitchardon",
+        "https://www.linkedin.com/in/petitchardon"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "anne@petitchardon.fr",
+          "telephone": "+33627548035",
+          "areaServed": ["FR", "EU"],
+          "availableLanguage": ["fr", "en"]
+        }
+      ],
+      "areaServed": ["France", "Europe"],
+      "slogan": "Studio de création visuelle responsable"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.petitchardon.fr/#anne",
+      "name": "Anne - petitchardon",
+      "jobTitle": "Graphiste, illustratrice et rédactrice freelance",
+      "url": "https://www.petitchardon.fr/",
+      "image": "https://www.petitchardon.fr/assets/images/anne-portrait.jpg",
+      "description": "Studio de création visuelle qui façonne des identités de marque comme on raconte une histoire.",
+      "sameAs": [
+        "https://www.instagram.com/petitchardon",
+        "https://www.behance.net/petitchardon",
+        "https://www.linkedin.com/in/petitchardon"
+      ],
+      "knowsAbout": [
+        "identité visuelle",
+        "direction artistique",
+        "illustration",
+        "stratégie de marque",
+        "rédaction créative"
+      ],
+      "areaServed": ["France", "Europe"],
+      "worksFor": { "@id": "https://www.petitchardon.fr/#organization" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.petitchardon.fr/#studio",
+      "name": "petitchardon | graphiste & webdesigner",
+      "url": "https://www.petitchardon.fr/",
+      "image": "https://www.petitchardon.fr/assets/images/anne-portrait.jpg",
+      "logo": "https://www.petitchardon.fr/assets/images/logo-petitchardon.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rambouillet",
+        "addressRegion": "Yvelines",
+        "addressCountry": "FR"
+      },
+      "areaServed": ["Rambouillet", "Yvelines", "Île-de-France", "France", "Europe"],
+      "availableLanguage": ["fr", "en"],
+      "sameAs": [
+        "https://www.instagram.com/petitchardon",
+        "https://www.behance.net/petitchardon",
+        "https://www.linkedin.com/in/petitchardon"
+      ],
+      "serviceType": [
+        "identité visuelle",
+        "logo",
+        "direction artistique",
+        "illustration",
+        "webdesign",
+        "rédaction"
+      ]
+    }
+  ]
+})} />

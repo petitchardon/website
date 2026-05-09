@@ -1,0 +1,274 @@
+---
+import { Image } from 'astro:assets';
+import type { Lang } from '../i18n';
+import { getDict, projectUrl, asset } from '../i18n';
+import annePortrait from '../assets/images/anne-portrait.jpg';
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const dict = getDict(lang);
+---
+
+<section id="hero" class="hero" data-animate="fade-up">
+  <div class="hero__background" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="hero__tag">{dict.hero.tag}</span>
+      <h1>{dict.hero.title}</h1>
+      <p class="hero__location seo-hidden">{dict.hero.location}</p>
+      <p class="hero__intro">{dict.hero.intro}</p>
+      <p class="hero__services">{dict.hero.services}</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#portfolio">{dict.hero.ctaProjects}</a>
+        <a class="btn btn--ghost" href="#contact">{dict.hero.ctaTalk}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="processus" class="process" data-animate="fade-up">
+  <div class="container">
+    <header class="section-header">
+      <span class="section-kicker">{dict.process.kicker}</span>
+      <h2>{dict.process.title}</h2>
+      <p>{dict.process.intro}</p>
+    </header>
+    <div class="process__grid">
+      <article class="process__item glass-surface" data-tilt>
+        <figure>
+          <img src={asset("assets/icons/workflow-1.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
+        </figure>
+        <h3>{dict.process.step1Title}</h3>
+        <p>{dict.process.step1Body}</p>
+      </article>
+      <article class="process__item glass-surface" data-tilt>
+        <figure>
+          <img src={asset("assets/icons/workflow-2.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
+        </figure>
+        <h3>{dict.process.step2Title}</h3>
+        <p>{dict.process.step2Body}</p>
+      </article>
+      <article class="process__item glass-surface" data-tilt>
+        <figure>
+          <img src={asset("assets/icons/workflow-3.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
+        </figure>
+        <h3>{dict.process.step3Title}</h3>
+        <p>{dict.process.step3Body}</p>
+      </article>
+      <article class="process__item glass-surface" data-tilt>
+        <figure>
+          <img src={asset("assets/icons/workflow-4.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
+        </figure>
+        <h3>{dict.process.step4Title}</h3>
+        <p>{dict.process.step4Body}</p>
+      </article>
+    </div>
+    <aside class="process__commitments" data-animate="fade-in">
+      <h3>{dict.process.commitTitle}</h3>
+      <p>{dict.process.commitIntro}</p>
+      <ul class="process__commitments-list">
+        <li>{dict.process.commit1}</li>
+        <li>{dict.process.commit2}</li>
+        <li>{dict.process.commit3}</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio" data-animate="fade-in">
+  <div class="container">
+    <header class="section-header">
+      <span class="section-kicker">{dict.portfolio.kicker}</span>
+      <h2>{dict.portfolio.title}</h2>
+      <p>{dict.portfolio.intro}</p>
+    </header>
+    <div class="portfolio__grid">
+      <a class="portfolio__card" href={projectUrl(lang, 'lukes-iced-coffees')}>
+        <figure>
+          <img
+            src={asset("assets/images/portfolio-aurore.svg")}
+            alt={dict.portfolio.card1Alt}
+            width="400"
+            height="320"
+            loading="lazy"
+          />
+        </figure>
+        <div class="portfolio__content">
+          <h3>{dict.portfolio.card1Title}</h3>
+          <p>{dict.portfolio.card1Body}</p>
+          <span class="portfolio__link">{dict.portfolio.viewProject}</span>
+        </div>
+      </a>
+      <a class="portfolio__card" href={projectUrl(lang, 'intelligences-atypiques')}>
+        <figure>
+          <img
+            src={asset("assets/images/portfolio-origines.svg")}
+            alt={dict.portfolio.card2Alt}
+            width="400"
+            height="320"
+            loading="lazy"
+          />
+        </figure>
+        <div class="portfolio__content">
+          <h3>{dict.portfolio.card2Title}</h3>
+          <p>{dict.portfolio.card2Body}</p>
+          <span class="portfolio__link">{dict.portfolio.viewProject}</span>
+        </div>
+      </a>
+      <a class="portfolio__card" href={projectUrl(lang, 'cocobot')}>
+        <figure>
+          <img
+            src={asset("assets/images/portfolio-constellation.svg")}
+            alt={dict.portfolio.card3Alt}
+            width="400"
+            height="320"
+            loading="lazy"
+          />
+        </figure>
+        <div class="portfolio__content">
+          <h3>{dict.portfolio.card3Title}</h3>
+          <p>{dict.portfolio.card3Body}</p>
+          <span class="portfolio__link">{dict.portfolio.viewProject}</span>
+        </div>
+      </a>
+      <a class="portfolio__card portfolio__card--cta" href="#contact">
+        <div class="portfolio__cta">
+          <h3>{dict.portfolio.ctaTitle}</h3>
+          <p>{dict.portfolio.ctaBody}</p>
+          <span class="btn btn--secondary">{dict.portfolio.ctaButton}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about section-divider" data-animate="fade-in">
+  <div class="container">
+    <h2 class="about__title">{dict.about.title}</h2>
+    <div class="about__bio">
+      <div class="about__photo">
+        <Image src={annePortrait} alt={dict.about.portraitAlt} loading="lazy" />
+      </div>
+      <div class="about__text">
+        <p>{dict.about.p1}</p>
+        <p class="about__highlight"><strong>{dict.about.p2Strong}</strong></p>
+        <p>{dict.about.p3}</p>
+      </div>
+    </div>
+
+    <div class="about__carousel">
+      <button class="about__nav about__nav--prev" type="button" aria-label={dict.about.carouselPrev} data-about-prev>&lsaquo;</button>
+      <div class="about__pillars" data-about-track>
+        <article class="about__pillar glass-surface">
+          <div class="about__content">
+            <h3>{dict.about.pillar1Title}</h3>
+            <p><strong>{dict.about.pillar1Strong}</strong></p>
+            <p>{dict.about.pillar1Body}</p>
+          </div>
+          <img class="about__icon" src={asset("assets/icons/a-propos-1.svg")} alt="" width="96" height="96" loading="lazy" />
+        </article>
+        <article class="about__pillar glass-surface">
+          <div class="about__content">
+            <h3>{dict.about.pillar2Title}</h3>
+            <p><strong>{dict.about.pillar2Strong}</strong></p>
+            <p>{dict.about.pillar2Body}</p>
+          </div>
+          <img class="about__icon" src={asset("assets/icons/a-propos-2.svg")} alt="" width="96" height="96" loading="lazy" />
+        </article>
+        <article class="about__pillar glass-surface">
+          <div class="about__content">
+            <h3>{dict.about.pillar3Title}</h3>
+            <p><strong>{dict.about.pillar3Strong}</strong></p>
+            <p>{dict.about.pillar3Body}</p>
+          </div>
+          <img class="about__icon" src={asset("assets/icons/a-propos-3.svg")} alt="" width="96" height="96" loading="lazy" />
+        </article>
+      </div>
+      <button class="about__nav about__nav--next" type="button" aria-label={dict.about.carouselNext} data-about-next>&rsaquo;</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact" data-animate="fade-up">
+  <div class="container contact__inner">
+    <div class="contact__intro glass-surface">
+      <span class="section-kicker">{dict.contact.kicker}</span>
+      <h2>{dict.contact.title}</h2>
+      <p>{dict.contact.intro}</p>
+      <ul class="contact__highlights">
+        <li>
+          <strong>{dict.contact.labelEmail}</strong>
+          <a href="mailto:anne@petitchardon.fr">anne@petitchardon.fr</a>
+        </li>
+        <li>
+          <strong>{dict.contact.labelPhone}</strong>
+          <a href="tel:+33627548035">+33&nbsp;6&nbsp;27&nbsp;54&nbsp;80&nbsp;35</a>
+        </li>
+        <li>
+          <strong>{dict.contact.labelLocation}</strong>
+          <span>{dict.contact.locationValue}</span>
+        </li>
+      </ul>
+    </div>
+    <form
+      class="contact__form glass-surface"
+      action="https://formsubmit.co/anne@petitchardon.fr"
+      method="POST"
+      data-form
+    >
+      <div class="form-field form-field--honeypot" aria-hidden="true">
+        <label for="_honey">Leave this field empty</label>
+        <input id="_honey" name="_honey" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="form-field">
+        <label for="nom">{dict.contact.fieldName}</label>
+        <input
+          id="nom"
+          name="nom"
+          type="text"
+          autocomplete="name"
+          required
+          placeholder={dict.contact.placeholderName}
+        />
+      </div>
+      <div class="form-field">
+        <label for="email">{dict.contact.fieldEmail}</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder={dict.contact.placeholderEmail}
+        />
+      </div>
+      <div class="form-field">
+        <label for="projet">{dict.contact.fieldProject}</label>
+        <textarea
+          id="projet"
+          name="projet"
+          rows="4"
+          required
+          placeholder={dict.contact.placeholderProject}
+        ></textarea>
+      </div>
+      <div class="form-field form-field--checkbox">
+        <input id="rgpd" name="rgpd" type="checkbox" value="true" required />
+        <label for="rgpd">
+          <span>{dict.contact.rgpdLead} </span>
+          <a href="#mentions-legales">{dict.contact.rgpdLink}</a>.
+        </label>
+      </div>
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_subject" value={dict.contact.subject} />
+      <input type="hidden" name="_next" value="https://www.petitchardon.fr/" />
+      <button class="btn btn--primary" type="submit">{dict.contact.submit}</button>
+      <p class="form-feedback" role="status" aria-live="polite" hidden>
+        {dict.contact.feedbackSuccess}
+      </p>
+    </form>
+  </div>
+</section>
