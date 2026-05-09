@@ -16,7 +16,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -26,7 +26,54 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build
+
+      - name: Build
+        env:
+          PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.PUBLIC_UMAMI_WEBSITE_ID }}
+          PUBLIC_SENTRY_DSN: ${{ secrets.PUBLIC_SENTRY_DSN }}
+          PUBLIC_RELEASE_SHA: ${{ github.sha }}
+        run: npm run build
+
+      - name: Upload sourcemaps to Sentry
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          if [ -z "$SENTRY_AUTH_TOKEN" ]; then
+            echo "SENTRY_AUTH_TOKEN not set, skipping sourcemap upload"
+            exit 0
+          fi
+          npx --yes @sentry/cli@2 sourcemaps inject ./dist
+          npx --yes @sentry/cli@2 sourcemaps upload \
+            --release "$GITHUB_SHA" \
+            --url-prefix "~/" \
+            ./dist
+
+      - name: Log deploy to Grafana Loki
+        env:
+          GRAFANA_LOKI_URL: ${{ secrets.GRAFANA_LOKI_URL }}
+          GRAFANA_LOKI_USER: ${{ secrets.GRAFANA_LOKI_USER }}
+          GRAFANA_LOKI_TOKEN: ${{ secrets.GRAFANA_LOKI_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_ACTOR: ${{ github.actor }}
+        run: |
+          if [ -z "$GRAFANA_LOKI_URL" ]; then
+            echo "GRAFANA_LOKI_URL not set, skipping deploy log"
+            exit 0
+          fi
+          ts="$(date +%s)000000000"
+          payload=$(jq -nc \
+            --arg ts "$ts" \
+            --arg sha "$GITHUB_SHA" \
+            --arg actor "$GITHUB_ACTOR" \
+            '{streams:[{stream:{job:"github-actions",app:"petitchardon-website",env:"production",event:"deploy"},values:[[$ts, ("deploy sha=" + $sha + " actor=" + $actor)]]}]}')
+          curl --fail-with-body -X POST \
+            -u "$GRAFANA_LOKI_USER:$GRAFANA_LOKI_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data "$payload" \
+            "$GRAFANA_LOKI_URL/loki/api/v1/push"
 
       - name: Publish dist/ to gh-pages root (preserve preview/)
         uses: JamesIves/github-pages-deploy-action@v4
