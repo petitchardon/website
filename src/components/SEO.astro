@@ -1,0 +1,75 @@
+---
+import type { Lang } from '../i18n';
+import { alternateUrl } from '../i18n';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  ogType?: string;
+  pathname: string;
+  lang: Lang;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/assets/images/anne-portrait.jpg',
+  ogType = 'website',
+  pathname,
+  lang,
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = 'https://www.petitchardon.fr';
+const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
+// Canonical / hreflang point at the production URL even from a preview
+// build, so search engines never associate the preview subdirectory with
+// the brand. Combined with the auto-noindex below, previews stay invisible.
+const canonical = `${siteUrl}${path}`;
+const absoluteImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// alternateUrl() applies withBase() which is correct for the in-browser
+// lang toggle, but hreflang must always point at production URLs.
+// Strip the base prefix so concatenation with siteUrl stays clean.
+const _altPathWithBase = alternateUrl(lang, path);
+const _base = import.meta.env.BASE_URL;
+const altPath = _base !== '/' && _altPathWithBase.startsWith(_base)
+  ? '/' + _altPathWithBase.slice(_base.length)
+  : _altPathWithBase;
+const altLang: Lang = lang === 'fr' ? 'en' : 'fr';
+const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
+const ogLocaleAlt = lang === 'fr' ? 'en_US' : 'fr_FR';
+
+// Any deploy under /preview/pr-N/ is a PR preview — never let it index.
+const isPreview = import.meta.env.BASE_URL !== '/';
+const finalNoindex = noindex || isPreview;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="Anne Della Gaspera" />
+{finalNoindex && <meta name="robots" content="noindex,nofollow" />}
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:site_name" content="petitchardon" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={ogLocaleAlt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImage} />
+
+<meta name="theme-color" content="#0f0e54" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#06051f" media="(prefers-color-scheme: dark)" />
+
+<link rel="canonical" href={canonical} />
+<link rel="alternate" hreflang={lang} href={canonical} />
+<link rel="alternate" hreflang={altLang} href={`${siteUrl}${altPath}`} />
+<link rel="alternate" hreflang="x-default" href={`${siteUrl}${lang === 'fr' ? path : altPath}`} />

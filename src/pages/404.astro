@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getDict, homeUrl } from '../i18n';
+
+const lang = 'fr' as const;
+const dict = getDict(lang);
+const home = homeUrl(lang);
+---
+<BaseLayout
+  lang={lang}
+  title={dict.notFound.title}
+  description={dict.notFound.description}
+  pathname="/404.html"
+  bodyPage="not-found"
+  showHeader={false}
+  showFooter={false}
+  noindex={true}
+>
+  <section class="project-hero" data-animate="fade-up">
+    <div class="container project-hero__inner">
+      <div class="project-hero__intro glass-surface">
+        <p class="breadcrumb">404</p>
+        <h1>{dict.notFound.h1}</h1>
+        <p>{dict.notFound.body}</p>
+        <div class="project-cta__actions">
+          <a class="btn btn--primary" href={home}>{dict.notFound.ctaHome}</a>
+          <a class="btn btn--ghost" href={`${home}#contact`}>{dict.notFound.ctaContact}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

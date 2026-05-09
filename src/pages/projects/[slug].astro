@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectPage from '../../components/ProjectPage.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.map((project) => ({
+    params: { slug: project.data.slugs.fr },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const lang = 'fr' as const;
+const pathname = `/projects/${project.data.slugs.fr}.html`;
+---
+<BaseLayout
+  lang={lang}
+  title={`${project.data.title} | petitchardon`}
+  description={project.data.description.fr}
+  pathname={pathname}
+  bodyPage="project-placeholder"
+>
+  <ProjectPage lang={lang} projectTitle={project.data.title} body={project.data.description.fr} />
+</BaseLayout>

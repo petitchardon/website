@@ -1,0 +1,66 @@
+---
+import type { Lang } from '../i18n';
+import { getDict, alternateUrl, homeUrl, asset } from '../i18n';
+
+export interface Props {
+  lang: Lang;
+  pathname: string;
+}
+
+const { lang, pathname } = Astro.props;
+const dict = getDict(lang);
+const home = homeUrl(lang);
+const altHref = alternateUrl(lang, pathname);
+---
+
+<header class="site-header" data-animate="fade">
+  <div class="container header__inner">
+    <a class="brand" href={`${home}#hero`} aria-label={dict.common.brandAria}>
+      <img src={asset('assets/images/logo-petitchardon.svg')} alt="petitchardon logo" width="160" height="64" />
+    </a>
+    <nav class="site-nav" aria-label={dict.common.navAriaPrimary}>
+      <ul>
+        <li><a href={`${home}#hero`}>{dict.nav.home}</a></li>
+        <li><a href={`${home}#processus`}>{dict.nav.workflow}</a></li>
+        <li><a href={`${home}#portfolio`}>{dict.nav.portfolio}</a></li>
+        <li><a href={`${home}#about`}>{dict.nav.about}</a></li>
+        <li><a href={`${home}#contact`}>{dict.nav.contact}</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <a
+        class="lang-toggle"
+        href={altHref}
+        data-lang-toggle
+        hreflang={lang === 'fr' ? 'en' : 'fr'}
+      >
+        <span>{dict.common.langToggle}</span>
+        <span class="seo-hidden">{` — ${dict.common.langToggleAria}`}</span>
+      </a>
+    </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-mobile">
+      <span class="nav-toggle__label">{dict.common.menu}</span>
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  <nav id="menu-mobile" class="site-nav--mobile" aria-label={dict.common.navAriaMobile} hidden inert>
+    <ul>
+      <li><a href={`${home}#hero`}>{dict.nav.home}</a></li>
+      <li><a href={`${home}#processus`}>{dict.nav.workflow}</a></li>
+      <li><a href={`${home}#portfolio`}>{dict.nav.portfolio}</a></li>
+      <li><a href={`${home}#about`}>{dict.nav.about}</a></li>
+      <li><a href={`${home}#contact`}>{dict.nav.contact}</a></li>
+    </ul>
+    <div class="menu-mobile__toggles">
+      <a
+        class="lang-toggle lang-toggle--mobile"
+        href={altHref}
+        data-lang-toggle
+        hreflang={lang === 'fr' ? 'en' : 'fr'}
+      >
+        <span>{dict.common.langToggle}</span>
+        <span class="seo-hidden">{` — ${dict.common.langToggleAria}`}</span>
+      </a>
+    </div>
+  </nav>
+</header>
