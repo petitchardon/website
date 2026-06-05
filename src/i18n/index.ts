@@ -1,5 +1,5 @@
-import fr from './fr.json';
-import en from './en.json';
+import fr from './locales/fr.json';
+import en from './locales/en.json';
 
 export type Lang = 'fr' | 'en';
 
