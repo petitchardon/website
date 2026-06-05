@@ -58,7 +58,7 @@ The `public/CNAME` file pins the custom domain `petitchardon.fr`.
 
 ## Editing copy
 
-All bilingual strings live in `src/i18n/fr.json` and `src/i18n/en.json`. Add a key to both files and reference it as `dict.<section>.<key>` from a component.
+All bilingual strings live in `src/i18n/locales/fr.json` and `src/i18n/locales/en.json`. Add a key to both files and reference it as `dict.<section>.<key>` from a component.
 
 ## Observability
 
