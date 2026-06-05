@@ -65,3 +65,6 @@
 /public/assets/           @annedellagaspera
 /public/css/              @annedellagaspera
 /public/favicon.svg       @annedellagaspera
+
+# --- Gouvernance : seule Anne peut modifier les règles d'ownership ---
+/.github/CODEOWNERS        @annedellagaspera
