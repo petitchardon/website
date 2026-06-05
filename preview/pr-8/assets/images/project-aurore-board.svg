@@ -1,0 +1,58 @@
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a-board-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05051F" />
+      <stop offset="100%" stop-color="#10195F" />
+    </linearGradient>
+    <linearGradient id="a-board-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27CCBC" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0F0E54" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" rx="36" fill="url(#a-board-bg)" />
+  <rect x="60" y="72" width="240" height="168" rx="22" fill="url(#a-board-card)" />
+  <rect x="332" y="72" width="328" height="168" rx="22" fill="#0F0E54" opacity="0.85" />
+  <rect x="60" y="272" width="284" height="168" rx="22" fill="#0F0E54" opacity="0.9" />
+  <rect x="372" y="272" width="288" height="168" rx="22" fill="#27CCBC" opacity="0.6" />
+  <circle cx="190" cy="156" r="42" fill="#FFFFFF" opacity="0.85" />
+  <circle cx="210" cy="132" r="14" fill="#D9F20C" opacity="0.7" />
+  <path
+    d="M426 130c28-18 70-18 98 0 28 18 74 18 102 0"
+    stroke="#BFF7E9"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.7"
+  />
+  <path
+    d="M426 194c28-16 70-16 98 0 28 16 74 16 102 0"
+    stroke="#D9F20C"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.6"
+  />
+  <rect x="96" y="308" width="96" height="96" rx="18" fill="#BFF7E9" opacity="0.85" />
+  <rect x="212" y="308" width="108" height="96" rx="18" fill="#27CCBC" opacity="0.7" />
+  <path
+    d="M420 320h192"
+    stroke="#FFFFFF"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+  <path
+    d="M420 360h232"
+    stroke="#BFF7E9"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+  <path
+    d="M420 400h164"
+    stroke="#D9F20C"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+</svg>
