@@ -1,0 +1,57 @@
+name: PR preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Forks don't have write access to gh-pages; skip cleanly.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # PREVIEW_PR_NUMBER drives both `base: /preview/pr-N/` in
+      # astro.config.mjs and the auto-noindex in SEO.astro.
+      - name: Build preview
+        env:
+          PREVIEW_PR_NUMBER: ${{ github.event.number }}
+        run: npm run build
+
+      - name: Publish to gh-pages /preview/pr-${{ github.event.number }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          target-folder: preview/pr-${{ github.event.number }}
+          clean: true
+          commit-message: "preview: PR #${{ github.event.number }} @ ${{ github.event.pull_request.head.sha }}"
+
+      # Idempotent comment: posts once, then edits in place on each push.
+      - name: Sticky preview URL comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: preview-deploy
+          message: |
+            **Preview déployée** → https://www.petitchardon.fr/preview/pr-${{ github.event.number }}/
+
+            Mise à jour automatique à chaque push (~1 min). Pages noindex/nofollow + `Disallow: /preview/` dans `robots.txt` — invisibles pour les moteurs.
+
+            Build : `${{ github.event.pull_request.head.sha }}`

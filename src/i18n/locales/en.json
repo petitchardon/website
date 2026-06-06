@@ -1,0 +1,133 @@
+{
+  "site": {
+    "title": "petitchardon | graphic design, illustration & copywriting freelance",
+    "description": "Freelance graphic designer, illustrator and copywriter based in Rambouillet (Yvelines, France). petitchardon crafts immersive, responsible visual identities that tell your story.",
+    "ogTitle": "petitchardon | graphic design & visual storytelling studio",
+    "ogDescription": "Creative studio in Rambouillet (Yvelines, France): I craft brand identities like telling a story — yours."
+  },
+  "common": {
+    "skipToContent": "skip to content",
+    "menu": "menu",
+    "langToggle": "en · fr",
+    "langToggleAria": "Switch language",
+    "navAriaPrimary": "Primary navigation",
+    "navAriaMobile": "Mobile navigation",
+    "brandAria": "petitchardon"
+  },
+  "nav": {
+    "home": "home",
+    "workflow": "workflow",
+    "portfolio": "portfolio",
+    "about": "about",
+    "contact": "contact"
+  },
+  "hero": {
+    "tag": "graphic design · illustration · copywriting",
+    "title": "make your brand impossible to forget",
+    "location": "Graphic designer & web designer in Rambouillet (Yvelines), creating logos, visual identities and websites.",
+    "intro": "I craft brand identities the same way I tell a story: yours. I help daring brands leave a lasting mark in everyone's imagination.",
+    "services": "logo - visual identity - website - social media - illustration",
+    "ctaProjects": "view projects",
+    "ctaTalk": "let's talk about your story"
+  },
+  "process": {
+    "kicker": "workflow",
+    "title": "from spark to launch",
+    "intro": "A four-step method to reveal an aligned, singular and memorable identity.",
+    "step1Title": "let's meet",
+    "step1Body": "You share your brief, I gather your needs, goals and constraints to frame the collaboration.",
+    "step2Title": "i create & refine",
+    "step2Body": "I explore, sketch and build visual and editorial routes to give life to your universe.",
+    "step3Title": "we discuss",
+    "step3Body": "I present the concepts, we exchange live, you share feedback to polish every detail.",
+    "step4Title": "we launch",
+    "step4Body": "I finalise the deliverables and we launch your new communication together.",
+    "commitTitle": "inclusive & responsible design",
+    "commitIntro": "Accessibility, eco-design and performance are woven into each step so your story shines for everyone.",
+    "commit1": "Contrasts audited, keyboard navigation and structured markup keep assistive technologies aligned.",
+    "commit2": "Lightweight assets and progressive loading keep the experience fast and energy-conscious.",
+    "commit3": "Inclusive tone and multilingual paths invite every audience to step into your universe."
+  },
+  "portfolio": {
+    "kicker": "portfolio",
+    "title": "identities that resonate",
+    "intro": "Each project is a graphic exploration powered by your narrative. Discover a few recent highlights.",
+    "viewProject": "view project",
+    "card1Title": "Luke's Iced Coffees",
+    "card1Body": "Logotype design and product range variations.",
+    "card1Alt": "Luke's Iced Coffees visual identity",
+    "card2Title": "Intelligences Atypiques",
+    "card2Body": "Visual identity design and social media strategy.",
+    "card2Alt": "Intelligences Atypiques visual identity",
+    "card3Title": "cocobot",
+    "card3Body": "LinkedIn editorial calendar, template design and post management.",
+    "card3Alt": "cocobot templates and brand identity",
+    "ctaTitle": "what about your story?",
+    "ctaBody": "Ready to make your identity vibrate? Let’s imagine what we can craft together.",
+    "ctaButton": "let’s connect?"
+  },
+  "about": {
+    "title": "i'm anne",
+    "portraitAlt": "Portrait of Anne, designer behind petitchardon",
+    "p1": "I'm Anne, the designer behind petitchardon. Since childhood, creation has been my playground: inventing worlds, telling stories, imagining adventures.",
+    "p2Strong": "Today I channel that creativity into your narratives to turn them into remarkable, memorable visual identities.",
+    "p3": "My approach is direct, warm and action-oriented: I guide you towards a vision that feels true to you and impossible to ignore.",
+    "carouselPrev": "Previous card",
+    "carouselNext": "Next card",
+    "pillar1Title": "human-scale studio",
+    "pillar1Strong": "You speak, I listen. Honest, fluid conversations turn your intuitions into tangible creative directions.",
+    "pillar1Body": "My background in psychology helps refine your needs. petit chardon becomes your teammate to get you noticed.",
+    "pillar2Title": "augmented creativity",
+    "pillar2Strong": "Design, illustration and copywriting blend together to build vibrant, cohesive worlds — from logo to manifesto.",
+    "pillar2Body": "From identity to social media, coherence is your strength. Let's craft your signature language.",
+    "pillar3Title": "ready-to-launch assets",
+    "pillar3Strong": "Brand kits, guidelines, templates and editorial content: leave with concrete deliverables ready to amplify your voice.",
+    "pillar3Body": "I stay by your side to run and grow your social channels over time."
+  },
+  "contact": {
+    "kicker": "contact",
+    "title": "book your future identity",
+    "intro": "Tell me what you want to share, I’ll reply within 48 h with a clear, respectful and tailored proposal.",
+    "labelEmail": "email",
+    "labelPhone": "phone",
+    "labelLocation": "based in",
+    "locationValue": "Rambouillet · projects in France & abroad",
+    "fieldName": "name",
+    "fieldEmail": "email",
+    "fieldProject": "your project",
+    "placeholderName": "Your name",
+    "placeholderEmail": "you@email.com",
+    "placeholderProject": "Brand identity, illustration, copywriting…",
+    "rgpdLead": "I agree that my data will only be used to get in touch, according to the",
+    "rgpdLink": "privacy policy",
+    "submit": "send my request",
+    "subject": "New message from petitchardon.fr",
+    "feedbackSuccess": "thank you! your message is on its way.",
+    "feedbackError": "sending failed. please try again or email me directly."
+  },
+  "footer": {
+    "brandTagline": "Creative studio crafting bold brand identities, illustrations and storytelling.",
+    "explore": "explore",
+    "stayConnected": "stay connected",
+    "legal": "legal",
+    "legalText": "petitchardon · All rights reserved · SIRET 81438124000021. Data used only to reply to your request. Hosting: GitHub Pages. Publisher: Anne Della Gaspera."
+  },
+  "project": {
+    "breadcrumb": "portfolio",
+    "underConstruction": "page under construction",
+    "underConstructionBody": "This project page is being assembled. Check back soon for details.",
+    "actionsHeading": "keep exploring",
+    "backToPortfolio": "back to portfolio",
+    "backToContact": "contact",
+    "metaTitle": "Page under construction | petitchardon",
+    "metaDescription": "This project page is being assembled. Check back soon for details."
+  },
+  "notFound": {
+    "title": "404 — page not found | petitchardon",
+    "description": "This page doesn’t exist (or no longer does). Find the petitchardon studio from the home page.",
+    "h1": "this page got lost in the brambles",
+    "body": "The link you followed is broken or the page no longer exists. Let’s get you back to the studio.",
+    "ctaHome": "back to home",
+    "ctaContact": "contact"
+  }
+}
