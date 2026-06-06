@@ -1,0 +1,43 @@
+name: Observability sync
+
+# Pulls metrics from Umami / Sentry / Better Stack APIs and pushes them
+# to Grafana Cloud Prometheus, so the dashboards have a single backend.
+#
+# Runs every 6h. Manual dispatch is also enabled for ad-hoc refreshes.
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: observability-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Sync metrics
+        env:
+          UMAMI_API_URL: ${{ secrets.UMAMI_API_URL }}
+          UMAMI_API_TOKEN: ${{ secrets.UMAMI_API_TOKEN }}
+          UMAMI_WEBSITE_ID: ${{ secrets.UMAMI_WEBSITE_ID }}
+          SENTRY_API_TOKEN: ${{ secrets.SENTRY_API_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          BETTER_STACK_API_TOKEN: ${{ secrets.BETTER_STACK_API_TOKEN }}
+          GRAFANA_PROM_URL: ${{ secrets.GRAFANA_PROM_URL }}
+          GRAFANA_PROM_USER: ${{ secrets.GRAFANA_PROM_USER }}
+          GRAFANA_PROM_TOKEN: ${{ secrets.GRAFANA_PROM_TOKEN }}
+        run: node .github/scripts/observability-sync.mjs
