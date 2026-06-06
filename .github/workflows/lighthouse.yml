@@ -1,0 +1,56 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: lighthouse-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    name: audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        id: lhci
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Push scores to Grafana Cloud Prometheus
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GRAFANA_PROM_URL: ${{ secrets.GRAFANA_PROM_URL }}
+          GRAFANA_PROM_USER: ${{ secrets.GRAFANA_PROM_USER }}
+          GRAFANA_PROM_TOKEN: ${{ secrets.GRAFANA_PROM_TOKEN }}
+        run: |
+          if [ -z "$GRAFANA_PROM_URL" ]; then
+            echo "Grafana Prometheus secrets not configured, skipping push"
+            exit 0
+          fi
+          node .github/scripts/lhci-to-prom.mjs .lighthouseci/manifest.json | \
+            curl --fail-with-body -X POST \
+              -u "$GRAFANA_PROM_USER:$GRAFANA_PROM_TOKEN" \
+              -H "Content-Type: text/plain" \
+              --data-binary @- \
+              "$GRAFANA_PROM_URL/api/v1/push"

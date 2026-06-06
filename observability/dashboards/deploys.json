@@ -1,0 +1,49 @@
+{
+  "title": "petitchardon — Deploys & Logs",
+  "uid": "petitchardon-deploys",
+  "tags": ["petitchardon"],
+  "timezone": "Europe/Paris",
+  "schemaVersion": 39,
+  "refresh": "5m",
+  "time": { "from": "now-7d", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "type": "logs",
+      "title": "Production deploys",
+      "description": "Sourced from .github/workflows/deploy.yml — one Loki line per push to main.",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 10 },
+      "targets": [
+        {
+          "datasource": { "type": "loki" },
+          "expr": "{app=\"petitchardon-website\", event=\"deploy\"}"
+        }
+      ],
+      "options": { "showTime": true, "wrapLogMessage": true, "sortOrder": "Descending" }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Errors after deploy — correlation",
+      "description": "Overlay Sentry error rate with deploy markers (annotation).",
+      "gridPos": { "x": 0, "y": 10, "w": 24, "h": 8 },
+      "targets": [
+        {
+          "datasource": { "type": "prometheus" },
+          "expr": "rate(sentry_errors_24h[1h])"
+        }
+      ]
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "name": "Deploys",
+        "datasource": { "type": "loki" },
+        "expr": "{app=\"petitchardon-website\", event=\"deploy\"}",
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "enable": true
+      }
+    ]
+  }
+}
