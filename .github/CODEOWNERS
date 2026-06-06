@@ -1,20 +1,70 @@
 # Code owners — petitchardon/website
 #
-# Every change to this repository must be reviewed and approved by Anne
-# before merge. The pattern below makes Anne the default reviewer on
-# every PR.
+# Anne (@annedellagaspera) est owner globale et SEULE owner du design.
+# Adrien (@adriendellagaspera) est co-owner de toute la partie technique :
+# sur ces chemins, Anne OU Adrien peut approuver ; sur le design, Anne seule.
 #
-# This file alone does NOT block merges. To enforce blocking, an admin
-# must enable the following in repo Settings → Branches → Branch
-# protection rule for `main`:
+# Rappel GitHub : le DERNIER motif qui matche un fichier l'emporte (ce n'est
+# pas additif). La règle `*` rend Anne owner partout ; les règles suivantes
+# n'ajoutent Adrien que sur le technique. Les dossiers design ne sont jamais
+# matchés par une règle technique : ils retombent sur `*` (Anne seule), et
+# sont ré-affirmés en fin de fichier pour la lisibilité.
 #
+# Ce fichier seul N'IMPOSE rien : il auto-assigne les relecteurs. Pour bloquer
+# les merges sans relecture du bon code owner, un admin doit activer dans
+# Settings → Branches (règle de protection sur `main`) :
 #   - Require a pull request before merging
 #   - Require approvals: 1
 #   - Require review from Code Owners
 #   - Dismiss stale pull request approvals when new commits are pushed
-#   - Do not allow bypassing the above settings (covers admins too)
-#
-# Until that rule is configured, CODEOWNERS only auto-assigns Anne as
-# reviewer; merges remain technically possible without her approval.
+#   - Do not allow bypassing the above settings
+# Prérequis : @annedellagaspera et @adriendellagaspera doivent avoir le droit
+# Write sur le dépôt, sinon ils sont ignorés comme code owners.
 
-* @annedellagaspera
+# --- Défaut : Anne owner de tout (et seule owner du design) ---
+*                         @annedellagaspera
+
+# --- Partie technique : Adrien co-owner avec Anne ---
+
+# Code applicatif Astro / TS
+/src/components/          @annedellagaspera @adriendellagaspera
+/src/layouts/             @annedellagaspera @adriendellagaspera
+/src/pages/               @annedellagaspera @adriendellagaspera
+/src/lib/                 @annedellagaspera @adriendellagaspera
+/src/i18n/index.ts        @annedellagaspera @adriendellagaspera
+/src/content/config.ts    @annedellagaspera @adriendellagaspera
+/src/env.d.ts             @annedellagaspera @adriendellagaspera
+
+# Comportement front (scripts) + plomberie statique
+/public/js/               @annedellagaspera @adriendellagaspera
+/public/robots.txt        @annedellagaspera @adriendellagaspera
+/public/site.webmanifest  @annedellagaspera @adriendellagaspera
+
+# Config / outillage à la racine
+/*.mjs                    @annedellagaspera @adriendellagaspera
+/*.json                   @annedellagaspera @adriendellagaspera
+/*.ts                     @annedellagaspera @adriendellagaspera
+/.gitignore               @annedellagaspera @adriendellagaspera
+/.nojekyll                @annedellagaspera @adriendellagaspera
+/.env.example             @annedellagaspera @adriendellagaspera
+
+# Déploiement / domaine (infra)
+/CNAME                    @annedellagaspera @adriendellagaspera
+/public/CNAME             @annedellagaspera @adriendellagaspera
+/public/.nojekyll         @annedellagaspera @adriendellagaspera
+
+# CI/CD, monitoring, documentation technique
+/.github/                 @annedellagaspera @adriendellagaspera
+/observability/           @annedellagaspera @adriendellagaspera
+/docs/                    @annedellagaspera @adriendellagaspera
+
+# --- Partie design : Anne SEULE owner (ré-affirmé pour clarté) ---
+/src/assets/              @annedellagaspera
+/src/content/projects/    @annedellagaspera
+/src/i18n/locales/        @annedellagaspera
+/public/assets/           @annedellagaspera
+/public/css/              @annedellagaspera
+/public/favicon.svg       @annedellagaspera
+
+# --- Gouvernance : seule Anne peut modifier les règles d'ownership ---
+/.github/CODEOWNERS        @annedellagaspera
