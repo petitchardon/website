@@ -1,0 +1,19 @@
+{
+  "name": "petitchardon",
+  "short_name": "petitchardon",
+  "description": "Studio de création visuelle qui façonne des identités de marque comme on raconte une histoire.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f7ff",
+  "theme_color": "#0f0e54",
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}
