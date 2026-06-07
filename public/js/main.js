@@ -1,6 +1,14 @@
 // Entry point. With Astro View Transitions, page content is swapped without a
-// full reload, so per-page setup runs on every `astro:page-load` (which also
-// fires on the initial load) while document-level listeners are bound once.
+// full reload, so per-page setup runs on every `astro:page-load`. It also runs
+// once on the initial DOM-ready so the first paint never waits on the router —
+// every binder is idempotent (guarded per element) so the overlapping initial
+// `astro:page-load` is a harmless no-op.
+
+const bindOnce = (el) => {
+  if (!el || el.dataset.pcBound === "1") return false;
+  el.dataset.pcBound = "1";
+  return true;
+};
 
 // ---------- Mobile nav toggle ----------
 const setupNav = (body) => {
@@ -32,6 +40,8 @@ const setupNav = (body) => {
   };
 
   setNavState(false);
+
+  if (!bindOnce(navToggle)) return;
 
   navToggle.addEventListener("click", () => {
     const open = navToggle.getAttribute("aria-expanded") !== "true";
@@ -70,6 +80,7 @@ const setupThemeToggle = (root) => {
   syncLabels();
 
   toggles.forEach((btn) => {
+    if (!bindOnce(btn)) return;
     btn.addEventListener("click", () => {
       const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
@@ -85,11 +96,14 @@ const setupThemeToggle = (root) => {
 
 // ---------- Scroll-triggered reveal animations ----------
 const setupReveals = (prefersReducedMotion) => {
-  const animatedElements = document.querySelectorAll("[data-animate]");
+  const animatedElements = document.querySelectorAll("[data-animate]:not([data-pc-reveal])");
   if (!animatedElements.length) return;
 
   if (prefersReducedMotion) {
-    animatedElements.forEach((el) => el.classList.add("is-visible"));
+    animatedElements.forEach((el) => {
+      el.dataset.pcReveal = "1";
+      el.classList.add("is-visible");
+    });
     return;
   }
 
@@ -104,13 +118,16 @@ const setupReveals = (prefersReducedMotion) => {
     },
     { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
   );
-  animatedElements.forEach((el) => observer.observe(el));
+  animatedElements.forEach((el) => {
+    el.dataset.pcReveal = "1";
+    observer.observe(el);
+  });
 };
 
 // ---------- Storyline step highlighting ----------
 const setupStorylineSteps = () => {
   const storylineSteps = Array.from(document.querySelectorAll("[data-scroll-step]"));
-  if (!storylineSteps.length) return;
+  if (!storylineSteps.length || storylineSteps.every((s) => s.dataset.pcStep === "1")) return;
 
   const stepsObserver = new IntersectionObserver(
     (entries) => {
@@ -123,7 +140,10 @@ const setupStorylineSteps = () => {
     },
     { threshold: 0.5, rootMargin: "-20% 0px -20% 0px" }
   );
-  storylineSteps.forEach((step) => stepsObserver.observe(step));
+  storylineSteps.forEach((step) => {
+    step.dataset.pcStep = "1";
+    stepsObserver.observe(step);
+  });
 };
 
 // ---------- Pointer tilt on cards ----------
@@ -131,6 +151,7 @@ const setupTilt = (prefersReducedMotion) => {
   if (prefersReducedMotion || !window.matchMedia("(pointer: fine)").matches) return;
 
   document.querySelectorAll("[data-tilt]").forEach((element) => {
+    if (!bindOnce(element)) return;
     let rafId;
     const handleMove = (event) => {
       const rect = element.getBoundingClientRect();
@@ -169,6 +190,7 @@ const setupAboutCarousel = () => {
   const aboutPrev = document.querySelector("[data-about-prev]");
   const aboutNext = document.querySelector("[data-about-next]");
   if (!aboutTrack || !aboutPrev || !aboutNext) return;
+  if (!bindOnce(aboutTrack)) return;
 
   const scrollCarousel = (direction = 1) => {
     const slideWidth = aboutTrack.clientWidth;
@@ -235,7 +257,7 @@ const setupAboutDots = () => {
 // ---------- Contact form (async submit + feedback) ----------
 const setupContactForm = (root) => {
   const contactForm = document.querySelector("[data-form]");
-  if (!contactForm) return;
+  if (!contactForm || !bindOnce(contactForm)) return;
 
   const submitBtn = contactForm.querySelector('button[type="submit"]');
   const feedback = contactForm.querySelector(".form-feedback");
@@ -305,7 +327,7 @@ const bindDocumentListeners = () => {
   });
 };
 
-// ---------- Per-page initialisation ----------
+// ---------- Per-page initialisation (idempotent) ----------
 const initPage = () => {
   const root = document.documentElement;
   const body = document.body;
@@ -323,9 +345,15 @@ const initPage = () => {
   setupContactForm(root);
 };
 
-// `astro:page-load` fires on the initial load and after every View Transition
-// swap. Guard registration so a re-parsed inline script can't double-bind.
+// `astro:page-load` covers the initial load and every View Transition swap.
+// We also run on DOM-ready so the first paint never depends on the router
+// dispatching its event in time; idempotent binders make the overlap safe.
 if (!window.__pcMainInitialised) {
   window.__pcMainInitialised = true;
   document.addEventListener("astro:page-load", initPage);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPage, { once: true });
+  } else {
+    initPage();
+  }
 }
