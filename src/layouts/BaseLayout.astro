@@ -1,7 +1,6 @@
 ---
 import type { Lang } from '../i18n';
 import { getDict, asset } from '../i18n';
-import { ViewTransitions } from 'astro:transitions';
 import '@fontsource-variable/inter';
 import '../styles/main.css';
 import SEO from '../components/SEO.astro';
@@ -64,7 +63,6 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
         }
       })();
     </script>
-    <ViewTransitions />
     <SEO
       title={title}
       description={description}
@@ -80,12 +78,12 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
   </head>
   <body data-page={bodyPage}>
     <a class="skip-link" href="#contenu-principal">{dict.common.skipToContent}</a>
-    <BackgroundLayers transition:persist />
+    <BackgroundLayers />
     {showHeader && <Header lang={lang} pathname={pathname} />}
     <main id="contenu-principal">
       <slot />
     </main>
-    {showFooter && <Footer lang={lang} transition:persist />}
+    {showFooter && <Footer lang={lang} />}
     <script src={asset('js/main.js')} is:inline></script>
     <Observability />
   </body>
