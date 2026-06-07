@@ -84,7 +84,7 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
       <slot />
     </main>
     {showFooter && <Footer lang={lang} />}
-    <script src={asset('js/main.js')} is:inline></script>
+    <script src={asset('js/main.js')} is:inline defer></script>
     <Observability />
   </body>
 </html>
