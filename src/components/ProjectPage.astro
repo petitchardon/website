@@ -17,7 +17,27 @@ const desc = description[lang];
 const challengeText = challenge?.[lang];
 const outcomeText = outcome?.[lang];
 const hasSidenote = challengeText || outcomeText;
+
+// BreadcrumbList JSON-LD. Always built from bare production URLs (never the
+// preview-prefixed output of homeUrl()/withBase()), so search engines never
+// associate the /preview/ subtree with the brand — same rule as SEO.astro.
+const siteUrl = 'https://www.petitchardon.fr';
+const homePath = lang === 'en' ? '/en/' : '/';
+const projectPath = lang === 'en'
+  ? `/en/projects/${project.data.slugs.en}.html`
+  : `/projects/${project.data.slugs.fr}.html`;
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: dict.nav.home, item: `${siteUrl}${homePath}` },
+    { '@type': 'ListItem', position: 2, name: dict.nav.portfolio, item: `${siteUrl}${homePath}#portfolio` },
+    { '@type': 'ListItem', position: 3, name: title, item: `${siteUrl}${projectPath}` },
+  ],
+};
 ---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)} />
 
 <section class="project-hero" data-animate="fade-up">
   <div class="container project-hero__inner">
