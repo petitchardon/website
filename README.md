@@ -1,6 +1,24 @@
-# petitchardon.fr
+# petitchardon
 
-Bilingual (FR/EN) portfolio site for [petitchardon](https://www.petitchardon.fr) — a freelance graphic design, illustration and copywriting studio based in Rambouillet.
+Code source de [petitchardon.fr](https://www.petitchardon.fr).
+
+**petitchardon** est le studio créatif d'Anne Della Gaspera — graphiste, illustratrice et rédactrice basée à Rambouillet (Yvelines), France.
+
+Anne façonne des identités de marque comme on raconte une histoire : chaque projet est une exploration graphique ancrée dans le récit du client, conçue pour être immédiatement reconnaissable et impossible à oublier. Son travail couvre la création de logos, les systèmes d'identité visuelle, l'illustration, le webdesign et les contenus éditoriaux.
+
+Le site présente sa méthode, son portfolio et un moyen de la contacter.
+
+---
+
+*Source code for [petitchardon.fr](https://www.petitchardon.fr).*
+
+*petitchardon is the creative studio of Anne Della Gaspera — graphic designer, illustrator and copywriter based in Rambouillet (Yvelines), France.*
+
+*Anne crafts brand identities the same way she tells a story: each project is a graphic exploration rooted in the client's narrative, built to be immediately recognisable and impossible to ignore. Her work spans logo design, visual identity systems, illustration, web design, and editorial content.*
+
+*The website presents her process, her portfolio, and a way to get in touch.*
+
+---
 
 Built with [Astro 4](https://astro.build) and deployed to GitHub Pages.
 
@@ -18,7 +36,7 @@ Built with [Astro 4](https://astro.build) and deployed to GitHub Pages.
 src/
   components/      # Header, Footer, SEO, BackgroundLayers, StructuredData, HomePage, ProjectPage
   content/         # `projects` collection (Markdown)
-  i18n/            # fr.json, en.json + helpers
+  i18n/            # locales/fr.json, locales/en.json + helpers
   layouts/         # BaseLayout
   pages/
     index.astro          # FR homepage at `/`
@@ -46,7 +64,7 @@ Pushes to `main` trigger the workflow at `.github/workflows/deploy.yml`, which:
 
 1. installs deps with `npm ci`,
 2. runs `npm run build`,
-3. uploads `dist/` and deploys it via `actions/deploy-pages`.
+3. publishes `dist/` to the `gh-pages` branch (preserving the `preview/` subtree).
 
 The `public/CNAME` file pins the custom domain `petitchardon.fr`.
 
@@ -65,3 +83,11 @@ All bilingual strings live in `src/i18n/locales/fr.json` and `src/i18n/locales/e
 Stack full free tier, EU/privacy-friendly: Umami Cloud (BI), Sentry EU (errors + Web Vitals), Better Stack (uptime + status page), Grafana Cloud (dashboards), Lighthouse CI (quality gate on every PR).
 
 See [`docs/observability.md`](./docs/observability.md) for setup, runbook and the self-host migration path.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the developer guide and [AGENTS.md](./AGENTS.md) for AI-agent rules.
+
+---
+
+© Anne Della Gaspera / petitchardon. Tous droits réservés — voir [LICENSE](./LICENSE).
