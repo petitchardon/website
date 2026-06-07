@@ -17,7 +17,7 @@
   --glass-border: rgba(255, 255, 255, 0.45);
   --transition-base: 240ms ease;
   --transition-slow: 480ms cubic-bezier(0.33, 1, 0.68, 1);
-  --font-display: "Fredoka Variable", "Raleway Variable", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Quicksand Variable", "Raleway Variable", system-ui, "Helvetica Neue", Arial, sans-serif;
   --font-base: "Raleway Variable", system-ui, "Helvetica Neue", Arial, sans-serif;
   --container-max: 1120px;
   --header-height: 4.25rem;
