@@ -36,7 +36,7 @@ Built with [Astro 4](https://astro.build) and deployed to GitHub Pages.
 src/
   components/      # Header, Footer, SEO, BackgroundLayers, StructuredData, HomePage, ProjectPage
   content/         # `projects` collection (Markdown)
-  i18n/            # fr.json, en.json + helpers
+  i18n/            # locales/fr.json, locales/en.json + helpers
   layouts/         # BaseLayout
   pages/
     index.astro          # FR homepage at `/`
@@ -64,7 +64,7 @@ Pushes to `main` trigger the workflow at `.github/workflows/deploy.yml`, which:
 
 1. installs deps with `npm ci`,
 2. runs `npm run build`,
-3. uploads `dist/` and deploys it via `actions/deploy-pages`.
+3. publishes `dist/` to the `gh-pages` branch (preserving the `preview/` subtree).
 
 The `public/CNAME` file pins the custom domain `petitchardon.fr`.
 
