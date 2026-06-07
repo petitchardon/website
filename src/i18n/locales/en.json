@@ -117,6 +117,12 @@
   },
   "project": {
     "breadcrumb": "portfolio",
+    "services": "services",
+    "challenge": "brief",
+    "outcome": "outcome",
+    "gallery": "gallery",
+    "ctaPortfolio": "see more projects",
+    "ctaContact": "start a project",
     "underConstruction": "page under construction",
     "underConstructionBody": "This project page is being assembled. Check back soon for details.",
     "actionsHeading": "keep exploring",

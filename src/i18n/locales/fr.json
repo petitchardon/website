@@ -117,6 +117,12 @@
   },
   "project": {
     "breadcrumb": "portfolio",
+    "services": "prestations",
+    "challenge": "brief",
+    "outcome": "résultat",
+    "gallery": "galerie",
+    "ctaPortfolio": "voir d'autres projets",
+    "ctaContact": "démarrer un projet",
     "underConstruction": "page en construction",
     "underConstructionBody": "Cette page projet est en construction. Revenez bientôt pour découvrir le contenu.",
     "actionsHeading": "continuer l’exploration",
