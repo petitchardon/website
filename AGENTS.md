@@ -10,11 +10,11 @@ Configuration and ground rules for AI agents working on the **petitchardon/websi
 
 **petitchardon** is the creative studio of Anne Della Gaspera — graphic designer, illustrator, and copywriter based in Rambouillet (France). The site is a bilingual showcase (FR / EN) deployed to **GitHub Pages**.
 
-Active migration: `main` still holds the legacy static HTML build. All active development happens on `claude/pr*` branches built with **Astro 4.x**.
+The site is built with **Astro 4.x** (static output) and lives on `main`. Feature work happens on `claude/*` branches and merges back to `main`.
 
 ---
 
-## Development setup (Astro branches)
+## Development setup
 
 ```bash
 npm ci            # install dependencies
@@ -31,8 +31,7 @@ npm run check     # Astro type-check (TypeScript + Zod)
 
 | Branch | Purpose |
 |---|---|
-| `main` | Legacy HTML — production until Astro migration merges |
-| `claude/pr2-astro-migration` | Astro 4.x base: i18n routing, components, content collections |
+| `main` | Astro 4.x — production (i18n routing, components, content collections) |
 | `claude/pr3-case-studies` | Rich project case studies (Zod schema, ProjectPage layout) |
 | `claude/pr4-view-transitions` | View Transitions API — shared-element morphs |
 | `claude/pr5-animations` | Scroll animations, tilt, parallax *(planned)* |
@@ -42,7 +41,7 @@ Each branch is built on top of the previous one. When rebasing, **always rebase 
 
 ---
 
-## Key files (Astro branches)
+## Key files
 
 | File | Role |
 |---|---|
@@ -54,7 +53,7 @@ Each branch is built on top of the previous one. When rebasing, **always rebase 
 | `src/components/ProjectPage.astro` | Case study layout (hero / story / gallery / CTA) |
 | `src/components/SEO.astro` | `<meta>`, `hreflang`, canonical — see URL rules below |
 | `src/i18n/index.ts` | i18n helpers: `getDict`, `projectUrl`, `homeUrl`, `asset` |
-| `src/i18n/fr.json` / `en.json` | All UI strings — **prose is off-limits** (see below) |
+| `src/i18n/locales/fr.json` / `en.json` | All UI strings — **prose is off-limits** (see below) |
 | `src/content/config.ts` | Zod schema for the `projects` content collection |
 | `src/content/projects/*.md` | Project case studies, bilingual frontmatter |
 | `public/js/main.js` | Vanilla JS — must use `astro:page-load`, not `DOMContentLoaded` |

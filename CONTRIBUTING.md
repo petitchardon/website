@@ -32,12 +32,11 @@ The build runs a `mirrorEnIndex` post-hook that copies `dist/en.html` → `dist/
 ## Branch structure
 
 ```
-main  (legacy static HTML — production until Astro migration merges)
-└── claude/pr2-astro-migration   Astro base: routing, components, SEO
-    └── claude/pr3-case-studies  Rich case studies via content collections
-        └── claude/pr4-view-transitions  Shared-element page transitions
-            └── claude/pr5-animations   Scroll & interaction animations
-                └── claude/pr6-social-proof  Testimonials & conversion
+main  (Astro 4.x — production: routing, components, SEO, content collections)
+└── claude/pr3-case-studies  Rich case studies via content collections
+    └── claude/pr4-view-transitions  Shared-element page transitions
+        └── claude/pr5-animations   Scroll & interaction animations
+            └── claude/pr6-social-proof  Testimonials & conversion
 ```
 
 Each branch is rebased onto its direct parent, not onto `main`.
@@ -66,7 +65,7 @@ card to the project hero on navigation, without JavaScript.
 
 ### i18n
 
-- `src/i18n/fr.json` and `src/i18n/en.json` contain plain text only — no HTML markup
+- `src/i18n/locales/fr.json` and `src/i18n/locales/en.json` contain plain text only — no HTML markup
 - Both locale files must be updated together; leaving one stale is a bug
 - **Copy and prose belong to the project owner.** Never modify existing strings without an explicit request.
 
