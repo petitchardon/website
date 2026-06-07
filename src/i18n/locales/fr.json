@@ -12,7 +12,10 @@
     "langToggleAria": "Changer la langue",
     "navAriaPrimary": "Navigation principale",
     "navAriaMobile": "Navigation mobile",
-    "brandAria": "petitchardon"
+    "brandAria": "petitchardon",
+    "themeToggle": "Changer de thème",
+    "themeToLight": "Activer le thème clair",
+    "themeToDark": "Activer le thème sombre"
   },
   "nav": {
     "home": "accueil",
