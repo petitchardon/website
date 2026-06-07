@@ -6,6 +6,9 @@ declare global {
     umami?: {
       track: (name: string, props?: Record<string, unknown>) => void;
     };
+    // Exposed in production so the static public/js/main.js (which cannot
+    // import this bundled module) can emit conversion events.
+    trackEvent?: (name: string, props?: Record<string, unknown>) => void;
   }
 }
 
@@ -22,6 +25,9 @@ let initialised = false;
 export function initObservability(): void {
   if (IS_PREVIEW || initialised || typeof window === 'undefined') return;
   initialised = true;
+
+  // Bridge for the static main.js — only ever set on production builds.
+  window.trackEvent = trackEvent;
 
   if (SENTRY_DSN) {
     Sentry.init({
