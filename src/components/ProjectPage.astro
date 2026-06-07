@@ -1,35 +1,119 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import type { Lang } from '../i18n';
-import { getDict, homeUrl } from '../i18n';
+import { getDict, homeUrl, asset } from '../i18n';
 
 export interface Props {
   lang: Lang;
-  projectTitle?: string;
-  body?: string;
+  project: CollectionEntry<'projects'>;
 }
 
-const { lang, projectTitle, body } = Astro.props;
+const { lang, project } = Astro.props;
 const dict = getDict(lang);
 const home = homeUrl(lang);
-const headline = projectTitle ?? dict.project.underConstruction;
-const text = body ?? dict.project.underConstructionBody;
+const { title, tag, description, cover, services, challenge, outcome, gallery } = project.data;
+
+const desc = description[lang];
+const challengeText = challenge?.[lang];
+const outcomeText = outcome?.[lang];
+const hasSidenote = challengeText || outcomeText;
+
+// BreadcrumbList JSON-LD. Always built from bare production URLs (never the
+// preview-prefixed output of homeUrl()/withBase()), so search engines never
+// associate the /preview/ subtree with the brand — same rule as SEO.astro.
+const siteUrl = 'https://www.petitchardon.fr';
+const homePath = lang === 'en' ? '/en/' : '/';
+const projectPath = lang === 'en'
+  ? `/en/projects/${project.data.slugs.en}.html`
+  : `/projects/${project.data.slugs.fr}.html`;
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: dict.nav.home, item: `${siteUrl}${homePath}` },
+    { '@type': 'ListItem', position: 2, name: dict.nav.portfolio, item: `${siteUrl}${homePath}#portfolio` },
+    { '@type': 'ListItem', position: 3, name: title, item: `${siteUrl}${projectPath}` },
+  ],
+};
 ---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)} />
 
 <section class="project-hero" data-animate="fade-up">
   <div class="container project-hero__inner">
     <div class="project-hero__intro glass-surface">
-      <p class="breadcrumb">{dict.project.breadcrumb}</p>
-      <h1>{headline}</h1>
-      <p>{text}</p>
-      <h2 class="seo-hidden">{dict.project.actionsHeading}</h2>
-      <div class="project-cta__actions">
-        <a class="btn btn--primary" href={`${home}#portfolio`}>
-          {dict.project.backToPortfolio}
-        </a>
-        <a class="btn btn--ghost" href={`${home}#contact`}>
-          {dict.project.backToContact}
-        </a>
+      <p class="breadcrumb">
+        <a href={`${home}#portfolio`}>{dict.project.breadcrumb}</a>
+      </p>
+      {tag && <span class="section-kicker">{tag}</span>}
+      <h1>{title}</h1>
+      <p>{desc}</p>
+      {services.length > 0 && (
+        <dl class="project-meta">
+          <div>
+            <dt>{dict.project.services}</dt>
+            <dd>{services.join(' · ')}</dd>
+          </div>
+        </dl>
+      )}
+    </div>
+    <div class="project-hero__visual">
+      <img src={asset(cover.replace(/^\//, ''))} alt={title} loading="eager" />
+    </div>
+  </div>
+</section>
+
+<section class="project-story section-divider" data-animate="fade-in">
+  <div class={`container${hasSidenote ? ' project-story__inner' : ''}`}>
+    <article>
+      <slot name="body" />
+    </article>
+    {hasSidenote && (
+      <aside class="project-sidenote glass-surface">
+        {challengeText && (
+          <>
+            <h3>{dict.project.challenge}</h3>
+            <p>{challengeText}</p>
+          </>
+        )}
+        {outcomeText && (
+          <>
+            <h3>{dict.project.outcome}</h3>
+            <p>{outcomeText}</p>
+          </>
+        )}
+      </aside>
+    )}
+  </div>
+</section>
+
+{gallery.length > 0 && (
+  <section class="project-gallery section-divider" data-animate="fade-in">
+    <div class="container">
+      <div class="project-gallery__grid">
+        {gallery.map((item) => (
+          <figure>
+            <img
+              src={asset(item.src.replace(/^\//, ''))}
+              alt={item.alt[lang]}
+              loading="lazy"
+            />
+          </figure>
+        ))}
       </div>
+    </div>
+  </section>
+)}
+
+<section class="project-cta section-divider">
+  <div class="container project-cta__inner">
+    <div class="project-cta__text">
+      <h2>{dict.portfolio.ctaTitle}</h2>
+      <p>{dict.portfolio.ctaBody}</p>
+    </div>
+    <div class="project-cta__actions">
+      <a class="btn btn--ghost" href={`${home}#portfolio`}>{dict.project.ctaPortfolio}</a>
+      <a class="btn btn--primary" href={`${home}#contact`}>{dict.project.ctaContact}</a>
     </div>
   </div>
 </section>
