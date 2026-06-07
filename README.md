@@ -10,7 +10,9 @@ Built with [Astro 4](https://astro.build) and deployed to GitHub Pages.
 - Built-in i18n routing — FR at `/`, EN at `/en/`
 - `@astrojs/sitemap` for the sitemap
 - A content collection (`src/content/projects/`) for project case studies
-- Vanilla CSS in `public/css/style.css` and a small `public/js/main.js` for interactions (nav, tilt, carousel, form)
+- Vanilla CSS in `src/styles/main.css` (bundled by Astro/Vite) and a small `public/js/main.js` for interactions (nav, theme toggle, tilt, carousel, form)
+- Self-hosted variable fonts via `@fontsource-variable/*` (no external font requests)
+- Page-to-page View Transitions (`astro:transitions`)
 
 ## Layout
 

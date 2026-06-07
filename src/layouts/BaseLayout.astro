@@ -1,6 +1,9 @@
 ---
 import type { Lang } from '../i18n';
 import { getDict, asset } from '../i18n';
+import { ViewTransitions } from 'astro:transitions';
+import '@fontsource-variable/inter';
+import '../styles/main.css';
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -40,11 +43,28 @@ const dict = getDict(lang);
 const htmlLang = lang === 'fr' ? 'fr' : 'en';
 ---
 <!DOCTYPE html>
-<html lang={htmlLang} data-theme="light">
+<html lang={htmlLang} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // Anti-FOUC: apply the chosen theme before first paint. petitchardon is
+      // a dark-first brand, so dark is the default; an explicit user choice
+      // (persisted) always wins.
+      (() => {
+        try {
+          const stored = localStorage.getItem('theme');
+          document.documentElement.setAttribute(
+            'data-theme',
+            stored === 'light' || stored === 'dark' ? stored : 'dark'
+          );
+        } catch (_) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <ViewTransitions />
     <SEO
       title={title}
       description={description}
@@ -56,22 +76,17 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
     />
     <link rel="icon" href={asset('favicon.svg')} type="image/svg+xml" />
     <link rel="manifest" href={asset('site.webmanifest')} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href={asset('assets/fonts/Roca-Font/Roca%20Black.ttf')} as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href={asset('css/style.css')} />
     {showStructuredData && <StructuredData />}
   </head>
   <body data-page={bodyPage}>
     <a class="skip-link" href="#contenu-principal">{dict.common.skipToContent}</a>
-    <BackgroundLayers />
+    <BackgroundLayers transition:persist />
     {showHeader && <Header lang={lang} pathname={pathname} />}
     <main id="contenu-principal">
       <slot />
     </main>
-    {showFooter && <Footer lang={lang} />}
-    <script src={asset('js/main.js')} is:inline defer></script>
+    {showFooter && <Footer lang={lang} transition:persist />}
+    <script src={asset('js/main.js')} is:inline></script>
     <Observability />
   </body>
 </html>

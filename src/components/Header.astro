@@ -28,6 +28,14 @@ const altHref = alternateUrl(lang, pathname);
       </ul>
     </nav>
     <div class="header__actions">
+      <button
+        class="theme-toggle"
+        type="button"
+        data-theme-toggle
+        aria-label={dict.common.themeToggle}
+      >
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+      </button>
       <a
         class="lang-toggle"
         href={altHref}
@@ -52,6 +60,14 @@ const altHref = alternateUrl(lang, pathname);
       <li><a href={`${home}#contact`}>{dict.nav.contact}</a></li>
     </ul>
     <div class="menu-mobile__toggles">
+      <button
+        class="theme-toggle theme-toggle--mobile"
+        type="button"
+        data-theme-toggle
+        aria-label={dict.common.themeToggle}
+      >
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+      </button>
       <a
         class="lang-toggle lang-toggle--mobile"
         href={altHref}
