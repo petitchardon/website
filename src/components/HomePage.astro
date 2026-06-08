@@ -14,6 +14,9 @@ const dict = getDict(lang);
 
 <section id="hero" class="hero" data-animate="fade-up">
   <div class="hero__background" aria-hidden="true"></div>
+  <span class="atelier-scrap atelier-scrap--citron" data-parallax aria-hidden="true"></span>
+  <span class="atelier-scrap atelier-scrap--teal" data-parallax aria-hidden="true"></span>
+  <span class="atelier-scrap atelier-scrap--indigo" data-parallax aria-hidden="true"></span>
   <div class="container hero__inner">
     <div class="hero__copy">
       <span class="hero__tag">{dict.hero.tag}</span>
@@ -21,6 +24,7 @@ const dict = getDict(lang);
       <p class="hero__location seo-hidden">{dict.hero.location}</p>
       <p class="hero__intro">{dict.hero.intro}</p>
       <p class="hero__services">{dict.hero.services}</p>
+      <p class="hero__note">{dict.hero.note}</p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#portfolio">{dict.hero.ctaProjects}</a>
         <a class="btn btn--ghost" href="#contact">{dict.hero.ctaTalk}</a>
@@ -38,6 +42,8 @@ const dict = getDict(lang);
     </header>
     <div class="process__grid">
       <article class="process__item glass-surface" data-tilt>
+        <span class="washi washi--tr" aria-hidden="true"></span>
+        <span class="process__num" aria-hidden="true">1</span>
         <figure>
           <img src={asset("assets/icons/workflow-1.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -45,6 +51,8 @@ const dict = getDict(lang);
         <p>{dict.process.step1Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
+        <span class="washi washi--teal washi--tl" aria-hidden="true"></span>
+        <span class="process__num" aria-hidden="true">2</span>
         <figure>
           <img src={asset("assets/icons/workflow-2.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -52,6 +60,8 @@ const dict = getDict(lang);
         <p>{dict.process.step2Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
+        <span class="washi washi--tr" aria-hidden="true"></span>
+        <span class="process__num" aria-hidden="true">3</span>
         <figure>
           <img src={asset("assets/icons/workflow-3.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -59,6 +69,8 @@ const dict = getDict(lang);
         <p>{dict.process.step3Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
+        <span class="washi washi--teal washi--bl" aria-hidden="true"></span>
+        <span class="process__num" aria-hidden="true">4</span>
         <figure>
           <img src={asset("assets/icons/workflow-4.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -87,6 +99,7 @@ const dict = getDict(lang);
     </header>
     <div class="portfolio__grid">
       <a class="portfolio__card" href={projectUrl(lang, 'lukes-iced-coffees')}>
+        <span class="washi washi--tl" aria-hidden="true"></span>
         <figure>
           <img
             src={asset("assets/images/portfolio-aurore.svg")}
@@ -103,6 +116,7 @@ const dict = getDict(lang);
         </div>
       </a>
       <a class="portfolio__card" href={projectUrl(lang, 'intelligences-atypiques')}>
+        <span class="washi washi--teal washi--tr" aria-hidden="true"></span>
         <figure>
           <img
             src={asset("assets/images/portfolio-origines.svg")}
@@ -119,6 +133,7 @@ const dict = getDict(lang);
         </div>
       </a>
       <a class="portfolio__card" href={projectUrl(lang, 'cocobot')}>
+        <span class="washi washi--tl" aria-hidden="true"></span>
         <figure>
           <img
             src={asset("assets/images/portfolio-constellation.svg")}
@@ -150,6 +165,8 @@ const dict = getDict(lang);
     <h2 class="about__title">{dict.about.title}</h2>
     <div class="about__bio">
       <div class="about__photo">
+        <span class="washi washi--teal washi--tl" aria-hidden="true"></span>
+        <span class="washi washi--tr" aria-hidden="true"></span>
         <Image src={annePortrait} alt={dict.about.portraitAlt} loading="lazy" />
       </div>
       <div class="about__text">
@@ -195,6 +212,7 @@ const dict = getDict(lang);
 <section id="contact" class="contact" data-animate="fade-up">
   <div class="container contact__inner">
     <div class="contact__intro glass-surface">
+      <span class="stamp stamp--round" aria-hidden="true">petit·chardon</span>
       <span class="section-kicker">{dict.contact.kicker}</span>
       <h2>{dict.contact.title}</h2>
       <p>{dict.contact.intro}</p>

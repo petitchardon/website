@@ -26,6 +26,7 @@
   --transition-base: 120ms cubic-bezier(0.34, 1.8, 0.64, 1);
   --transition-slow: 300ms cubic-bezier(0.33, 1, 0.68, 1);
   --font-display: "Baloo 2", "Quicksand Variable", system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font-soft: "Quicksand Variable", "Baloo 2", system-ui, "Helvetica Neue", Arial, sans-serif;
   --font-base: "Raleway Variable", system-ui, "Helvetica Neue", Arial, sans-serif;
   --container-max: 1120px;
   --header-height: 4.25rem;

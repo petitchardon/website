@@ -1,0 +1,535 @@
+/* =====================================================================
+   L'ATELIER VIVANT — living-collage layer
+   Layered on top of main.css (the bold neo-pop foundation).
+   Concept: the homepage is the designer's collage workbench come alive —
+   cut-paper blocks, washi tape, rubber stamps, torn edges, slight
+   rotations, parallax & hover-lift — kinetic but HELD (no drag, no chaos).
+   Everything resolves to a calm, upright, legible composition with
+   prefers-reduced-motion. Works in both light and dark themes.
+   ===================================================================== */
+
+:root {
+  /* Collage paper tones (kept in the locked palette). */
+  --atelier-paper: #faf7ee;            /* warm cut-paper white (light) */
+  --atelier-paper-edge: rgba(15, 14, 84, 0.16);
+  --atelier-tape: rgba(217, 242, 12, 0.62);   /* washi citron */
+  --atelier-tape-teal: rgba(39, 204, 188, 0.5);
+  --atelier-stamp: rgba(15, 14, 84, 0.72);
+  --atelier-thread: rgba(15, 14, 84, 0.14);
+  --atelier-grain: rgba(15, 14, 84, 0.045);
+  /* Hand-torn paper edge mask: irregular top/bottom rip. */
+  --atelier-tilt-1: -2.4deg;
+  --atelier-tilt-2: 1.8deg;
+  --atelier-tilt-3: -1.4deg;
+  --atelier-lift-shadow: 14px 16px 0 var(--color-ink);
+}
+
+html[data-theme="dark"] {
+  --atelier-paper: #181642;
+  --atelier-paper-edge: rgba(191, 247, 233, 0.18);
+  --atelier-stamp: rgba(191, 247, 233, 0.78);
+  --atelier-thread: rgba(191, 247, 233, 0.16);
+  --atelier-grain: rgba(191, 247, 233, 0.05);
+}
+
+/* ---------------------------------------------------------------------
+   1. PAPER GRAIN — a faint fibrous texture over the whole page, so every
+   surface feels like cut paper rather than flat screen.
+   --------------------------------------------------------------------- */
+body[data-page="home"]::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.9;
+  background-image:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0,
+      transparent 3px,
+      var(--atelier-grain) 3px,
+      var(--atelier-grain) 4px
+    ),
+    repeating-linear-gradient(
+      -20deg,
+      transparent 0,
+      transparent 5px,
+      var(--atelier-grain) 5px,
+      var(--atelier-grain) 6px
+    );
+  mix-blend-mode: multiply;
+}
+
+html[data-theme="dark"] body[data-page="home"]::after {
+  mix-blend-mode: screen;
+}
+
+/* ---------------------------------------------------------------------
+   2. CHOREOGRAPHED ENTRANCE — elements arrive at a slight rotation and
+   settle upright. CSS-only resting state is visible & upright (first
+   paint safe). JS adds [data-atelier-settle] only to enrich, never to
+   reveal. Reduced-motion: everything is already upright.
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Cut-paper cards drift in from a tossed angle, then settle. */
+  .process__item,
+  .portfolio__card,
+  .about__pillar,
+  .process__commitments {
+    animation: atelier-settle 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .process__grid > *:nth-child(2) { animation-delay: 0.06s; }
+  .process__grid > *:nth-child(3) { animation-delay: 0.12s; }
+  .process__grid > *:nth-child(4) { animation-delay: 0.18s; }
+}
+
+@keyframes atelier-settle {
+  from {
+    opacity: 0;
+    transform: translateY(26px) rotate(-3.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   3. WASHI TAPE strips — decorative, CSS-only, aria-hidden in markup.
+   Pinned at the corners of cut-paper blocks as if taped to the board.
+   --------------------------------------------------------------------- */
+.washi {
+  position: absolute;
+  display: block;
+  width: 92px;
+  height: 30px;
+  background: var(--atelier-tape);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  z-index: 4;
+  pointer-events: none;
+  /* frayed/serrated short ends */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0 4px, #000 4px calc(100% - 4px), transparent calc(100% - 4px));
+  mask-image: linear-gradient(90deg, transparent 0 4px, #000 4px calc(100% - 4px), transparent calc(100% - 4px));
+}
+
+.washi::after {
+  /* paper sheen lines on the tape */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.18) 0 2px,
+    transparent 2px 7px
+  );
+}
+
+.washi--teal { background: var(--atelier-tape-teal); }
+
+.washi--tl { top: -14px; left: 14px; transform: rotate(-21deg); }
+.washi--tr { top: -14px; right: 14px; transform: rotate(17deg); }
+.washi--bl { bottom: -14px; left: 18px; transform: rotate(9deg); }
+
+/* ---------------------------------------------------------------------
+   4. RUBBER-STAMP / POSTMARK accent — a stamped label, slightly inked
+   and rotated, like a maker's mark on the collage.
+   --------------------------------------------------------------------- */
+.stamp {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-soft);
+  font-weight: 700;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--atelier-stamp);
+  border: 2.5px solid var(--atelier-stamp);
+  border-radius: 6px;
+  transform: rotate(-11deg);
+  opacity: 0.82;
+  /* uneven ink: roughen with a soft mask */
+  -webkit-mask-image: radial-gradient(circle at 30% 20%, #000 78%, transparent 100%);
+  mask-image: radial-gradient(circle at 30% 20%, #000 78%, transparent 100%);
+}
+
+.stamp--round {
+  border-radius: 999px;
+  width: 5.4rem;
+  height: 5.4rem;
+  padding: 0;
+  font-size: 0.58rem;
+  line-height: 1.15;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+   5. TORN PAPER EDGES on section bands — the hard citron rules from
+   main.css become a hand-torn rip.
+   --------------------------------------------------------------------- */
+.process,
+.contact {
+  position: relative;
+}
+
+.process::before,
+.contact::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 14px;
+  background: var(--color-accent);
+  z-index: 2;
+  pointer-events: none;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M0 14 L0 6 L8 9 L16 4 L24 8 L32 3 L40 7 L48 2 L56 7 L64 3 L72 8 L80 4 L88 9 L96 4 L104 8 L112 3 L120 7 L120 14 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M0 14 L0 6 L8 9 L16 4 L24 8 L32 3 L40 7 L48 2 L56 7 L64 3 L72 8 L80 4 L88 9 L96 4 L104 8 L112 3 L120 7 L120 14 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 120px 14px;
+  mask-size: 120px 14px;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+}
+
+/* ---------------------------------------------------------------------
+   6. HERO as the workbench surface — corkboard/parallax pinboard.
+   The existing blobs stay; we add pinned tape + a stamped maker mark and
+   give the headline a cut-paper relief. First paint safe (no opacity:0).
+   --------------------------------------------------------------------- */
+.hero {
+  isolation: isolate;
+}
+
+/* thread of stitched dashes along the citron rule, like a sewn collage */
+.hero::after {
+  /* keep main.css teal blob but overlay subtle stitching at the foot */
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18) inset;
+}
+
+.hero__copy {
+  position: relative;
+}
+
+.hero__tag {
+  /* the kicker reads like a punched paper ticket */
+  position: relative;
+  z-index: 1;
+}
+
+/* Parallax: choreographed drift driven by --pscroll (set by JS, 0 at rest).
+   At rest (no JS / reduced motion) translate is 0 — fully composed. */
+[data-parallax] {
+  will-change: transform;
+  transform: translate3d(0, calc(var(--pscroll, 0) * var(--pspeed, 12px)), 0);
+}
+
+/* Hero pinned collage scraps — purely decorative paper confetti. */
+.atelier-scrap {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border: 3px solid var(--color-ink);
+  box-shadow: 5px 5px 0 var(--color-ink);
+}
+
+.atelier-scrap--citron {
+  top: 18%;
+  left: 6%;
+  width: clamp(48px, 6vw, 86px);
+  height: clamp(48px, 6vw, 86px);
+  background: var(--color-accent);
+  transform: rotate(-9deg);
+  border-radius: 30% 70% 64% 36% / 42% 39% 61% 58%;
+  --pspeed: -26px;
+}
+
+.atelier-scrap--teal {
+  bottom: 16%;
+  right: 9%;
+  width: clamp(40px, 5vw, 70px);
+  height: clamp(40px, 5vw, 70px);
+  background: var(--color-secondary);
+  transform: rotate(12deg);
+  --pspeed: 30px;
+}
+
+.atelier-scrap--indigo {
+  top: 30%;
+  right: 22%;
+  width: clamp(30px, 4vw, 54px);
+  height: clamp(30px, 4vw, 54px);
+  background: var(--color-primary-soft);
+  transform: rotate(-16deg);
+  border-radius: 50%;
+  --pspeed: -18px;
+}
+
+html[data-theme="dark"] .atelier-scrap--indigo {
+  background: var(--color-secondary);
+  opacity: 0.55;
+}
+
+/* ---------------------------------------------------------------------
+   7. CUT-PAPER CARD treatment — process items, pillars, portfolio cards
+   become pasted paper blocks with hard offset shadow + hover-lift.
+   --------------------------------------------------------------------- */
+.process__item {
+  position: relative;
+  background: var(--atelier-paper);
+  border: var(--border-bold);
+  border-radius: 14px;
+  box-shadow: var(--shadow-hard-sm);
+  padding: 1.6rem 1.4rem 1.8rem !important;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+html[data-theme="dark"] .process__item {
+  background: var(--atelier-paper);
+}
+
+.process__item:nth-child(1) { transform: rotate(var(--atelier-tilt-1)); }
+.process__item:nth-child(2) { transform: rotate(var(--atelier-tilt-2)); }
+.process__item:nth-child(3) { transform: rotate(var(--atelier-tilt-3)); }
+.process__item:nth-child(4) { transform: rotate(2.2deg); }
+
+/* hover-lift: paper peels up off the board */
+.process__item:hover,
+.process__item:focus-within {
+  transform: rotate(0deg) translate(-4px, -6px);
+  box-shadow: var(--atelier-lift-shadow);
+  z-index: 6;
+}
+
+/* a small stamped step number top-left of each process card */
+.process__item .process__num {
+  position: absolute;
+  top: -16px;
+  left: -12px;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--color-accent-ink);
+  background: var(--color-accent);
+  border: var(--border-bold);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  transform: rotate(-8deg);
+  z-index: 5;
+}
+
+/* Process commitments → a pinned index card. */
+.process__commitments {
+  position: relative;
+  background: var(--atelier-paper);
+  border: var(--border-bold);
+  border-radius: 14px;
+  box-shadow: var(--shadow-hard);
+  padding: clamp(2rem, 4vw, 3rem) !important;
+  transform: rotate(-0.8deg);
+}
+
+html[data-theme="dark"] .process__commitments p,
+html[data-theme="dark"] .process__commitments-list {
+  color: rgba(245, 246, 255, 0.85);
+}
+html[data-theme="dark"] .process__item p {
+  color: rgba(245, 246, 255, 0.82);
+}
+html[data-theme="dark"] .process__item h3,
+html[data-theme="dark"] .process__commitments h3 {
+  color: var(--color-text-strong);
+}
+.process__item h3,
+.process__commitments h3 {
+  color: var(--color-text-strong);
+}
+.process__item p {
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------------------
+   8. PORTFOLIO — keep the strong bento, add tossed tilt + bigger lift +
+   a washi corner so each project reads like a pinned print.
+   --------------------------------------------------------------------- */
+.portfolio__grid > *:nth-child(1) { transform: rotate(-1.4deg); }
+.portfolio__grid > *:nth-child(2) { transform: rotate(1.8deg); }
+.portfolio__grid > *:nth-child(3) { transform: rotate(-2deg); }
+.portfolio__grid > *:nth-child(4) { transform: rotate(1.2deg); }
+
+.portfolio__card:hover,
+.portfolio__card:focus-visible {
+  transform: rotate(0deg) translate(-5px, -7px);
+  box-shadow: var(--atelier-lift-shadow);
+  z-index: 6;
+}
+
+/* washi tape needs the card to clip; it sits just outside, so allow it */
+.portfolio__card { overflow: visible; }
+.portfolio__card figure { border-radius: inherit; overflow: hidden; }
+
+/* ---------------------------------------------------------------------
+   9. ABOUT — portrait pinned with tape; pillars as tossed paper.
+   --------------------------------------------------------------------- */
+.about__photo {
+  position: relative;
+}
+.about__photo img {
+  position: relative;
+  z-index: 1;
+}
+
+.about__pillar {
+  position: relative;
+}
+
+/* ---------------------------------------------------------------------
+   10. CONTACT — intro card as a stamped, addressed envelope feel.
+   --------------------------------------------------------------------- */
+.contact__intro,
+.contact__form {
+  position: relative;
+}
+.contact__intro { transform: rotate(-0.6deg); overflow: visible; }
+.contact__form { transform: rotate(0.5deg); }
+
+/* postmark stamp pinned to the top-right of the contact intro */
+.contact__intro .stamp--round {
+  top: -1.6rem;
+  right: -1.4rem;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(15, 14, 84, 0.35);
+}
+
+/* about portrait tapes sit on the corners of the framed photo */
+.about__photo .washi--tl { top: -16px; left: 8%; }
+.about__photo .washi--tr { top: -16px; right: 8%; }
+
+@media (max-width: 720px) {
+  .contact__intro,
+  .contact__form,
+  .process__commitments,
+  .process__item:nth-child(n) {
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   11. SECTION KICKERS as rubber-stamped headings (workbench labels).
+   The bold candidate already tilts kickers; reinforce the inked look.
+   --------------------------------------------------------------------- */
+.section-kicker {
+  position: relative;
+}
+.section-kicker::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border: 2px dashed currentColor;
+  border-radius: inherit;
+  opacity: 0.0;
+}
+
+/* a little handmade pin dot on each section header */
+.section-header {
+  position: relative;
+}
+
+/* ---------------------------------------------------------------------
+   12. ATELIER intro band — small "workbench" descriptor in the hero,
+   styled like a torn note. Uses an added i18n string.
+   --------------------------------------------------------------------- */
+.hero__note {
+  display: inline-block;
+  margin-top: 1.6rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: var(--color-primary);
+  background: var(--atelier-paper);
+  border: 2px dashed rgba(15, 14, 84, 0.55);
+  border-radius: 8px;
+  transform: rotate(-1.4deg);
+  box-shadow: 4px 4px 0 rgba(15, 14, 84, 0.18);
+}
+
+html[data-theme="dark"] .hero__note {
+  color: var(--color-text-strong);
+  border-color: rgba(191, 247, 233, 0.55);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ---------------------------------------------------------------------
+   13. JS-ENRICHED settle — when atelier.js confirms motion is allowed,
+   it tags <html> with .atelier-kinetic. Used only to add restraint-safe
+   flourishes (stamp jitter on hover) that must NOT exist at rest.
+   --------------------------------------------------------------------- */
+.atelier-kinetic .process__item:hover .process__num {
+  animation: stamp-jitter 0.4s steps(2) 1;
+}
+
+@keyframes stamp-jitter {
+  0% { transform: rotate(-8deg) translate(0, 0); }
+  50% { transform: rotate(-4deg) translate(1px, -1px); }
+  100% { transform: rotate(-8deg) translate(0, 0); }
+}
+
+/* ---------------------------------------------------------------------
+   14. REDUCED MOTION — collapse ALL of the above to a calm, upright,
+   fully-placed composition. No rotation, no parallax, no entrance.
+   Information never depends on motion.
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .process__item,
+  .process__item:nth-child(n),
+  .process__commitments,
+  .portfolio__grid > *,
+  .contact__intro,
+  .contact__form,
+  .atelier-scrap,
+  .washi,
+  .stamp,
+  .hero__note,
+  .process__item .process__num {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  /* keep hover-lift gentle but instant */
+  .process__item:hover,
+  .portfolio__card:hover {
+    transform: translate(-3px, -4px) !important;
+  }
+
+  /* tape & stamps stay as flat tasteful accents, just un-rotated */
+  .washi { border-radius: 2px; }
+}
+
+/* ---------------------------------------------------------------------
+   15. FOCUS VISIBILITY — keep AA-strong focus rings over the collage.
+   --------------------------------------------------------------------- */
+.process__item:focus-within,
+.contact__form:focus-within {
+  outline: none;
+}
+a.portfolio__card:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 4px;
+}

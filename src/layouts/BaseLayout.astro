@@ -3,8 +3,10 @@ import type { Lang } from '../i18n';
 import { getDict, asset } from '../i18n';
 import '@fontsource/baloo-2/700.css';
 import '@fontsource/baloo-2/800.css';
+import '@fontsource-variable/quicksand';
 import '@fontsource-variable/raleway';
 import '../styles/main.css';
+import '../styles/atelier.css';
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -87,6 +89,7 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
     </main>
     {showFooter && <Footer lang={lang} />}
     <script src={asset('js/main.js')} is:inline defer></script>
+    <script src={asset('js/atelier.js')} is:inline defer></script>
     <Observability />
   </body>
 </html>
