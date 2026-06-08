@@ -12,25 +12,39 @@ const { lang } = Astro.props;
 const dict = getDict(lang);
 ---
 
-<section id="hero" class="hero" data-animate="fade-up">
+<section id="hero" class="hero numero-cover" data-animate="fade-up" data-riso>
+  <span class="riso-marks" aria-hidden="true">
+    <span class="riso-mark riso-mark--tl"></span>
+    <span class="riso-mark riso-mark--tr"></span>
+    <span class="riso-mark riso-mark--bl"></span>
+    <span class="riso-mark riso-mark--br"></span>
+  </span>
   <div class="hero__background" aria-hidden="true"></div>
   <div class="container hero__inner">
+    <div class="masthead" aria-hidden="true">
+      <span class="masthead__edition">{dict.numero.edition}</span>
+      <span class="masthead__rule"></span>
+      <span class="masthead__imprint">{dict.numero.imprint}</span>
+    </div>
+    <p class="folio folio--cover">{dict.numero.folioHero}</p>
     <div class="hero__copy">
       <span class="hero__tag">{dict.hero.tag}</span>
-      <h1>{dict.hero.title}</h1>
+      <h1 class="numero-title" data-riso-text={dict.hero.title}>{dict.hero.title}</h1>
       <p class="hero__location seo-hidden">{dict.hero.location}</p>
-      <p class="hero__intro">{dict.hero.intro}</p>
+      <p class="hero__intro lettrine">{dict.hero.intro}</p>
       <p class="hero__services">{dict.hero.services}</p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#portfolio">{dict.hero.ctaProjects}</a>
         <a class="btn btn--ghost" href="#contact">{dict.hero.ctaTalk}</a>
       </div>
     </div>
+    <p class="masthead__colophon" aria-hidden="true">{dict.numero.mastheadColophon}</p>
   </div>
 </section>
 
-<section id="processus" class="process" data-animate="fade-up">
+<section id="processus" class="process numero-spread" data-animate="fade-up">
   <div class="container">
+    <p class="folio">{dict.numero.folioProcess}</p>
     <header class="section-header">
       <span class="section-kicker">{dict.process.kicker}</span>
       <h2>{dict.process.title}</h2>
@@ -38,6 +52,7 @@ const dict = getDict(lang);
     </header>
     <div class="process__grid">
       <article class="process__item glass-surface" data-tilt>
+        <span class="plate-num" aria-hidden="true">01</span>
         <figure>
           <img src={asset("assets/icons/workflow-1.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -45,6 +60,7 @@ const dict = getDict(lang);
         <p>{dict.process.step1Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
+        <span class="plate-num" aria-hidden="true">02</span>
         <figure>
           <img src={asset("assets/icons/workflow-2.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -52,6 +68,7 @@ const dict = getDict(lang);
         <p>{dict.process.step2Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
+        <span class="plate-num" aria-hidden="true">03</span>
         <figure>
           <img src={asset("assets/icons/workflow-3.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -59,6 +76,7 @@ const dict = getDict(lang);
         <p>{dict.process.step3Body}</p>
       </article>
       <article class="process__item glass-surface" data-tilt>
+        <span class="plate-num" aria-hidden="true">04</span>
         <figure>
           <img src={asset("assets/icons/workflow-4.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -78,8 +96,9 @@ const dict = getDict(lang);
   </div>
 </section>
 
-<section id="portfolio" class="portfolio" data-animate="fade-in">
+<section id="portfolio" class="portfolio numero-spread" data-animate="fade-in">
   <div class="container">
+    <p class="folio">{dict.numero.folioPortfolio}</p>
     <header class="section-header">
       <span class="section-kicker">{dict.portfolio.kicker}</span>
       <h2>{dict.portfolio.title}</h2>
@@ -87,6 +106,7 @@ const dict = getDict(lang);
     </header>
     <div class="portfolio__grid">
       <a class="portfolio__card" href={projectUrl(lang, 'lukes-iced-coffees')}>
+        <span class="plate-tag" aria-hidden="true">{dict.numero.plateLabel} 01</span>
         <figure>
           <img
             src={asset("assets/images/portfolio-aurore.svg")}
@@ -103,6 +123,7 @@ const dict = getDict(lang);
         </div>
       </a>
       <a class="portfolio__card" href={projectUrl(lang, 'intelligences-atypiques')}>
+        <span class="plate-tag" aria-hidden="true">{dict.numero.plateLabel} 02</span>
         <figure>
           <img
             src={asset("assets/images/portfolio-origines.svg")}
@@ -119,6 +140,7 @@ const dict = getDict(lang);
         </div>
       </a>
       <a class="portfolio__card" href={projectUrl(lang, 'cocobot')}>
+        <span class="plate-tag" aria-hidden="true">{dict.numero.plateLabel} 03</span>
         <figure>
           <img
             src={asset("assets/images/portfolio-constellation.svg")}
@@ -145,15 +167,16 @@ const dict = getDict(lang);
   </div>
 </section>
 
-<section id="about" class="about section-divider" data-animate="fade-in">
+<section id="about" class="about section-divider numero-spread" data-animate="fade-in">
   <div class="container">
+    <p class="folio">{dict.numero.folioAbout}</p>
     <h2 class="about__title">{dict.about.title}</h2>
     <div class="about__bio">
       <div class="about__photo">
         <Image src={annePortrait} alt={dict.about.portraitAlt} loading="lazy" />
       </div>
       <div class="about__text">
-        <p>{dict.about.p1}</p>
+        <p class="lettrine">{dict.about.p1}</p>
         <p class="about__highlight"><strong>{dict.about.p2Strong}</strong></p>
         <p>{dict.about.p3}</p>
       </div>
@@ -192,7 +215,8 @@ const dict = getDict(lang);
   </div>
 </section>
 
-<section id="contact" class="contact" data-animate="fade-up">
+<section id="contact" class="contact numero-spread" data-animate="fade-up">
+  <p class="folio container">{dict.numero.folioContact}</p>
   <div class="container contact__inner">
     <div class="contact__intro glass-surface">
       <span class="section-kicker">{dict.contact.kicker}</span>
@@ -272,3 +296,14 @@ const dict = getDict(lang);
     </form>
   </div>
 </section>
+
+<aside class="colophon" data-animate="fade-in" aria-label={dict.numero.colophonTitle}>
+  <div class="container colophon__inner">
+    <span class="colophon__issue" aria-hidden="true">{dict.numero.issue}</span>
+    <div class="colophon__body">
+      <h2 class="colophon__title">{dict.numero.colophonTitle}</h2>
+      <p>{dict.numero.colophonBody}</p>
+    </div>
+    <span class="colophon__press" aria-hidden="true">{dict.numero.pressMark}</span>
+  </div>
+</aside>

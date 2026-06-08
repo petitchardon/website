@@ -16,9 +16,16 @@ const home = homeUrl(lang);
   showFooter={false}
   noindex={true}
 >
-  <section class="project-hero" data-animate="fade-up">
+  <section class="project-hero numero-spread" data-animate="fade-up">
+    <span class="riso-marks" aria-hidden="true">
+      <span class="riso-mark riso-mark--tl"></span>
+      <span class="riso-mark riso-mark--tr"></span>
+      <span class="riso-mark riso-mark--bl"></span>
+      <span class="riso-mark riso-mark--br"></span>
+    </span>
     <div class="container project-hero__inner">
       <div class="project-hero__intro glass-surface">
+        <p class="folio">{dict.numero.issue} — 404</p>
         <p class="breadcrumb">404</p>
         <h1>{dict.notFound.h1}</h1>
         <p>{dict.notFound.body}</p>

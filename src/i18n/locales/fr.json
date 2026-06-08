@@ -24,6 +24,23 @@
     "about": "à propos",
     "contact": "contact"
   },
+  "numero": {
+    "edition": "Édition 2026",
+    "issue": "N° 01",
+    "imprint": "tirage risographie · bichromie indigo & citron",
+    "mastheadColophon": "studio de graphisme · Rambouillet",
+    "folioHero": "N° 01 — Couverture",
+    "folioProcess": "N° 02 — Procédé",
+    "folioPortfolio": "N° 03 — Planches",
+    "folioAbout": "N° 04 — Portrait",
+    "folioContact": "N° 05 — Correspondance",
+    "registrationMark": "repère de calage",
+    "colophonTitle": "Colophon",
+    "colophonBody": "Composé en Fraunces & Space Mono. Imprimé en bichromie sur papier teinté. Chaque visite est un nouveau tirage.",
+    "pressMark": "à passer sous presse",
+    "indexLabel": "Sommaire",
+    "plateLabel": "Planche"
+  },
   "hero": {
     "tag": "graphisme · illustration · rédaction",
     "title": "faites-vous remarquer",

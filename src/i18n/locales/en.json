@@ -24,6 +24,23 @@
     "about": "about",
     "contact": "contact"
   },
+  "numero": {
+    "edition": "Edition 2026",
+    "issue": "N° 01",
+    "imprint": "risograph print · indigo & citron duotone",
+    "mastheadColophon": "graphic design studio · Rambouillet",
+    "folioHero": "N° 01 — Cover",
+    "folioProcess": "N° 02 — Process",
+    "folioPortfolio": "N° 03 — Plates",
+    "folioAbout": "N° 04 — Portrait",
+    "folioContact": "N° 05 — Correspondence",
+    "registrationMark": "registration mark",
+    "colophonTitle": "Colophon",
+    "colophonBody": "Set in Fraunces & Space Mono. Printed in duotone on tinted stock. Every visit is a fresh pull.",
+    "pressMark": "ready for press",
+    "indexLabel": "Contents",
+    "plateLabel": "Plate"
+  },
   "hero": {
     "tag": "graphic design · illustration · copywriting",
     "title": "make your brand impossible to forget",

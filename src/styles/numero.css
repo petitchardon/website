@@ -1,0 +1,721 @@
+/* ============================================================================
+   UNIVERS A — "LE NUMÉRO"
+   A risograph-printed art-zine homepage. Two inks — indigo #0f0e54 and brand
+   citron #d9f20c — overprinted on a warm paper field. Visible halftone grain,
+   tasteful misregistration, mono editorial furniture (folios, registration
+   marks, lettrines, masthead, colophon).
+
+   This file is loaded AFTER main.css and intentionally re-tunes the design
+   tokens + restyles the homepage chrome into the zine. Both themes are fully
+   styled; all riso motion collapses to a calm static state under
+   prefers-reduced-motion.
+   ============================================================================ */
+
+:root {
+  /* --- The two riso inks (locked) --- */
+  --riso-indigo: #0f0e54;
+  --riso-citron: #d9f20c;
+  /* Warm risograph paper field. */
+  --riso-paper: #f6f1e3;
+  --riso-paper-deep: #efe7d3;
+  --riso-ink-soft: #2a2872;
+
+  /* Re-tune the shared tokens so the whole homepage reads as indigo ink on
+     warm paper. Citron is reserved as a *field/ink block* behind indigo text
+     (never as text on white). */
+  --color-primary: var(--riso-indigo);
+  --color-primary-soft: var(--riso-ink-soft);
+  --color-secondary: var(--riso-indigo);
+  --color-accent: var(--riso-citron);
+  --color-background: var(--riso-paper);
+  --color-surface: #fffdf6;
+  --color-surface-solid: #fffdf6;
+  --color-text: #1a1953;
+  --color-text-strong: var(--riso-indigo);
+  --color-muted: rgba(15, 14, 84, 0.62);
+  --color-rule: rgba(15, 14, 84, 0.24);
+  --color-shadow: rgba(15, 14, 84, 0.16);
+
+  /* Mono face = editorial furniture. Falls back to a pure system mono stack if
+     Space Mono ever fails to load (zero extra network either way). */
+  --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", "Cascadia Code",
+    Menlo, Consolas, monospace;
+
+  /* Misregistration offset — the inks are pulled apart by a couple px. */
+  --riso-shift: 2px;
+}
+
+html[data-theme="dark"] {
+  /* Night edition: indigo paper, citron + ivory inks. Citron now legible as a
+     light ink on the deep indigo field. */
+  --riso-paper: #0c0b3a;
+  --riso-paper-deep: #090830;
+  --color-primary: #eef0c9;
+  --color-primary-soft: #d9f20c;
+  --color-secondary: #d9f20c;
+  --color-accent: #d9f20c;
+  --color-background: #0c0b3a;
+  --color-surface: #14134a;
+  --color-surface-solid: #14134a;
+  --color-text: #ecead8;
+  --color-text-strong: #f6f4df;
+  --color-muted: rgba(236, 234, 216, 0.66);
+  --color-rule: rgba(217, 242, 12, 0.32);
+  --color-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* ------------------------------------------------------------------ *
+ * Paper field: warm base + a faint halftone screen + ink mottling.
+ * Decorative only, sits behind everything (z-index from main.css base).
+ * ------------------------------------------------------------------ */
+body {
+  background-color: var(--color-background);
+}
+
+body::before {
+  /* Halftone dot screen + subtle ink density mottling. Layered radial
+     gradients give a printed-screen feel without an image request. */
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 1;
+  background-image:
+    radial-gradient(rgba(15, 14, 84, 0.06) 1px, transparent 1.4px),
+    radial-gradient(rgba(217, 242, 12, 0.05) 1px, transparent 1.4px),
+    radial-gradient(140% 120% at 18% -10%, rgba(217, 242, 12, 0.08), transparent 55%),
+    radial-gradient(120% 120% at 100% 0%, rgba(15, 14, 84, 0.06), transparent 50%);
+  background-size: 7px 7px, 7px 7px, 100% 100%, 100% 100%;
+  background-position: 0 0, 3px 4px, 0 0, 0 0;
+  transition: opacity var(--transition-slow);
+}
+
+html[data-theme="dark"] body::before {
+  background-image:
+    radial-gradient(rgba(217, 242, 12, 0.07) 1px, transparent 1.4px),
+    radial-gradient(rgba(236, 234, 216, 0.05) 1px, transparent 1.4px),
+    radial-gradient(140% 120% at 18% -10%, rgba(217, 242, 12, 0.1), transparent 55%),
+    radial-gradient(120% 120% at 100% 0%, rgba(255, 255, 255, 0.05), transparent 50%);
+}
+
+/* A second, finer grain layer for paper tooth. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 2px,
+    rgba(15, 14, 84, 0.018) 2px 3px
+  );
+}
+
+html[data-theme="dark"] body::after {
+  mix-blend-mode: screen;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 2px,
+    rgba(217, 242, 12, 0.02) 2px 3px
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Mono editorial furniture base
+ * ------------------------------------------------------------------ */
+.folio,
+.plate-num,
+.plate-tag,
+.masthead,
+.masthead__colophon,
+.colophon__issue,
+.colophon__press,
+.hero__tag,
+.section-kicker,
+.numero-cover .riso-marks {
+  font-family: var(--font-mono);
+}
+
+/* Section folios — "N° 02 — Procédé". A mono overline sitting on a citron
+   underline rule. */
+.folio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6ch;
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-strong);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.folio::before {
+  /* Tiny registration cross before the folio. */
+  content: "✛";
+  font-size: 0.8em;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+html[data-theme="dark"] .folio::before {
+  color: var(--riso-citron);
+}
+
+/* ------------------------------------------------------------------ *
+ * Registration / crop marks — printer's calibration crosses in corners.
+ * ------------------------------------------------------------------ */
+.riso-marks {
+  position: absolute;
+  inset: clamp(0.8rem, 2vw, 1.6rem);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.riso-mark {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.riso-mark::before,
+.riso-mark::after {
+  content: "";
+  position: absolute;
+  background: var(--color-text-strong);
+}
+
+/* horizontal bar */
+.riso-mark::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  transform: translateY(-50%);
+}
+/* vertical bar */
+.riso-mark::after {
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1.5px;
+  transform: translateX(-50%);
+}
+
+/* Misregistered citron ghost cross underneath. */
+.riso-mark {
+  box-shadow: var(--riso-shift) var(--riso-shift) 0 -8px var(--color-accent);
+}
+
+.riso-mark--tl { top: 0; left: 0; }
+.riso-mark--tr { top: 0; right: 0; }
+.riso-mark--bl { bottom: 0; left: 0; }
+.riso-mark--br { bottom: 0; right: 0; }
+
+/* ------------------------------------------------------------------ *
+ * COVER (hero) — the masthead treatment
+ * ------------------------------------------------------------------ */
+.numero-cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.numero-cover .hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Big tonal citron field bleeding off the cover edge for the duotone look. */
+.numero-cover::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -12%;
+  right: -8%;
+  width: clamp(260px, 38vw, 520px);
+  height: clamp(260px, 38vw, 520px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, var(--riso-citron) 0%, var(--riso-citron) 55%, transparent 70%);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .numero-cover::before {
+  mix-blend-mode: screen;
+  opacity: 0.32;
+}
+
+/* Masthead bar across the top of the cover. */
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-strong);
+  padding-bottom: 0.9rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.4rem);
+  border-bottom: 2px solid var(--color-text-strong);
+}
+
+.masthead__rule {
+  flex: 1 1 auto;
+  height: 2px;
+  background:
+    repeating-linear-gradient(90deg, var(--color-text-strong) 0 8px, transparent 8px 14px);
+  opacity: 0.7;
+}
+
+.masthead__imprint {
+  color: var(--color-muted);
+  letter-spacing: 0.1em;
+  text-transform: none;
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+.masthead__colophon {
+  margin: clamp(2rem, 5vw, 3rem) 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--color-rule);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.folio--cover {
+  margin-bottom: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+/* The masthead display title — duotone misregistration via a citron ghost
+   layer behind the indigo title. CSS-only resting state is fully visible
+   (the real <h1> text paints normally; the ghost is a ::before overlay). */
+.numero-title {
+  position: relative;
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  font-weight: 460;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--color-text-strong);
+  isolation: isolate;
+}
+
+.numero-title::before {
+  content: attr(data-riso-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: var(--riso-citron);
+  transform: translate(calc(-1 * var(--riso-shift)), var(--riso-shift));
+  opacity: 0.85;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .numero-title::before {
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+/* Cover tag becomes a mono kicker on a citron tick. */
+.numero-cover .hero__tag {
+  letter-spacing: 0.26em;
+  border-bottom-color: var(--color-accent);
+  color: var(--color-text-strong);
+}
+
+/* ------------------------------------------------------------------ *
+ * Lettrines — drop caps on lead paragraphs.
+ * ------------------------------------------------------------------ */
+.lettrine::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 3.4em;
+  line-height: 0.74;
+  padding: 0.06em 0.12em 0 0;
+  margin-right: 0.04em;
+  color: var(--color-text-strong);
+  /* citron under-ink for the duotone drop-cap */
+  text-shadow: var(--riso-shift) var(--riso-shift) 0 var(--riso-citron);
+}
+
+html[data-theme="dark"] .lettrine::first-letter {
+  color: var(--riso-citron);
+  text-shadow: var(--riso-shift) var(--riso-shift) 0 rgba(236, 234, 216, 0.4);
+}
+
+.hero__intro.lettrine {
+  max-width: 34ch;
+}
+
+/* ------------------------------------------------------------------ *
+ * Section spreads — folios + citron section rules.
+ * ------------------------------------------------------------------ */
+.numero-spread {
+  position: relative;
+}
+
+.section-header h2::before,
+.about__title::before {
+  /* Re-color the existing counter prefix in citron-friendly indigo. */
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+html[data-theme="dark"] .section-header h2::before,
+html[data-theme="dark"] .about__title::before {
+  color: var(--riso-citron);
+}
+
+.section-kicker {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ *
+ * Process plates — mono plate numbers, citron hover misregistration.
+ * ------------------------------------------------------------------ */
+.process__item {
+  position: relative;
+}
+
+.plate-num {
+  position: absolute;
+  top: 0.85rem;
+  right: 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+.plate-num::before {
+  content: "N° ";
+  color: var(--color-accent);
+}
+
+html[data-theme="dark"] .plate-num::before {
+  color: var(--riso-citron);
+}
+
+/* Riso hover: card shifts a touch and reveals a citron offset edge. */
+.process__item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-accent);
+  border-radius: inherit;
+  opacity: 0;
+  transform: translate(var(--riso-shift), var(--riso-shift));
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  pointer-events: none;
+}
+
+.process__item:hover::after,
+.process__item:focus-within::after {
+  opacity: 0.9;
+}
+
+/* ------------------------------------------------------------------ *
+ * Portfolio plates
+ * ------------------------------------------------------------------ */
+.portfolio__card {
+  position: relative;
+}
+
+.plate-tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--riso-indigo);
+  background: var(--riso-citron);
+  /* citron ink-block behind indigo text — the legible riso pairing */
+}
+
+html[data-theme="dark"] .plate-tag {
+  color: var(--riso-indigo);
+  background: var(--riso-citron);
+}
+
+/* Misregistration nudge on portfolio hover. */
+.portfolio__card {
+  transition: transform var(--transition-base);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio__card:hover,
+  .portfolio__card:focus-visible {
+    transform: translate(calc(-1 * var(--riso-shift)), calc(-1 * var(--riso-shift)));
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Colophon — closing imprint block, citron ink field.
+ * ------------------------------------------------------------------ */
+.colophon {
+  background: var(--riso-citron);
+  color: var(--riso-indigo);
+  border-top: 2px solid var(--riso-indigo);
+  border-bottom: 2px solid var(--riso-indigo);
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Halftone screen over the citron field. */
+.colophon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(15, 14, 84, 0.16) 1.1px, transparent 1.4px);
+  background-size: 8px 8px;
+  opacity: 0.7;
+}
+
+html[data-theme="dark"] .colophon {
+  background: var(--riso-indigo);
+  color: var(--riso-citron);
+  border-color: var(--riso-citron);
+}
+
+html[data-theme="dark"] .colophon::before {
+  background-image: radial-gradient(rgba(217, 242, 12, 0.18) 1.1px, transparent 1.4px);
+}
+
+.colophon__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(1.2rem, 4vw, 2.5rem);
+}
+
+.colophon__issue {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.colophon__title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: inherit;
+  margin: 0 0 0.4rem;
+}
+
+.colophon__body p {
+  margin: 0;
+  max-width: 56ch;
+  color: inherit;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.colophon__press {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  align-self: stretch;
+  padding-left: 0.4rem;
+  border-left: 1.5px solid currentColor;
+}
+
+@media (max-width: 720px) {
+  .colophon__inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .colophon__press {
+    writing-mode: horizontal-tb;
+    border-left: 0;
+    border-top: 1.5px solid currentColor;
+    padding: 0.5rem 0 0;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Chrome cohesion — header / footer in the duotone.
+ * ------------------------------------------------------------------ */
+.site-header {
+  border-bottom: 2px solid var(--color-text-strong);
+}
+
+.site-nav a,
+.lang-toggle {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.site-nav a::after {
+  height: 3px;
+  background: var(--color-accent);
+}
+
+.lang-toggle {
+  border-radius: 2px;
+  border: 1.5px solid var(--color-text-strong);
+}
+
+.theme-toggle {
+  border-radius: 2px;
+  border: 1.5px solid var(--color-text-strong);
+}
+
+.site-footer {
+  background: var(--riso-indigo);
+  color: #f6f1e3;
+  border-top: 2px solid var(--riso-citron);
+}
+
+html[data-theme="dark"] .site-footer {
+  background: #07062a;
+}
+
+.site-footer h3 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--riso-citron);
+}
+
+.site-footer .footer__brand p,
+.site-footer .footer__legal p {
+  color: rgba(246, 241, 227, 0.78);
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--riso-citron);
+}
+
+/* Buttons: squared riso ink blocks instead of pills. */
+.btn {
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.btn--primary {
+  background: var(--riso-indigo);
+  color: var(--riso-citron);
+  box-shadow: var(--riso-shift) var(--riso-shift) 0 0 var(--riso-citron);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background: var(--riso-ink-soft);
+  box-shadow: 0 0 0 0 var(--riso-citron);
+}
+
+html[data-theme="dark"] .btn--primary {
+  background: var(--riso-citron);
+  color: var(--riso-indigo);
+  box-shadow: var(--riso-shift) var(--riso-shift) 0 0 rgba(236, 234, 216, 0.5);
+}
+
+.btn--ghost {
+  border: 1.5px solid var(--color-text-strong);
+  color: var(--color-text-strong);
+}
+
+.btn--secondary {
+  background: var(--riso-citron);
+  color: var(--riso-indigo);
+  box-shadow: var(--riso-shift) var(--riso-shift) 0 0 var(--riso-indigo);
+}
+
+/* Skip-link + glass-surface cohesion. */
+.skip-link {
+  background: var(--riso-citron);
+  color: var(--riso-indigo);
+  border-radius: 0;
+}
+
+.glass-surface {
+  border: 1.5px solid var(--color-rule);
+  border-radius: 2px;
+}
+
+/* Focus states — high-contrast citron-on-indigo ring (or reverse). */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.lang-toggle:focus-visible,
+.nav-toggle:focus-visible,
+.theme-toggle:focus-visible,
+.portfolio__card:focus-visible,
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 2px solid var(--color-text-strong);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Project pages — light thematic coherence only.
+ * ------------------------------------------------------------------ */
+.breadcrumb {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+}
+
+/* ------------------------------------------------------------------ *
+ * REDUCED MOTION — everything settles to a calm, static, fully-legible
+ * state. No misregistration shifts, no halftone animation, no parallax.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --riso-shift: 0px;
+  }
+
+  .numero-title::before {
+    transform: none;
+  }
+
+  .lettrine::first-letter {
+    text-shadow: none;
+  }
+
+  .process__item::after {
+    transform: none;
+  }
+
+  .btn--primary,
+  html[data-theme="dark"] .btn--primary,
+  .btn--secondary {
+    box-shadow: none;
+  }
+
+  .riso-mark {
+    box-shadow: none;
+  }
+}
