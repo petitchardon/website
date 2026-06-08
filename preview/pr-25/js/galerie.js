@@ -166,7 +166,11 @@
           requestAnimationFrame(update);
         }
       };
-      update();
+      // NB: do not call update() synchronously here. Applying a translate3d
+      // transform at load promotes the element to a compositor layer during the
+      // first-paint window, which can make Lighthouse miss the contentful paint
+      // (NO_FCP). Parallax starts on the first real scroll/resize instead — by
+      // then FCP has long been recorded, and the layers are below the fold.
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", onScroll, { passive: true });
     }
