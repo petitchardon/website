@@ -1,0 +1,62 @@
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="orig-board-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F0E54" />
+      <stop offset="100%" stop-color="#192A5F" />
+    </linearGradient>
+    <linearGradient id="orig-leaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BFF7E9" />
+      <stop offset="100%" stop-color="#27CCBC" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" rx="36" fill="url(#orig-board-bg)" />
+  <rect x="72" y="96" width="216" height="160" rx="20" fill="#152050" opacity="0.9" />
+  <rect x="312" y="72" width="328" height="184" rx="24" fill="#0F0E54" opacity="0.85" />
+  <rect x="72" y="288" width="296" height="160" rx="24" fill="#BFF7E9" opacity="0.75" />
+  <rect x="400" y="288" width="248" height="160" rx="24" fill="#27CCBC" opacity="0.55" />
+  <path
+    d="M156 176c0-26 18-48 44-48s44 22 44 48-18 48-44 48-44-22-44-48z"
+    fill="none"
+    stroke="#27CCBC"
+    stroke-width="6"
+  />
+  <path
+    d="M156 176c0-12 10-22 22-22s22 10 22 22-10 22-22 22-22-10-22-22z"
+    fill="#BFF7E9"
+  />
+  <path
+    d="M352 122h240"
+    stroke="#BFF7E9"
+    stroke-width="8"
+    stroke-linecap="round"
+    opacity="0.65"
+  />
+  <path
+    d="M352 166h208"
+    stroke="#27CCBC"
+    stroke-width="8"
+    stroke-linecap="round"
+    opacity="0.65"
+  />
+  <path
+    d="M352 210h272"
+    stroke="#D9F20C"
+    stroke-width="8"
+    stroke-linecap="round"
+    opacity="0.55"
+  />
+  <path
+    d="M128 356c30-34 64-48 100-48s70 14 100 48"
+    stroke="#0F0E54"
+    stroke-width="8"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.5"
+  />
+  <path
+    d="M456 356l40-52 40 52-40 24z"
+    fill="url(#orig-leaf)"
+    opacity="0.9"
+  />
+  <rect x="468" y="332" width="128" height="72" rx="18" fill="#0F0E54" opacity="0.4" />
+</svg>
