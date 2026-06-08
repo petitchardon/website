@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-hidden="true" fill="none">
+  <defs><clipPath id="sg-clip"><rect width="400" height="320" rx="2"/></clipPath></defs>
+  <g clip-path="url(#sg-clip)">
+    <rect width="400" height="320" fill="#0f0e54"/>
+    <rect width="400" height="320" fill="#292881" opacity="0.5"/>
+    <g transform="rotate(4 200 160)">
+      <rect x="70" y="60" width="80" height="80" rx="8" fill="#d9f20c"/>
+      <rect x="166" y="60" width="80" height="80" rx="8" fill="#27ccbc"/>
+      <rect x="262" y="60" width="80" height="80" rx="8" fill="#bff7e9"/>
+      <rect x="70" y="156" width="80" height="80" rx="8" fill="#27ccbc"/>
+      <rect x="166" y="156" width="80" height="80" rx="8" fill="#f7f7ff"/>
+      <rect x="262" y="156" width="80" height="80" rx="8" fill="#d9f20c"/>
+    </g>
+    <circle cx="206" cy="196" r="22" fill="#0f0e54"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-hidden="true" fill="none">
+  <!-- two speech scraps meeting -->
+  <g transform="rotate(-6 100 100)">
+    <path d="M34 52 h96 a14 14 0 0 1 14 14 v52 a14 14 0 0 1 -14 14 h-48 l-22 24 v-24 h-26 a14 14 0 0 1 -14 -14 v-52 a14 14 0 0 1 14 -14 Z" fill="#0f0e54" transform="translate(7 7)"/>
+    <path d="M34 52 h96 a14 14 0 0 1 14 14 v52 a14 14 0 0 1 -14 14 h-48 l-22 24 v-24 h-26 a14 14 0 0 1 -14 -14 v-52 a14 14 0 0 1 14 -14 Z" fill="#d9f20c"/>
+    <circle cx="58" cy="92" r="9" fill="#0f0e54"/>
+    <circle cx="90" cy="92" r="9" fill="#0f0e54"/>
+    <circle cx="122" cy="92" r="9" fill="#0f0e54"/>
+  </g>
+  <g transform="rotate(8 130 140)">
+    <path d="M96 110 h62 a12 12 0 0 1 12 12 v34 a12 12 0 0 1 -12 12 h-40 l-16 18 v-18 h-6 a12 12 0 0 1 -12 -12 v-34 a12 12 0 0 1 12 -12 Z" fill="#0f0e54" transform="translate(6 6)"/>
+    <path d="M96 110 h62 a12 12 0 0 1 12 12 v34 a12 12 0 0 1 -12 12 h-40 l-16 18 v-18 h-6 a12 12 0 0 1 -12 -12 v-34 a12 12 0 0 1 12 -12 Z" fill="#27ccbc"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-hidden="true" fill="none">
+  <!-- augmented creativity: overlapping cut-paper layers + pencil -->
+  <g transform="rotate(-3 120 120)">
+    <rect x="48" y="64" width="120" height="120" rx="10" fill="#0f0e54" transform="translate(8 8)"/>
+    <rect x="48" y="64" width="120" height="120" rx="10" fill="#f7f7ff"/>
+    <!-- citron layer -->
+    <path d="M64 150 L120 80 L168 150 Z" fill="#d9f20c"/>
+    <!-- indigo layer -->
+    <circle cx="92" cy="120" r="30" fill="#0f0e54"/>
+    <!-- white overlap punch -->
+    <circle cx="92" cy="120" r="14" fill="#f7f7ff"/>
+  </g>
+  <!-- pencil across -->
+  <g transform="rotate(40 150 90)">
+    <rect x="120" y="30" width="22" height="120" rx="4" fill="#0f0e54" transform="translate(7 7)"/>
+    <rect x="120" y="44" width="22" height="106" rx="4" fill="#d9f20c"/>
+    <rect x="120" y="44" width="22" height="20" fill="#0f0e54"/>
+    <path d="M120 30 L142 30 L131 6 Z" fill="#f7f7ff"/>
+    <path d="M124 18 L138 18 L131 6 Z" fill="#0f0e54"/>
+  </g>
+</svg>

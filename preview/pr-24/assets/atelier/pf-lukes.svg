@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" role="img" aria-hidden="true" fill="none">
+  <defs>
+    <clipPath id="lk-clip"><rect width="600" height="480" rx="2"/></clipPath>
+    <filter id="lk-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/></filter>
+  </defs>
+  <g clip-path="url(#lk-clip)">
+    <!-- paper field -->
+    <rect width="600" height="480" fill="#bff7e9"/>
+    <rect width="600" height="480" fill="#f7f7ff" opacity="0.35"/>
+    <!-- torn paper diagonal band -->
+    <path d="M0 360 L70 330 L150 358 L240 326 L330 356 L430 322 L540 354 L600 330 L600 480 L0 480 Z" fill="#27ccbc"/>
+    <!-- cut-paper takeaway cup, offset shadow -->
+    <g transform="translate(206 96) rotate(-5 94 144)">
+      <path d="M30 24 L158 24 L142 252 L46 252 Z" fill="#0f0e54"/>
+      <path d="M22 16 L150 16 L134 244 L38 244 Z" fill="#f7f7ff"/>
+      <!-- citron sleeve -->
+      <path d="M26 96 L146 96 L140 168 L32 168 Z" fill="#d9f20c"/>
+      <!-- lid -->
+      <path d="M8 16 L164 16 L156 -10 L16 -10 Z" fill="#0f0e54"/>
+      <rect x="74" y="-44" width="22" height="40" rx="11" fill="#0f0e54"/>
+      <!-- straw -->
+      <rect x="78" y="-92" width="14" height="64" rx="7" fill="#27ccbc" transform="rotate(12 85 -60)"/>
+      <!-- ice cubes -->
+      <rect x="44" y="40" width="30" height="30" rx="5" fill="#bff7e9" transform="rotate(-12 59 55)"/>
+      <rect x="92" y="52" width="26" height="26" rx="5" fill="#bff7e9" transform="rotate(16 105 65)"/>
+      <rect x="64" y="68" width="24" height="24" rx="5" fill="#bff7e9" transform="rotate(6 76 80)"/>
+    </g>
+    <!-- citron paper disc -->
+    <circle cx="470" cy="120" r="58" fill="#d9f20c"/>
+    <circle cx="470" cy="120" r="58" fill="none" stroke="#0f0e54" stroke-width="4" stroke-dasharray="3 9"/>
+    <!-- droplet scraps -->
+    <path d="M120 150 q-18 26 0 40 q18 -14 0 -40 Z" fill="#27ccbc"/>
+    <path d="M508 300 q-14 20 0 32 q14 -12 0 -32 Z" fill="#d9f20c"/>
+    <!-- washi strip -->
+    <rect x="380" y="356" width="150" height="30" fill="#d9f20c" opacity="0.85" transform="rotate(-7 455 371)"/>
+    <rect x="380" y="356" width="150" height="30" fill="none" stroke="#0f0e54" stroke-width="2" stroke-dasharray="2 5" transform="rotate(-7 455 371)"/>
+    <rect width="600" height="480" filter="url(#lk-grain)"/>
+  </g>
+</svg>

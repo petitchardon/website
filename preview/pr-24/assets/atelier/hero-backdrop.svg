@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice" fill="none">
+  <defs>
+    <filter id="hb-grain"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0"/></filter>
+  </defs>
+  <!-- workbench surface: faint torn paper bands + scattered scraps, all palette -->
+  <rect width="1440" height="900" fill="#0f0e54"/>
+  <path d="M0 220 L240 180 L460 224 L700 176 L940 222 L1200 178 L1440 218 L1440 360 L0 360 Z" fill="#292881" opacity="0.5"/>
+  <path d="M0 640 L260 600 L520 642 L780 598 L1040 640 L1300 600 L1440 636 L1440 900 L0 900 Z" fill="#292881" opacity="0.45"/>
+  <!-- scattered cut-paper scraps, low opacity -->
+  <g opacity="0.22">
+    <rect x="120" y="120" width="130" height="130" rx="12" fill="#27ccbc" transform="rotate(-12 185 185)"/>
+    <circle cx="1180" cy="200" r="80" fill="#d9f20c"/>
+    <rect x="1000" y="520" width="150" height="150" rx="14" fill="#27ccbc" transform="rotate(10 1075 595)"/>
+    <circle cx="300" cy="700" r="64" fill="#bff7e9"/>
+    <path d="M760 120 l10 -34 l10 34 l34 10 l-34 10 l-10 34 l-10 -34 l-34 -10 Z" fill="#d9f20c"/>
+  </g>
+  <!-- dashed thread lines like stitched seams -->
+  <path d="M0 360 L1440 320" stroke="#bff7e9" stroke-width="2" stroke-dasharray="4 16" opacity="0.18"/>
+  <path d="M0 600 L1440 640" stroke="#d9f20c" stroke-width="2" stroke-dasharray="4 16" opacity="0.16"/>
+  <rect width="1440" height="900" filter="url(#hb-grain)"/>
+</svg>
