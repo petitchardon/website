@@ -12,20 +12,26 @@ const home = homeUrl(lang);
   description={dict.notFound.description}
   pathname="/404.html"
   bodyPage="not-found"
-  showHeader={false}
-  showFooter={false}
+  showHeader={true}
+  showFooter={true}
   noindex={true}
 >
-  <section class="project-hero" data-animate="fade-up">
-    <div class="container project-hero__inner">
-      <div class="project-hero__intro glass-surface">
-        <p class="breadcrumb">404</p>
-        <h1>{dict.notFound.h1}</h1>
-        <p>{dict.notFound.body}</p>
-        <div class="project-cta__actions">
-          <a class="btn btn--primary" href={home}>{dict.notFound.ctaHome}</a>
-          <a class="btn btn--ghost" href={`${home}#contact`}>{dict.notFound.ctaContact}</a>
-        </div>
+  <section class="notfound" data-animate="fade-up">
+    <div class="container notfound__inner">
+      <p class="salle__label" aria-hidden="true">
+        <span class="salle__num">salle 404</span>
+        <span class="salle__tick"></span>
+        <span class="salle__caption">{dict.galerie.exhibitionLabel}</span>
+      </p>
+      {/* An empty frame on the wall — the work that isn't here. */}
+      <div class="notfound__frame" aria-hidden="true">
+        <span class="notfound__frame-num">404</span>
+      </div>
+      <h1 class="notfound__title">{dict.notFound.h1}</h1>
+      <p class="notfound__body">{dict.notFound.body}</p>
+      <div class="project-cta__actions notfound__actions">
+        <a class="btn btn--primary" href={home}>{dict.notFound.ctaHome}</a>
+        <a class="btn btn--ghost" href={`${home}#contact`}>{dict.notFound.ctaContact}</a>
       </div>
     </div>
   </section>

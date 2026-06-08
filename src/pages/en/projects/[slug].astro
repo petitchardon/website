@@ -4,14 +4,16 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ProjectPage from '../../../components/ProjectPage.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects', ({ data }) => !data.draft);
-  return projects.map((project) => ({
+  const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+    (a, b) => a.data.order - b.data.order
+  );
+  return projects.map((project, i) => ({
     params: { slug: project.data.slugs.en },
-    props: { project },
+    props: { project, index: i, next: projects[(i + 1) % projects.length] },
   }));
 }
 
-const { project } = Astro.props;
+const { project, index, next } = Astro.props;
 const lang = 'en' as const;
 const pathname = `/en/projects/${project.data.slugs.en}.html`;
 ---
@@ -20,7 +22,17 @@ const pathname = `/en/projects/${project.data.slugs.en}.html`;
   title={`${project.data.title} | petitchardon`}
   description={project.data.description.en}
   pathname={pathname}
-  bodyPage="project-placeholder"
+  bodyPage="project"
 >
-  <ProjectPage lang={lang} projectTitle={project.data.title} body={project.data.description.en} />
+  <ProjectPage
+    lang={lang}
+    itemKey={project.data.slugs.fr}
+    title={project.data.title}
+    tag={project.data.tag}
+    cover={project.data.cover}
+    index={index}
+    nextSlug={next.data.slugs.en}
+    nextTitle={next.data.title}
+    nextCover={next.data.cover}
+  />
 </BaseLayout>

@@ -1,0 +1,115 @@
+---
+/**
+ * GalerieMark — bespoke, theme-aware exhibition marks for La Galerie.
+ *
+ * Rendered inline (not <img>) so `currentColor` can follow the gallery wall:
+ * deep indigo ink on the white-cube, cool light on the near-black wall. Teal is
+ * the quiet structural accent baked in; citron NEVER appears here (interaction
+ * only). Each mark is a restrained line/relief sign, not an illustration.
+ *
+ * `name` selects the drawing; `size` the rendered box. Marks are decorative and
+ * carry no semantic meaning (the heading next to them does), so aria-hidden.
+ */
+export interface Props {
+  name:
+    | 'rencontre'
+    | 'creer'
+    | 'parler'
+    | 'lancer'
+    | 'studio'
+    | 'creativite'
+    | 'livrables';
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 120, class: className } = Astro.props;
+const T = '#27ccbc'; // teal accent — legible on both walls
+---
+
+<svg
+  class:list={['galerie-mark', className]}
+  width={size}
+  height={size}
+  viewBox="0 0 120 120"
+  role="img"
+  aria-hidden="true"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  {name === 'rencontre' && (
+    <g>
+      <path d="M22 38 h40 a8 8 0 0 1 8 8 v18 a8 8 0 0 1 -8 8 h-22 l-13 11 v-11 h-5 a8 8 0 0 1 -8 -8 v-18 a8 8 0 0 1 8 -8 z" />
+      <path d="M98 56 h-14 a6 6 0 0 0 -6 6 v20 a6 6 0 0 0 6 6 h10 l9 8 v-8" stroke={T} />
+      <circle cx="40" cy="55" r="2.6" fill={T} stroke="none" />
+      <circle cx="50" cy="55" r="2.6" fill={T} stroke="none" />
+      <circle cx="60" cy="55" r="2.6" fill={T} stroke="none" />
+    </g>
+  )}
+
+  {name === 'creer' && (
+    <g>
+      {/* a drawing nib over an arc — sketch & refine */}
+      <path d="M30 86 q30 -52 60 -52" stroke={T} />
+      <path d="M84 28 l16 16 -40 40 -20 4 4 -20 z" />
+      <path d="M84 28 l16 16" />
+      <path d="M44 84 l8 8" />
+      <circle cx="90" cy="34" r="2.6" fill={T} stroke="none" />
+    </g>
+  )}
+
+  {name === 'parler' && (
+    <g>
+      {/* exchange — two arrows circling, a dialogue of revisions */}
+      <path d="M34 44 a26 26 0 0 1 52 0" />
+      <path d="M86 76 a26 26 0 0 1 -52 0" stroke={T} />
+      <path d="M86 44 v-14 h-14" />
+      <path d="M34 76 v14 h14" stroke={T} />
+      <circle cx="60" cy="60" r="3.4" fill={T} stroke="none" />
+    </g>
+  )}
+
+  {name === 'lancer' && (
+    <g>
+      {/* launch — an ascending mark rising off a baseline */}
+      <path d="M28 92 l32 -56 32 56" />
+      <path d="M44 76 h32" stroke={T} />
+      <path d="M60 36 v-12" stroke={T} />
+      <path d="M52 30 l8 -8 8 8" />
+    </g>
+  )}
+
+  {name === 'studio' && (
+    <g>
+      {/* a human-scale studio — a single open door / easel */}
+      <rect x="36" y="30" width="48" height="60" rx="4" />
+      <path d="M36 90 l24 -10 24 10" stroke={T} />
+      <circle cx="60" cy="58" r="9" stroke={T} />
+      <path d="M60 49 v-10" />
+    </g>
+  )}
+
+  {name === 'creativite' && (
+    <g>
+      {/* augmented creativity — three disciplines braided */}
+      <circle cx="48" cy="50" r="20" />
+      <circle cx="72" cy="50" r="20" stroke={T} />
+      <circle cx="60" cy="72" r="20" />
+      <circle cx="60" cy="58" r="3" fill={T} stroke="none" />
+    </g>
+  )}
+
+  {name === 'livrables' && (
+    <g>
+      {/* ready-to-use deliverables — a stacked, wrapped set */}
+      <rect x="34" y="46" width="52" height="40" rx="4" />
+      <path d="M34 60 h52" />
+      <path d="M60 46 v40" stroke={T} />
+      <path d="M44 46 l16 -14 16 14" stroke={T} />
+      <circle cx="60" cy="32" r="3" fill={T} stroke="none" />
+    </g>
+  )}
+</svg>

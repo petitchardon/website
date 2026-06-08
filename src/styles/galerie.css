@@ -204,16 +204,20 @@ main,
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  [data-reveal] {
+  [data-reveal]:not(.is-revealed) {
     opacity: 0;
     transform: translateY(28px) scale(0.985);
     transition: opacity var(--transition-slow), transform var(--transition-slow);
-    will-change: opacity, transform;
   }
 
+  /* Once revealed, return to the normal paint path with no residual transform
+     or compositing hint (a persistent will-change/transform layer can fail to
+     paint in some headless fullPage captures). */
   [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    will-change: auto;
   }
 }
 
@@ -315,7 +319,7 @@ main,
 }
 
 html[data-theme="dark"] .colophon {
-  background: #050507;
+  background: #04031a;
 }
 
 .colophon__inner {
@@ -393,4 +397,682 @@ html[data-theme="dark"] .colophon {
   .room-index {
     transition: none;
   }
+}
+
+/* ===========================================================================
+   9. THE FRAMED PLATE — shared museum frame language.
+   A neutral mat, a hairline rebate that warms to citron on hover/focus, a
+   gentle drop on the wall. Used by portfolio cards, the about portrait and the
+   project-page catalogue plates. Reads on both walls because the artwork SVGs
+   carry their own canvas; the frame is chrome.
+   ======================================================================== */
+.plate {
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+
+.plate__frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface);
+  padding: clamp(0.6rem, 1.4vw, 1.1rem);
+  border: 1px solid var(--color-hairline-soft);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    var(--shadow-elevated);
+  transition: box-shadow var(--transition-slow), border-color var(--transition-base),
+    transform var(--transition-slow);
+}
+
+/* inner mat + rebate around the work */
+.plate__frame::after {
+  content: "";
+  position: absolute;
+  inset: clamp(0.6rem, 1.4vw, 1.1rem);
+  border: 1px solid var(--color-hairline);
+  pointer-events: none;
+  z-index: 2;
+  transition: border-color var(--transition-base);
+}
+
+.plate__frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1px;
+}
+
+/* ===========================================================================
+   10. HERO BACKDROP — the empty gallery in perspective, quietly behind the
+   entrance copy. Never gates first paint (it's a background image).
+   ======================================================================== */
+.hero__background {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    url("/assets/galerie/hero-backdrop.svg") center 42% / clamp(680px, 92%, 1280px) no-repeat;
+  opacity: 0.5;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 42%, #000 38%, transparent 78%);
+  mask-image: radial-gradient(120% 90% at 50% 42%, #000 38%, transparent 78%);
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .hero__background {
+  opacity: 0.62;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================================================================
+   11. PORTFOLIO — works as framed plates on the wall.
+   Replace the dark photo-overlay model with a framed plate + always-legible
+   placard below, so the gallery reads on the white-cube too.
+   ======================================================================== */
+.portfolio__card {
+  min-height: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 1.1rem;
+}
+
+.portfolio__card figure {
+  position: relative;
+  inset: auto;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  padding: clamp(0.5rem, 1.2vw, 0.9rem);
+  border: 1px solid var(--color-hairline-soft);
+  border-radius: 2px;
+  box-shadow: var(--shadow-elevated);
+  aspect-ratio: 5 / 4;
+  transition: box-shadow var(--transition-slow), border-color var(--transition-base);
+}
+
+.portfolio__card figure::after {
+  content: "";
+  position: absolute;
+  inset: clamp(0.5rem, 1.2vw, 0.9rem);
+  border: 1px solid var(--color-hairline);
+  pointer-events: none;
+  z-index: 2;
+  transition: border-color var(--transition-base);
+}
+
+.portfolio__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--color-surface-2);
+}
+
+/* placard sits BELOW the frame, always visible (overrides the hover-reveal). */
+.portfolio__content {
+  position: static;
+  inset: auto;
+  padding: 0;
+  background: none;
+  color: var(--color-text);
+  opacity: 1;
+  transform: none;
+  gap: 0.35rem;
+}
+
+.portfolio__content h3 {
+  color: var(--color-text-strong);
+  margin: 0;
+}
+
+.portfolio__content p {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+}
+
+.portfolio__link {
+  color: var(--color-muted);
+  border-bottom: 1px solid transparent;
+}
+
+.portfolio__card:hover figure,
+.portfolio__card:focus-visible figure,
+.portfolio__card:focus-within figure {
+  border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-hairline-soft));
+}
+
+.portfolio__card:hover figure::after,
+.portfolio__card:focus-visible figure::after,
+.portfolio__card:focus-within figure::after {
+  border-color: var(--color-accent);
+}
+
+.portfolio__card:hover .portfolio__link,
+.portfolio__card:focus-visible .portfolio__link,
+.portfolio__card:focus-within .portfolio__link {
+  color: var(--color-accent-ink);
+  border-bottom-color: var(--color-accent);
+}
+
+.portfolio__card--cta {
+  grid-template-rows: 1fr;
+  background: var(--color-surface);
+  border: 1px solid var(--color-hairline-soft);
+  border-radius: 2px;
+  min-height: 0;
+}
+
+/* ===========================================================================
+   12. PROCESS & ABOUT MARKS — the inline gallery signs follow the wall colour.
+   ======================================================================== */
+.galerie-mark {
+  display: block;
+  color: var(--color-text-strong);
+  transition: color var(--transition-base), transform var(--transition-base);
+}
+
+.process__item .galerie-mark {
+  width: clamp(96px, 12vw, 150px);
+  height: auto;
+}
+
+.process__item:hover .galerie-mark,
+.process__item:focus-within .galerie-mark {
+  color: var(--color-accent-ink);
+}
+
+.about__icon.galerie-mark {
+  width: clamp(140px, 20vw, 200px);
+  height: auto;
+  opacity: 1;
+}
+
+.about__pillar:last-child .about__icon.galerie-mark {
+  width: clamp(150px, 22vw, 210px);
+}
+
+/* ===========================================================================
+   13. PROJECT PAGE — the exhibition catalogue room.
+   ======================================================================== */
+.exhibit {
+  position: relative;
+}
+
+.exhibit__entrance {
+  padding-top: clamp(3.5rem, 9vw, 6rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.exhibit__entrance-inner {
+  max-width: 60rem;
+}
+
+.exhibit__breadcrumb {
+  margin-bottom: 1.4rem;
+}
+
+.exhibit__breadcrumb a {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.exhibit__breadcrumb a:hover,
+.exhibit__breadcrumb a:focus-visible {
+  color: var(--color-accent-ink);
+}
+
+.exhibit__overline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: 0.9rem;
+}
+
+html[data-theme="dark"] .exhibit__overline {
+  color: var(--color-teal);
+}
+
+.exhibit__title {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.03;
+  margin-bottom: 1.6rem;
+}
+
+.exhibit__intro {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 46rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.exhibit__meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2.4vw, 2rem);
+  margin: 0;
+  padding-top: clamp(1.4rem, 3vw, 2rem);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.exhibit__meta div {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.exhibit__meta dt {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.exhibit__meta dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text-strong);
+}
+
+/* master plate, full-bleed-ish */
+.exhibit__plate {
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.exhibit__plate--hero .plate__frame {
+  padding: clamp(0.9rem, 2vw, 1.6rem);
+}
+
+.exhibit__plate--hero .plate__frame::after {
+  inset: clamp(0.9rem, 2vw, 1.6rem);
+}
+
+.plate__placard {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 1.1rem;
+  padding-left: clamp(0.2rem, 1vw, 0.6rem);
+}
+
+.plate__placard-num {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+
+.plate__placard-text,
+.plate__placard-caption {
+  font-size: 0.92rem;
+  color: var(--color-muted);
+  letter-spacing: 0.01em;
+}
+
+.plate__placard-title {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  margin: 0.3rem 0 0.2rem;
+}
+
+.plate__placard-body {
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 0.4rem;
+  max-width: 40rem;
+}
+
+/* curatorial note */
+.exhibit__note {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+  background: var(--color-surface-2);
+}
+
+.exhibit__note-inner {
+  max-width: 52rem;
+}
+
+.exhibit__note-lead {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--color-text-strong);
+  margin: 0;
+}
+
+/* catalogue plate rows: artwork + placard side by side */
+.exhibit__plates {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+
+.exhibit__plates-header {
+  text-align: left;
+  margin-inline: 0;
+  max-width: none;
+}
+
+.exhibit__plate-row {
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.exhibit__plate-row:last-child {
+  margin-bottom: 0;
+}
+
+.exhibit__plate-row .plate {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(1.6rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.exhibit__plate-row .plate__placard {
+  margin-top: 0;
+}
+
+.exhibit__plate-row--alt .plate {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+}
+
+.exhibit__plate-row--alt .plate .plate__frame {
+  order: 2;
+}
+
+.exhibit__plate-row--alt .plate .plate__placard {
+  order: 1;
+}
+
+/* colophon + next room */
+.exhibit__colophon {
+  padding-block: clamp(3.5rem, 8vw, 5.5rem);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.exhibit__colophon-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+.exhibit__credit-list {
+  display: grid;
+  gap: 1.2rem;
+  margin: 1rem 0 2rem;
+}
+
+.exhibit__credit-list dt {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.35rem;
+}
+
+.exhibit__credit-list dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-text-strong);
+}
+
+.exhibit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.exhibit__next {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "label thumb"
+    "title thumb"
+    "arrow thumb";
+  align-items: center;
+  gap: 0.2rem 1.4rem;
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+  border: 1px solid var(--color-hairline);
+  border-radius: 2px;
+  background: var(--color-surface);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.exhibit__next:hover,
+.exhibit__next:focus-visible {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.exhibit__next-label {
+  grid-area: label;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+
+.exhibit__next-title {
+  grid-area: title;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-text-strong);
+}
+
+.exhibit__next-arrow {
+  grid-area: arrow;
+  font-size: 1.4rem;
+  color: var(--color-muted);
+  transition: transform var(--transition-base), color var(--transition-base);
+}
+
+.exhibit__next:hover .exhibit__next-arrow,
+.exhibit__next:focus-visible .exhibit__next-arrow {
+  transform: translateX(6px);
+  color: var(--color-accent-ink);
+}
+
+.exhibit__next-thumb {
+  grid-area: thumb;
+  width: clamp(96px, 14vw, 140px);
+  border: 1px solid var(--color-hairline-soft);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--color-surface-2);
+}
+
+.exhibit__next-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 920px) {
+  .exhibit__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .exhibit__plate-row .plate,
+  .exhibit__plate-row--alt .plate {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .exhibit__plate-row--alt .plate .plate__frame {
+    order: 0;
+  }
+  .exhibit__plate-row--alt .plate .plate__placard {
+    order: 0;
+  }
+  .exhibit__colophon-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .exhibit__meta {
+    grid-template-columns: 1fr;
+  }
+  .exhibit__next {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "thumb"
+      "label"
+      "title"
+      "arrow";
+    justify-items: start;
+  }
+  .exhibit__next-thumb {
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
+/* ===========================================================================
+   14. FRAMED, SPOTLIT PORTRAIT — the about photo treated as a gallery portrait.
+   ======================================================================== */
+.about__photo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about__photo::before {
+  content: "";
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  width: clamp(160px, 24vw, 280px);
+  height: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    60% 80% at 50% 0%,
+    color-mix(in srgb, var(--color-teal) 22%, transparent),
+    transparent 72%
+  );
+  filter: blur(6px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about__photo img {
+  position: relative;
+  z-index: 1;
+  width: min(340px, 30vw);
+  background: var(--color-surface);
+  padding: clamp(0.7rem, 1.4vw, 1.1rem);
+  border: 1px solid var(--color-hairline-soft);
+  border-radius: 2px;
+  box-shadow: var(--shadow-elevated);
+  outline: 1px solid var(--color-hairline);
+  outline-offset: -1.3rem;
+}
+
+@media (max-width: 920px) {
+  .about__photo img {
+    width: min(280px, 64vw);
+  }
+}
+
+/* ===========================================================================
+   15. Reduced motion / no-pointer fallbacks for the new framed plates.
+   ======================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .plate__frame,
+  .portfolio__card figure,
+  .exhibit__next {
+    transition: none;
+  }
+}
+
+/* ===========================================================================
+   16. 404 — "salle introuvable": an empty frame on the gallery wall.
+   ======================================================================== */
+.notfound {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.notfound__inner {
+  max-width: 44rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notfound .salle__label {
+  justify-content: center;
+  margin-bottom: 2.4rem;
+}
+
+.notfound__frame {
+  width: clamp(160px, 26vw, 240px);
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-elevated);
+  display: grid;
+  place-items: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  position: relative;
+}
+
+.notfound__frame::after {
+  content: "";
+  position: absolute;
+  inset: 1.1rem;
+  border: 1px solid var(--color-hairline);
+}
+
+.notfound__frame-num {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+.notfound__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.notfound__body {
+  color: var(--color-muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.notfound__actions {
+  justify-content: center;
 }

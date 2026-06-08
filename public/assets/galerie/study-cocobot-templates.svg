@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="560" fill="#eeeefb"/>
+  <text x="60" y="76" fill="#0f0e54" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="3">TEMPLATES</text>
+  <line x1="60" y1="96" x2="740" y2="96" stroke="#27ccbc" stroke-width="2" opacity="0.5"/>
+  <!-- three LinkedIn carousel cards, fanned -->
+  <g>
+    <g transform="translate(120 150) rotate(-6)">
+      <rect width="220" height="280" rx="14" fill="#ffffff" stroke="#0f0e54" stroke-width="3"/>
+      <rect x="0" y="0" width="220" height="64" rx="14" fill="#0f0e54"/>
+      <rect x="24" y="100" width="172" height="14" rx="7" fill="#292881"/>
+      <rect x="24" y="128" width="140" height="14" rx="7" fill="#292881" opacity="0.5"/>
+      <rect x="24" y="220" width="90" height="30" rx="15" fill="#27ccbc"/>
+    </g>
+    <g transform="translate(300 130)">
+      <rect width="220" height="300" rx="14" fill="#27ccbc"/>
+      <rect x="24" y="40" width="172" height="16" rx="8" fill="#0f0e54"/>
+      <rect x="24" y="72" width="120" height="16" rx="8" fill="#0f0e54" opacity="0.6"/>
+      <circle cx="110" cy="190" r="56" fill="#bff7e9"/>
+      <circle cx="110" cy="190" r="22" fill="#0f0e54"/>
+    </g>
+    <g transform="translate(490 150) rotate(6)">
+      <rect width="220" height="280" rx="14" fill="#0f0e54"/>
+      <rect x="24" y="40" width="172" height="14" rx="7" fill="#bff7e9"/>
+      <rect x="24" y="68" width="130" height="14" rx="7" fill="#bff7e9" opacity="0.6"/>
+      <rect x="24" y="220" width="172" height="34" rx="17" fill="#d9f20c"/>
+    </g>
+  </g>
+</svg>

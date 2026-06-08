@@ -1,35 +1,232 @@
 ---
 import type { Lang } from '../i18n';
-import { getDict, homeUrl } from '../i18n';
+import { getDict, homeUrl, projectUrl, asset } from '../i18n';
 
 export interface Props {
   lang: Lang;
+  /** Canonical (fr) slug — keys the i18n content map. */
+  itemKey?: string;
+  title?: string;
+  tag?: string;
+  cover?: string;
+  index?: number;
+  nextSlug?: string;
+  nextTitle?: string;
+  nextCover?: string;
+  /** Legacy fallback props (kept for the under-construction state). */
   projectTitle?: string;
   body?: string;
 }
 
-const { lang, projectTitle, body } = Astro.props;
+const {
+  lang,
+  itemKey,
+  title,
+  cover,
+  index = 0,
+  nextSlug,
+  nextTitle,
+  nextCover,
+  projectTitle,
+  body,
+} = Astro.props;
+
 const dict = getDict(lang);
 const home = homeUrl(lang);
-const headline = projectTitle ?? dict.project.underConstruction;
-const text = body ?? dict.project.underConstructionBody;
+const p = dict.project;
+
+// Pull the curated content for this work, if authored. Otherwise fall back to
+// a graceful "under construction" placard (keeps the type-safe contract).
+const items = (p as any).items ?? {};
+const content = itemKey ? items[itemKey] : undefined;
+
+// Two catalogue study plates per work, theme-safe SVGs authored for La Galerie.
+const studyMap: Record<string, [string, string]> = {
+  'lukes-iced-coffees': [
+    'assets/galerie/study-lukes-mark.svg',
+    'assets/galerie/study-lukes-palette.svg',
+  ],
+  'intelligences-atypiques': [
+    'assets/galerie/study-intelligences-system.svg',
+    'assets/galerie/study-intelligences-social.svg',
+  ],
+  cocobot: [
+    'assets/galerie/study-cocobot-templates.svg',
+    'assets/galerie/study-cocobot-cadence.svg',
+  ],
+};
+const studies = (itemKey && studyMap[itemKey]) ?? null;
+
+const headline = title ?? projectTitle ?? p.underConstruction;
+const plateNum = String((index ?? 0) + 1).padStart(2, '0');
+// `cover` from content collection is already root-absolute; rebase onto deploy base.
+const coverSrc = cover ? asset(cover.replace(/^\//, '')) : null;
+const nextCoverSrc = nextCover ? asset(nextCover.replace(/^\//, '')) : null;
+const nextHref = nextSlug ? projectUrl(lang, nextSlug) : `${home}#portfolio`;
 ---
 
-<section class="project-hero" data-animate="fade-up">
-  <div class="container project-hero__inner">
-    <div class="project-hero__intro glass-surface">
-      <p class="breadcrumb">{dict.project.breadcrumb}</p>
-      <h1>{headline}</h1>
-      <p>{text}</p>
-      <h2 class="seo-hidden">{dict.project.actionsHeading}</h2>
-      <div class="project-cta__actions">
-        <a class="btn btn--primary" href={`${home}#portfolio`}>
-          {dict.project.backToPortfolio}
-        </a>
-        <a class="btn btn--ghost" href={`${home}#contact`}>
-          {dict.project.backToContact}
-        </a>
+{content ? (
+  <article class="exhibit">
+    {/* Cursor spotlight — decorative gallery light; CSS resting state keeps it
+        from gating first paint. */}
+    <div class="gallery-spotlight" aria-hidden="true" data-spotlight></div>
+
+    {/* ---- Salle d'entrée : placard du cartel ---- */}
+    <header class="exhibit__entrance salle" data-room="entrance" data-animate="fade-up">
+      <div class="container exhibit__entrance-inner">
+        <p class="salle__label" aria-hidden="true">
+          <span class="salle__num">{p.plateLabel} {plateNum}</span>
+          <span class="salle__tick"></span>
+          <span class="salle__caption">{p.catalogueLabel}</span>
+        </p>
+        <nav class="exhibit__breadcrumb" aria-label={p.breadcrumb}>
+          <a href={`${home}#portfolio`}>{p.breadcrumb}</a>
+        </nav>
+        <p class="exhibit__overline">{content.overline}</p>
+        <h1 class="exhibit__title">{headline}</h1>
+        <p class="exhibit__intro">{content.intro}</p>
+        <dl class="exhibit__meta">
+          <div>
+            <dt>{p.metaYear}</dt>
+            <dd>{content.year}</dd>
+          </div>
+          <div>
+            <dt>{p.metaClient}</dt>
+            <dd>{content.client}</dd>
+          </div>
+          <div>
+            <dt>{p.metaRole}</dt>
+            <dd>{content.role}</dd>
+          </div>
+          <div>
+            <dt>{p.metaDeliverables}</dt>
+            <dd>{content.deliverables}</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    {/* ---- La planche maîtresse : œuvre encadrée plein cadre ---- */}
+    {coverSrc && (
+      <section class="exhibit__plate exhibit__plate--hero" data-room="plate-cover" data-animate="fade-in">
+        <div class="container">
+          <figure class="plate">
+            <div class="plate__frame" data-parallax="0.04">
+              <img src={coverSrc} alt={`${headline} — ${content.coverCaption}`} width="800" height="640" />
+            </div>
+            <figcaption class="plate__placard">
+              <span class="plate__placard-num" aria-hidden="true">{p.plateLabel} {plateNum}.0</span>
+              <span class="plate__placard-text">{content.coverCaption}</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    )}
+
+    {/* ---- Note d'intention ---- */}
+    <section class="exhibit__note" data-room="note" data-animate="fade-up">
+      <div class="container exhibit__note-inner">
+        <p class="salle__label" aria-hidden="true">
+          <span class="salle__num">{p.introHeading}</span>
+        </p>
+        <h2 class="seo-hidden">{p.introHeading}</h2>
+        <p class="exhibit__note-lead">{content.intro}</p>
+      </div>
+    </section>
+
+    {/* ---- Les planches du catalogue ---- */}
+    {studies && (
+      <section class="exhibit__plates salle" data-room="plates" data-animate="fade-in">
+        <div class="container">
+          <header class="section-header exhibit__plates-header">
+            <p class="salle__label" aria-hidden="true">
+              <span class="salle__num">{p.roomPlates}</span>
+            </p>
+            <h2>{p.platesHeading}</h2>
+          </header>
+
+          <div class="exhibit__plate-row">
+            <figure class="plate">
+              <div class="plate__frame">
+                <img src={asset(studies[0])} alt={`${headline} — ${content.section1Caption}`} width="800" height="560" loading="lazy" />
+              </div>
+              <figcaption class="plate__placard">
+                <span class="plate__placard-num" aria-hidden="true">{p.plateLabel} {plateNum}.1</span>
+                <h3 class="plate__placard-title">{content.section1Title}</h3>
+                <p class="plate__placard-body">{content.section1Body}</p>
+                <span class="plate__placard-caption">{content.section1Caption}</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="exhibit__plate-row exhibit__plate-row--alt">
+            <figure class="plate">
+              <div class="plate__frame">
+                <img src={asset(studies[1])} alt={`${headline} — ${content.section2Caption}`} width="800" height="560" loading="lazy" />
+              </div>
+              <figcaption class="plate__placard">
+                <span class="plate__placard-num" aria-hidden="true">{p.plateLabel} {plateNum}.2</span>
+                <h3 class="plate__placard-title">{content.section2Title}</h3>
+                <p class="plate__placard-body">{content.section2Body}</p>
+                <span class="plate__placard-caption">{content.section2Caption}</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ---- Cartel de l'œuvre (colophon) + salle suivante ---- */}
+    <section class="exhibit__colophon" data-room="colophon" data-animate="fade-up">
+      <div class="container exhibit__colophon-inner">
+        <div class="exhibit__credits">
+          <p class="salle__label" aria-hidden="true">
+            <span class="salle__num">{p.colophonHeading}</span>
+          </p>
+          <dl class="exhibit__credit-list">
+            <div>
+              <dt>{p.creditDesign}</dt>
+              <dd>{p.creditDesignName}</dd>
+            </div>
+            <div>
+              <dt>{p.creditStudio}</dt>
+              <dd>{p.creditStudioName}</dd>
+            </div>
+          </dl>
+          <div class="exhibit__actions">
+            <a class="btn btn--ghost" href={`${home}#portfolio`}>{p.backToPortfolio}</a>
+            <a class="btn btn--primary" href={`${home}#contact`}>{p.backToContact}</a>
+          </div>
+        </div>
+
+        {nextSlug && (
+          <a class="exhibit__next" href={nextHref}>
+            <span class="exhibit__next-label">{p.nextLabel}</span>
+            <span class="exhibit__next-title">{nextTitle}</span>
+            {nextCoverSrc && (
+              <span class="exhibit__next-thumb" aria-hidden="true">
+                <img src={nextCoverSrc} alt="" width="200" height="160" loading="lazy" />
+              </span>
+            )}
+            <span class="exhibit__next-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        )}
+      </div>
+    </section>
+  </article>
+) : (
+  <section class="project-hero" data-animate="fade-up">
+    <div class="container project-hero__inner">
+      <div class="project-hero__intro glass-surface">
+        <p class="breadcrumb">{p.breadcrumb}</p>
+        <h1>{headline}</h1>
+        <p>{body ?? p.underConstructionBody}</p>
+        <h2 class="seo-hidden">{p.actionsHeading}</h2>
+        <div class="project-cta__actions">
+          <a class="btn btn--primary" href={`${home}#portfolio`}>{p.backToPortfolio}</a>
+          <a class="btn btn--ghost" href={`${home}#contact`}>{p.backToContact}</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+)}

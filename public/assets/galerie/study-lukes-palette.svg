@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="560" fill="#eeeefb"/>
+  <text x="60" y="76" fill="#0f0e54" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="3">PALETTE</text>
+  <line x1="60" y1="96" x2="740" y2="96" stroke="#27ccbc" stroke-width="2" opacity="0.5"/>
+  <!-- colour chips with ink labels -->
+  <g font-family="Inter, system-ui, sans-serif" font-size="14" letter-spacing="1">
+    <g transform="translate(60 140)">
+      <rect width="150" height="200" rx="8" fill="#0f0e54"/>
+      <text x="14" y="226" fill="#0f0e54">#0F0E54</text>
+    </g>
+    <g transform="translate(240 140)">
+      <rect width="150" height="200" rx="8" fill="#27ccbc"/>
+      <text x="14" y="226" fill="#0f0e54">#27CCBC</text>
+    </g>
+    <g transform="translate(420 140)">
+      <rect width="150" height="200" rx="8" fill="#bff7e9"/>
+      <text x="14" y="226" fill="#0f0e54">#BFF7E9</text>
+    </g>
+    <g transform="translate(600 140)">
+      <rect width="140" height="200" rx="8" fill="#ffffff" stroke="#0f0e54" stroke-width="2"/>
+      <text x="14" y="226" fill="#0f0e54">#FFFFFF</text>
+    </g>
+  </g>
+</svg>

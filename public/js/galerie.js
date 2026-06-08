@@ -25,11 +25,12 @@
       if (reduceMotion) {
         revealItems.forEach((el) => el.classList.add("is-revealed"));
       } else {
+        const reveal = (el) => el.classList.add("is-revealed");
         const revealObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add("is-revealed");
+                reveal(entry.target);
                 revealObserver.unobserve(entry.target);
               }
             });
@@ -37,6 +38,23 @@
           { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
         );
         revealItems.forEach((el) => revealObserver.observe(el));
+
+        // Robustness net: a plate that has already scrolled past the top of the
+        // viewport (e.g. during a fast programmatic scroll, or a deep-link jump)
+        // must never stay hidden. On every scroll, reveal anything whose top has
+        // entered the lower 92% of the viewport. Cheap, passive, idempotent.
+        const sweep = () => {
+          const h = window.innerHeight;
+          revealItems.forEach((el) => {
+            if (el.classList.contains("is-revealed")) return;
+            const top = el.getBoundingClientRect().top;
+            // Reveal anything whose top has entered (or passed) the viewport.
+            if (top < h) reveal(el);
+          });
+        };
+        window.addEventListener("scroll", sweep, { passive: true });
+        window.addEventListener("resize", sweep, { passive: true });
+        sweep();
       }
     }
 

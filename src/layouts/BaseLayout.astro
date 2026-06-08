@@ -87,7 +87,9 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
     </main>
     {showFooter && <Footer lang={lang} />}
     <script src={asset('js/main.js')} is:inline defer></script>
-    {bodyPage === 'home' && <script src={asset('js/galerie.js')} is:inline defer></script>}
+    {(bodyPage === 'home' || bodyPage === 'project') && (
+      <script src={asset('js/galerie.js')} is:inline defer></script>
+    )}
     <Observability />
   </body>
 </html>

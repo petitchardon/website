@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="560" fill="#0f0e54"/>
+  <text x="60" y="76" fill="#bff7e9" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="3">RÉSEAUX</text>
+  <line x1="60" y1="96" x2="740" y2="96" stroke="#27ccbc" stroke-width="2" opacity="0.6"/>
+  <!-- a 3x2 social-post grid template, reversed -->
+  <g>
+    <g transform="translate(60 130)">
+      <rect width="200" height="180" rx="10" fill="#292881"/>
+      <circle cx="100" cy="74" r="34" fill="#27ccbc"/>
+      <rect x="36" y="130" width="128" height="10" rx="5" fill="#bff7e9" opacity="0.7"/>
+    </g>
+    <g transform="translate(300 130)">
+      <rect width="200" height="180" rx="10" fill="#27ccbc"/>
+      <rect x="36" y="46" width="128" height="12" rx="6" fill="#0f0e54"/>
+      <rect x="36" y="74" width="96" height="12" rx="6" fill="#0f0e54" opacity="0.6"/>
+      <circle cx="160" cy="140" r="20" fill="#d9f20c"/>
+    </g>
+    <g transform="translate(540 130)">
+      <rect width="200" height="180" rx="10" fill="#bff7e9"/>
+      <path d="M70 130 l30 -52 30 52 z" fill="#0f0e54"/>
+    </g>
+    <g transform="translate(60 340)">
+      <rect width="200" height="120" rx="10" fill="#292881"/>
+      <rect x="36" y="40" width="128" height="10" rx="5" fill="#bff7e9" opacity="0.7"/>
+      <rect x="36" y="64" width="88" height="10" rx="5" fill="#bff7e9" opacity="0.5"/>
+    </g>
+    <g transform="translate(300 340)">
+      <rect width="200" height="120" rx="10" fill="#bff7e9"/>
+      <circle cx="100" cy="60" r="30" fill="none" stroke="#0f0e54" stroke-width="6"/>
+    </g>
+    <g transform="translate(540 340)">
+      <rect width="200" height="120" rx="10" fill="#27ccbc"/>
+      <rect x="40" y="50" width="120" height="20" rx="10" fill="#0f0e54"/>
+    </g>
+  </g>
+</svg>
