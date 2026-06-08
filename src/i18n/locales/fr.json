@@ -24,6 +24,26 @@
     "about": "à propos",
     "contact": "contact"
   },
+  "galerie": {
+    "exhibitionLabel": "exposition",
+    "roomNav": "salles de l’exposition",
+    "room00": "salle 00 — entrée",
+    "room01": "salle 01 — la méthode",
+    "room02": "salle 02 — les œuvres",
+    "room03": "salle 03 — l’artiste",
+    "room04": "salle 04 — l’invitation",
+    "heroRoom": "salle 00",
+    "heroHint": "descendez pour visiter l’exposition",
+    "colophonLabel": "générique",
+    "colophonTitle": "générique de fin",
+    "colophonRole1": "direction artistique & design",
+    "colophonRole1Name": "Anne Della Gaspera — petitchardon",
+    "colophonRole2": "graphisme · illustration · rédaction",
+    "colophonRole2Name": "studio petitchardon, Rambouillet",
+    "colophonRole3": "vous, bientôt",
+    "colophonRole3Name": "votre histoire, en lumière",
+    "colophonClose": "fin de la visite — merci d’être passé·e"
+  },
   "hero": {
     "tag": "graphisme · illustration · rédaction",
     "title": "faites-vous remarquer",

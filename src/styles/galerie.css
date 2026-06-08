@@ -1,0 +1,396 @@
+/* ============================================================================
+   LA GALERIE — cinematic exhibition layer
+   Loaded after main.css. Adds the museum-walk chrome: cursor spotlight, depth
+   parallax, the room-index rail, "salle" labels, scroll reveals and the closing
+   générique. Every effect degrades to a calm, fully-visible static gallery
+   under prefers-reduced-motion or with JS disabled. Citron appears ONLY at
+   interaction (hover / focus / current room / spotlight tint).
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. Cursor spotlight — a soft gallery light that drifts with the pointer.
+   CSS resting state is centered & faint; JS only nudges the position. Never
+   gates content (pointer-events:none, sits below content via mix-blend).
+--------------------------------------------------------------------------- */
+.gallery-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  --spot-x: 50vw;
+  --spot-y: 38vh;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  background: radial-gradient(
+    32rem 32rem at var(--spot-x) var(--spot-y),
+    color-mix(in srgb, var(--color-accent) 9%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 4%, transparent) 30%,
+    transparent 62%
+  );
+}
+
+html[data-theme="dark"] .gallery-spotlight {
+  background: radial-gradient(
+    34rem 34rem at var(--spot-x) var(--spot-y),
+    color-mix(in srgb, var(--color-accent) 7%, transparent) 0%,
+    rgba(255, 255, 255, 0.035) 34%,
+    transparent 64%
+  );
+}
+
+.gallery-spotlight.is-lit {
+  opacity: 1;
+}
+
+/* Keep page content above the spotlight wash. */
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   2. Room index rail — a quiet vertical index of the exhibition salles.
+   Fixed to the left gutter on wide screens; fades in once you enter the show.
+--------------------------------------------------------------------------- */
+.room-index {
+  position: fixed;
+  top: 50%;
+  left: clamp(0.75rem, 2vw, 1.75rem);
+  transform: translateY(-50%);
+  z-index: 800;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  pointer-events: none;
+}
+
+.room-index.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.room-index.is-dimmed {
+  opacity: 0.25;
+}
+
+.room-index ol {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.room-index__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.room-index__num {
+  font-variant-numeric: tabular-nums;
+  width: 1.4rem;
+  opacity: 0.7;
+  transition: opacity var(--transition-base), color var(--transition-base);
+}
+
+.room-index__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-muted);
+  flex: 0 0 auto;
+  transition: background var(--transition-base), border-color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.room-index__name {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: max-width var(--transition-slow), opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+.room-index__link:hover .room-index__name,
+.room-index__link:focus-visible .room-index__name,
+.room-index__link.is-current .room-index__name {
+  max-width: 16rem;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.room-index__link:hover,
+.room-index__link:focus-visible,
+.room-index__link.is-current {
+  color: var(--color-accent-ink);
+}
+
+.room-index__link:hover .room-index__dot,
+.room-index__link:focus-visible .room-index__dot,
+.room-index__link.is-current .room-index__dot {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.25);
+}
+
+.room-index__link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* The rail steals horizontal space; hide it where the gutter is too thin. */
+@media (max-width: 1200px) {
+  .room-index {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   3. Salle labels — the wall placard for each exhibition room.
+--------------------------------------------------------------------------- */
+.salle__label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 1.4rem;
+}
+
+.salle__num {
+  white-space: nowrap;
+}
+
+.salle__tick {
+  width: clamp(2rem, 6vw, 4rem);
+  height: 1px;
+  background: var(--color-hairline);
+}
+
+.salle__caption {
+  white-space: nowrap;
+}
+
+/* Center the hero placard, left-align the rest (section headers). */
+.hero .salle__label {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.section-header .salle__label,
+.contact__intro .salle__label {
+  margin-bottom: 1rem;
+}
+
+/* ---------------------------------------------------------------------------
+   4. Cinematic reveals — a subtle camera move as each piece enters frame.
+   Resting state is VISIBLE so first paint never depends on JS.
+--------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    will-change: opacity, transform;
+  }
+
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Stagger the revealed grid items for a gentle sweep. */
+@media (prefers-reduced-motion: no-preference) {
+  .process__grid [data-reveal]:nth-child(2) { transition-delay: 80ms; }
+  .process__grid [data-reveal]:nth-child(3) { transition-delay: 160ms; }
+  .process__grid [data-reveal]:nth-child(4) { transition-delay: 240ms; }
+  .portfolio__grid [data-reveal]:nth-child(2) { transition-delay: 80ms; }
+  .portfolio__grid [data-reveal]:nth-child(3) { transition-delay: 160ms; }
+  .portfolio__grid [data-reveal]:nth-child(4) { transition-delay: 240ms; }
+}
+
+/* ---------------------------------------------------------------------------
+   5. Hero — exhibition entrance, with a quiet scroll cue.
+--------------------------------------------------------------------------- */
+.hero__scroll-hint {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 3.5rem;
+  background: linear-gradient(to bottom, var(--color-muted), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__scroll-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    transform: translateY(-100%);
+    animation: galerie-scroll-cue 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes galerie-scroll-cue {
+  0% { transform: translateY(-100%); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* ---------------------------------------------------------------------------
+   6. Section framing — index numbers on the works & process plates.
+--------------------------------------------------------------------------- */
+.process__item {
+  position: relative;
+}
+
+.process__step-num,
+.portfolio__frame-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  opacity: 0.55;
+}
+
+.process__step-num {
+  position: absolute;
+  top: clamp(1rem, 2vw, 1.6rem);
+  right: clamp(1.2rem, 2.4vw, 1.8rem);
+  font-size: 0.85rem;
+}
+
+.portfolio__frame-num {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.portfolio__card:hover .portfolio__frame-num,
+.portfolio__card:focus-visible .portfolio__frame-num {
+  color: var(--color-accent-ink);
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   7. Générique / colophon — closing film credits at the foot of the walk.
+--------------------------------------------------------------------------- */
+.colophon {
+  padding-block: clamp(5rem, 13vw, 9rem);
+  border-top: 1px solid var(--color-hairline);
+  background: var(--color-surface);
+  text-align: center;
+}
+
+html[data-theme="dark"] .colophon {
+  background: #050507;
+}
+
+.colophon__inner {
+  max-width: 46rem;
+}
+
+.colophon__label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 1.2rem;
+}
+
+.colophon__title {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  margin-bottom: clamp(2.4rem, 5vw, 3.4rem);
+}
+
+.colophon__credits {
+  display: grid;
+  gap: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0 0 clamp(2.6rem, 5vw, 3.6rem);
+}
+
+.colophon__credit dt {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.colophon__credit dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-text-strong);
+}
+
+.colophon__close {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   8. Reduced motion — collapse all camera moves to a calm static gallery.
+   Everything stays visible; no information is conveyed by motion alone.
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-spotlight {
+    display: none;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero__scroll-line::after {
+    animation: none;
+  }
+
+  .room-index {
+    transition: none;
+  }
+}

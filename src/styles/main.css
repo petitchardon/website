@@ -7,7 +7,12 @@
   --color-secondary: #2a2a55;
   --color-secondary-soft: #e7e7ee;
   --color-secondary-light: #44445f;
-  --color-accent: #4338ca;
+  /* GALERIE — citron lives only at interaction. On the white-cube wall the raw
+     citron is illegible as text, so hovered *text* uses a deep ink that still
+     reads AA; the citron itself drives underlines, borders and the spotlight. */
+  --color-accent: #d9f20c;
+  --color-accent-ink: #5a6300;
+  --color-accent-line: #c4da00;
   --color-background: #ffffff;
   --color-surface: #fafafa;
   --color-surface-solid: #ffffff;
@@ -36,7 +41,10 @@ html[data-theme="dark"] {
   --color-secondary: #cfcfe0;
   --color-secondary-soft: rgba(255, 255, 255, 0.08);
   --color-secondary-light: #b7b7cc;
-  --color-accent: #a5b4fc;
+  /* On the near-black wall citron reads brightly, so text can use it directly. */
+  --color-accent: #d9f20c;
+  --color-accent-ink: #d9f20c;
+  --color-accent-line: #d9f20c;
   --color-background: #0a0a0d;
   --color-surface: #121216;
   --color-surface-solid: #141418;
@@ -110,7 +118,7 @@ a {
 
 a:hover,
 a:focus-visible {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 button {
@@ -254,7 +262,7 @@ ol {
 .btn--primary:hover,
 .btn--primary:focus-visible {
   background: var(--color-accent);
-  color: #ffffff;
+  color: #14160a;
 }
 
 .btn--ghost {
@@ -266,7 +274,7 @@ ol {
 .btn--ghost:hover,
 .btn--ghost:focus-visible {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .btn--secondary {
@@ -278,7 +286,7 @@ ol {
 .btn--secondary:hover,
 .btn--secondary:focus-visible {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .site-header {
@@ -356,7 +364,7 @@ html[data-theme="dark"] .site-header {
 .lang-toggle:hover,
 .lang-toggle:focus-visible {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 html[data-theme="dark"] .lang-toggle {
@@ -803,7 +811,7 @@ html[data-theme="dark"] .about__text {
 .about__nav:focus-visible {
   transform: translateY(-2px);
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .about__nav--prev {

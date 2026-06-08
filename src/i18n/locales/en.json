@@ -24,6 +24,26 @@
     "about": "about",
     "contact": "contact"
   },
+  "galerie": {
+    "exhibitionLabel": "exhibition",
+    "roomNav": "exhibition rooms",
+    "room00": "room 00 — entrance",
+    "room01": "room 01 — the method",
+    "room02": "room 02 — the works",
+    "room03": "room 03 — the artist",
+    "room04": "room 04 — the invitation",
+    "heroRoom": "room 00",
+    "heroHint": "scroll down to walk the exhibition",
+    "colophonLabel": "credits",
+    "colophonTitle": "closing credits",
+    "colophonRole1": "art direction & design",
+    "colophonRole1Name": "Anne Della Gaspera — petitchardon",
+    "colophonRole2": "graphic design · illustration · copywriting",
+    "colophonRole2Name": "studio petitchardon, Rambouillet",
+    "colophonRole3": "you, soon",
+    "colophonRole3Name": "your story, in the spotlight",
+    "colophonClose": "end of the walk — thank you for visiting"
+  },
   "hero": {
     "tag": "graphic design · illustration · copywriting",
     "title": "make your brand impossible to forget",

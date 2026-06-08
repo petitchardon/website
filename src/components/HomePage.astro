@@ -10,12 +10,57 @@ export interface Props {
 
 const { lang } = Astro.props;
 const dict = getDict(lang);
+
+// Exhibition rooms (salles) — drive the fixed room-index rail.
+const rooms = [
+  { id: 'hero', label: dict.galerie.room00 },
+  { id: 'processus', label: dict.galerie.room01 },
+  { id: 'portfolio', label: dict.galerie.room02 },
+  { id: 'about', label: dict.galerie.room03 },
+  { id: 'contact', label: dict.galerie.room04 },
+];
 ---
 
-<section id="hero" class="hero" data-animate="fade-up">
+{/* Fixed exhibition room index — a quiet vertical rail. Decorative chrome that
+   mirrors the document's heading landmarks; hidden from a11y tree, the real
+   navigation lives in the header. */}
+<nav class="room-index" aria-label={dict.galerie.roomNav} data-room-index>
+  <ol>
+    {rooms.map((room, i) => (
+      <li>
+        <a
+          class="room-index__link"
+          href={`#${room.id}`}
+          data-room-link={room.id}
+        >
+          <span class="room-index__num">{String(i).padStart(2, '0')}</span>
+          <span class="room-index__dot" aria-hidden="true"></span>
+          <span class="room-index__name">{room.label}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+{/* Cursor spotlight — purely decorative gallery light that follows the pointer.
+   CSS-only resting state (centered, faint) so it never gates first paint. */}
+<div class="gallery-spotlight" aria-hidden="true" data-spotlight></div>
+
+<section
+  id="hero"
+  class="hero salle"
+  data-salle="00"
+  data-room="hero"
+  data-animate="fade-up"
+>
   <div class="hero__background" aria-hidden="true"></div>
   <div class="container hero__inner">
-    <div class="hero__copy">
+    <p class="salle__label" aria-hidden="true">
+      <span class="salle__num">{dict.galerie.heroRoom}</span>
+      <span class="salle__tick"></span>
+      <span class="salle__caption">{dict.galerie.exhibitionLabel}</span>
+    </p>
+    <div class="hero__copy" data-parallax="0.06">
       <span class="hero__tag">{dict.hero.tag}</span>
       <h1>{dict.hero.title}</h1>
       <p class="hero__location seo-hidden">{dict.hero.location}</p>
@@ -26,39 +71,56 @@ const dict = getDict(lang);
         <a class="btn btn--ghost" href="#contact">{dict.hero.ctaTalk}</a>
       </div>
     </div>
+    <a class="hero__scroll-hint" href="#processus" aria-hidden="true" tabindex="-1">
+      <span class="hero__scroll-text">{dict.galerie.heroHint}</span>
+      <span class="hero__scroll-line"></span>
+    </a>
   </div>
 </section>
 
-<section id="processus" class="process" data-animate="fade-up">
+<section
+  id="processus"
+  class="process salle"
+  data-salle="01"
+  data-room="processus"
+  data-animate="fade-up"
+>
   <div class="container">
     <header class="section-header">
+      <p class="salle__label" aria-hidden="true">
+        <span class="salle__num">{dict.galerie.room01}</span>
+      </p>
       <span class="section-kicker">{dict.process.kicker}</span>
       <h2>{dict.process.title}</h2>
       <p>{dict.process.intro}</p>
     </header>
     <div class="process__grid">
-      <article class="process__item glass-surface" data-tilt>
+      <article class="process__item glass-surface" data-tilt data-reveal>
+        <span class="process__step-num" aria-hidden="true">01</span>
         <figure>
           <img src={asset("assets/icons/workflow-1.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
         <h3>{dict.process.step1Title}</h3>
         <p>{dict.process.step1Body}</p>
       </article>
-      <article class="process__item glass-surface" data-tilt>
+      <article class="process__item glass-surface" data-tilt data-reveal>
+        <span class="process__step-num" aria-hidden="true">02</span>
         <figure>
           <img src={asset("assets/icons/workflow-2.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
         <h3>{dict.process.step2Title}</h3>
         <p>{dict.process.step2Body}</p>
       </article>
-      <article class="process__item glass-surface" data-tilt>
+      <article class="process__item glass-surface" data-tilt data-reveal>
+        <span class="process__step-num" aria-hidden="true">03</span>
         <figure>
           <img src={asset("assets/icons/workflow-3.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
         <h3>{dict.process.step3Title}</h3>
         <p>{dict.process.step3Body}</p>
       </article>
-      <article class="process__item glass-surface" data-tilt>
+      <article class="process__item glass-surface" data-tilt data-reveal>
+        <span class="process__step-num" aria-hidden="true">04</span>
         <figure>
           <img src={asset("assets/icons/workflow-4.svg")} alt="" role="presentation" width="200" height="200" loading="lazy" />
         </figure>
@@ -66,7 +128,7 @@ const dict = getDict(lang);
         <p>{dict.process.step4Body}</p>
       </article>
     </div>
-    <aside class="process__commitments" data-animate="fade-in">
+    <aside class="process__commitments" data-animate="fade-in" data-reveal>
       <h3>{dict.process.commitTitle}</h3>
       <p>{dict.process.commitIntro}</p>
       <ul class="process__commitments-list">
@@ -78,15 +140,24 @@ const dict = getDict(lang);
   </div>
 </section>
 
-<section id="portfolio" class="portfolio" data-animate="fade-in">
+<section
+  id="portfolio"
+  class="portfolio salle"
+  data-salle="02"
+  data-room="portfolio"
+  data-animate="fade-in"
+>
   <div class="container">
     <header class="section-header">
+      <p class="salle__label" aria-hidden="true">
+        <span class="salle__num">{dict.galerie.room02}</span>
+      </p>
       <span class="section-kicker">{dict.portfolio.kicker}</span>
       <h2>{dict.portfolio.title}</h2>
       <p>{dict.portfolio.intro}</p>
     </header>
     <div class="portfolio__grid">
-      <a class="portfolio__card" href={projectUrl(lang, 'lukes-iced-coffees')}>
+      <a class="portfolio__card" href={projectUrl(lang, 'lukes-iced-coffees')} data-reveal>
         <figure>
           <img
             src={asset("assets/images/portfolio-aurore.svg")}
@@ -97,12 +168,13 @@ const dict = getDict(lang);
           />
         </figure>
         <div class="portfolio__content">
+          <span class="portfolio__frame-num" aria-hidden="true">01</span>
           <h3>{dict.portfolio.card1Title}</h3>
           <p>{dict.portfolio.card1Body}</p>
           <span class="portfolio__link">{dict.portfolio.viewProject}</span>
         </div>
       </a>
-      <a class="portfolio__card" href={projectUrl(lang, 'intelligences-atypiques')}>
+      <a class="portfolio__card" href={projectUrl(lang, 'intelligences-atypiques')} data-reveal>
         <figure>
           <img
             src={asset("assets/images/portfolio-origines.svg")}
@@ -113,12 +185,13 @@ const dict = getDict(lang);
           />
         </figure>
         <div class="portfolio__content">
+          <span class="portfolio__frame-num" aria-hidden="true">02</span>
           <h3>{dict.portfolio.card2Title}</h3>
           <p>{dict.portfolio.card2Body}</p>
           <span class="portfolio__link">{dict.portfolio.viewProject}</span>
         </div>
       </a>
-      <a class="portfolio__card" href={projectUrl(lang, 'cocobot')}>
+      <a class="portfolio__card" href={projectUrl(lang, 'cocobot')} data-reveal>
         <figure>
           <img
             src={asset("assets/images/portfolio-constellation.svg")}
@@ -129,12 +202,13 @@ const dict = getDict(lang);
           />
         </figure>
         <div class="portfolio__content">
+          <span class="portfolio__frame-num" aria-hidden="true">03</span>
           <h3>{dict.portfolio.card3Title}</h3>
           <p>{dict.portfolio.card3Body}</p>
           <span class="portfolio__link">{dict.portfolio.viewProject}</span>
         </div>
       </a>
-      <a class="portfolio__card portfolio__card--cta" href="#contact">
+      <a class="portfolio__card portfolio__card--cta" href="#contact" data-reveal>
         <div class="portfolio__cta">
           <h3>{dict.portfolio.ctaTitle}</h3>
           <p>{dict.portfolio.ctaBody}</p>
@@ -145,11 +219,22 @@ const dict = getDict(lang);
   </div>
 </section>
 
-<section id="about" class="about section-divider" data-animate="fade-in">
+<section
+  id="about"
+  class="about salle section-divider"
+  data-salle="03"
+  data-room="about"
+  data-animate="fade-in"
+>
   <div class="container">
-    <h2 class="about__title">{dict.about.title}</h2>
+    <header class="section-header">
+      <p class="salle__label" aria-hidden="true">
+        <span class="salle__num">{dict.galerie.room03}</span>
+      </p>
+      <h2 class="about__title">{dict.about.title}</h2>
+    </header>
     <div class="about__bio">
-      <div class="about__photo">
+      <div class="about__photo" data-parallax="0.05">
         <Image src={annePortrait} alt={dict.about.portraitAlt} loading="lazy" />
       </div>
       <div class="about__text">
@@ -192,9 +277,18 @@ const dict = getDict(lang);
   </div>
 </section>
 
-<section id="contact" class="contact" data-animate="fade-up">
+<section
+  id="contact"
+  class="contact salle"
+  data-salle="04"
+  data-room="contact"
+  data-animate="fade-up"
+>
   <div class="container contact__inner">
     <div class="contact__intro glass-surface">
+      <p class="salle__label" aria-hidden="true">
+        <span class="salle__num">{dict.galerie.room04}</span>
+      </p>
       <span class="section-kicker">{dict.contact.kicker}</span>
       <h2>{dict.contact.title}</h2>
       <p>{dict.contact.intro}</p>
@@ -270,5 +364,28 @@ const dict = getDict(lang);
         {dict.contact.feedbackSuccess}
       </p>
     </form>
+  </div>
+</section>
+
+{/* Générique / colophon — film-credits close to the exhibition walk. */}
+<section class="colophon" data-room="colophon" data-animate="fade-up">
+  <div class="container colophon__inner">
+    <p class="colophon__label" aria-hidden="true">{dict.galerie.colophonLabel}</p>
+    <h2 class="colophon__title">{dict.galerie.colophonTitle}</h2>
+    <dl class="colophon__credits">
+      <div class="colophon__credit">
+        <dt>{dict.galerie.colophonRole1}</dt>
+        <dd>{dict.galerie.colophonRole1Name}</dd>
+      </div>
+      <div class="colophon__credit">
+        <dt>{dict.galerie.colophonRole2}</dt>
+        <dd>{dict.galerie.colophonRole2Name}</dd>
+      </div>
+      <div class="colophon__credit">
+        <dt>{dict.galerie.colophonRole3}</dt>
+        <dd>{dict.galerie.colophonRole3Name}</dd>
+      </div>
+    </dl>
+    <p class="colophon__close">{dict.galerie.colophonClose}</p>
   </div>
 </section>
