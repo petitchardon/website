@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getDict, homeUrl } from '../i18n';
+import { getDict, homeUrl, asset } from '../i18n';
 
 const lang = 'fr' as const;
 const dict = getDict(lang);
@@ -23,7 +23,7 @@ const home = homeUrl(lang);
       <span class="riso-mark riso-mark--bl"></span>
       <span class="riso-mark riso-mark--br"></span>
     </span>
-    <div class="container project-hero__inner">
+    <div class="container project-hero__inner project-hero__inner--404">
       <div class="project-hero__intro glass-surface">
         <p class="folio">{dict.numero.issue} — 404</p>
         <p class="breadcrumb">404</p>
@@ -34,6 +34,9 @@ const home = homeUrl(lang);
           <a class="btn btn--ghost" href={`${home}#contact`}>{dict.notFound.ctaContact}</a>
         </div>
       </div>
+      <figure class="project-hero__visual not-found__plate" aria-hidden="true">
+        <img class="riso-art" src={asset('assets/numero/cover-art.svg')} alt="" width="420" height="520" loading="eager" />
+      </figure>
     </div>
   </section>
 </BaseLayout>

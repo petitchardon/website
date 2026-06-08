@@ -25,3 +25,6 @@ pnpm-debug.log*
 .env
 .env.local
 .env.production
+
+# Visual-QA screenshots (never committed)
+.qa/

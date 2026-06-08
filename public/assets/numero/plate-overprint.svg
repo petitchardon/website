@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" role="img" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="op-d" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2.2" cy="2.2" r="2.2" fill="#0f0e54" opacity="0.16"/></pattern>
+    <pattern id="op-c" width="11" height="11" patternUnits="userSpaceOnUse" patternTransform="translate(5 5)"><circle cx="2.4" cy="2.4" r="2.4" fill="#d9f20c"/></pattern>
+  </defs>
+  <rect width="480" height="340" fill="#fffdf6"/>
+  <!-- two overprinting halftone discs (the core riso study) -->
+  <circle cx="200" cy="170" r="110" fill="url(#op-c)"/>
+  <circle cx="200" cy="170" r="110" fill="none" stroke="#0f0e54" stroke-width="3" opacity="0.4"/>
+  <circle cx="290" cy="180" r="110" fill="#27ccbc" fill-opacity="0.45" style="mix-blend-mode:multiply"/>
+  <circle cx="245" cy="175" r="110" fill="url(#op-d)"/>
+  <!-- offset indigo square plate -->
+  <rect x="70" y="60" width="120" height="120" fill="none" stroke="#0f0e54" stroke-width="4"/>
+  <rect x="78" y="68" width="120" height="120" fill="none" stroke="#d9f20c" stroke-width="4" style="mix-blend-mode:multiply"/>
+  <path d="M40 36v22M29 47h22" stroke="#0f0e54" stroke-width="2.4"/>
+  <path d="M440 300v22M429 311h22" stroke="#0f0e54" stroke-width="2.4"/>
+</svg>

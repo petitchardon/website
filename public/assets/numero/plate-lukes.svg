@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="lk-dots" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#0f0e54" opacity="0.16"/>
+    </pattern>
+    <linearGradient id="lk-half" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f0e54" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0f0e54" stop-opacity="0.14"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="320" fill="#fffdf6"/>
+  <rect width="400" height="320" fill="url(#lk-half)"/>
+  <!-- citron field, offset for misregistration -->
+  <circle cx="206" cy="150" r="96" fill="#d9f20c"/>
+  <circle cx="200" cy="156" r="96" fill="#d9f20c" opacity="0.55" style="mix-blend-mode:multiply"/>
+  <rect width="400" height="320" fill="url(#lk-dots)"/>
+  <!-- iced coffee cup -->
+  <g stroke="#0f0e54" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 120h100l-12 130a14 14 0 0 1-14 12h-48a14 14 0 0 1-14-12Z" fill="#fffdf6"/>
+    <path d="M150 120h100l-12 130a14 14 0 0 1-14 12h-48a14 14 0 0 1-14-12Z" fill="#27ccbc" fill-opacity="0.35"/>
+    <!-- liquid line -->
+    <path d="M156 175h88" />
+    <!-- ice cubes -->
+    <rect x="172" y="138" width="22" height="22" rx="3" fill="#fffdf6"/>
+    <rect x="200" y="150" width="20" height="20" rx="3" fill="#fffdf6"/>
+    <!-- straw -->
+    <path d="M214 60 196 250" stroke-width="6"/>
+    <path d="M214 60h26" stroke-width="6"/>
+  </g>
+  <!-- registration cross + plate ticks -->
+  <path d="M40 40v22M29 51h22" stroke="#0f0e54" stroke-width="2.4"/>
+  <path d="M360 280v22M349 291h22" stroke="#0f0e54" stroke-width="2.4"/>
+</svg>

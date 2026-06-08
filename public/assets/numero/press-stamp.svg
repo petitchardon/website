@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-hidden="true" fill="none">
+  <!-- circular press stamp: thistle in a ring of mono-ish text marks -->
+  <circle cx="50" cy="50" r="46" fill="none" stroke="#0f0e54" stroke-width="2.5"/>
+  <circle cx="50" cy="50" r="38" fill="none" stroke="#0f0e54" stroke-width="1.4" stroke-dasharray="3 4"/>
+  <g stroke="#0f0e54" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 76V52"/>
+    <path d="M50 42v-12M40 36l4 8M60 36l-4 8M34 44l8 4M66 44l-8 4"/>
+    <path d="M50 60c-10-2-16-8-18-18 10 1 16 7 18 18ZM50 60c10-2 16-8 18-18-10 1-16 7-18 18Z" fill="#27ccbc" fill-opacity="0.4"/>
+    <circle cx="50" cy="48" r="9" fill="#fffdf6"/>
+  </g>
+</svg>

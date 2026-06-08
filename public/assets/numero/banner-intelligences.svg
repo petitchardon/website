@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs><pattern id="bi-d" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="#0f0e54" opacity="0.15"/></pattern></defs>
+  <rect width="640" height="420" fill="#fffdf6"/>
+  <path d="M40 300c60-160 200-200 320-160s170 170 110 240-430 80-430-80Z" fill="#d9f20c"/>
+  <path d="M48 308c60-160 200-200 320-160s170 170 110 240-430 80-430-80Z" fill="#d9f20c" opacity="0.5" style="mix-blend-mode:multiply"/>
+  <rect width="640" height="420" fill="url(#bi-d)"/>
+  <g stroke="#0f0e54" stroke-width="4">
+    <path d="M120 110 250 190 190 300 400 330 500 220 410 110 250 190M500 220 540 330M250 190 150 270M410 110 540 130"/>
+  </g>
+  <g fill="#27ccbc" stroke="#0f0e54" stroke-width="5">
+    <circle cx="120" cy="110" r="16"/><circle cx="500" cy="220" r="20"/>
+    <circle cx="190" cy="300" r="14"/><circle cx="410" cy="110" r="15"/>
+  </g>
+  <g fill="#fffdf6" stroke="#0f0e54" stroke-width="5">
+    <circle cx="250" cy="190" r="26"/><circle cx="400" cy="330" r="18"/>
+    <circle cx="150" cy="270" r="11"/><circle cx="540" cy="130" r="13"/><circle cx="540" cy="330" r="12"/>
+  </g>
+  <path d="M250 176v28M236 190h28" stroke="#0f0e54" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M40 40v24M28 52h24" stroke="#0f0e54" stroke-width="2.6"/>
+  <path d="M600 356v24M588 368h24" stroke="#0f0e54" stroke-width="2.6"/>
+</svg>

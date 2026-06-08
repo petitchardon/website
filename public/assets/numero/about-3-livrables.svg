@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-hidden="true" fill="none">
+  <!-- stacked deliverables / a kit box -->
+  <g transform="translate(-3 3)"><rect x="26" y="30" width="68" height="62" rx="6" fill="#d9f20c"/></g>
+  <rect x="30" y="26" width="60" height="22" rx="4" fill="#27ccbc" stroke="#0f0e54" stroke-width="3.2"/>
+  <rect x="30" y="48" width="60" height="44" rx="4" fill="#fffdf6" stroke="#0f0e54" stroke-width="3.2"/>
+  <path d="M60 26v66" stroke="#0f0e54" stroke-width="3.2"/>
+  <path d="M48 36h-8M80 36h-8" stroke="#0f0e54" stroke-width="3" stroke-linecap="round"/>
+  <!-- ribbon / check -->
+  <path d="M44 66l6 6 12-12" stroke="#0f0e54" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M72 64h10M72 74h10" stroke="#0f0e54" stroke-width="3" stroke-linecap="round"/>
+</svg>

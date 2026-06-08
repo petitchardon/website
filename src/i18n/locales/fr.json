@@ -39,7 +39,8 @@
     "colophonBody": "Composé en Fraunces & Space Mono. Imprimé en bichromie sur papier teinté. Chaque visite est un nouveau tirage.",
     "pressMark": "à passer sous presse",
     "indexLabel": "Sommaire",
-    "plateLabel": "Planche"
+    "plateLabel": "Planche",
+    "coverCaption": "Pl. 01 — chardon, bichromie indigo & citron"
   },
   "hero": {
     "tag": "graphisme · illustration · rédaction",
@@ -140,7 +141,63 @@
     "backToPortfolio": "retour au portfolio",
     "backToContact": "contact",
     "metaTitle": "Page en construction | petitchardon",
-    "metaDescription": "Cette page projet est en construction. Revenez bientôt pour découvrir le contenu."
+    "metaDescription": "Cette page projet est en construction. Revenez bientôt pour découvrir le contenu.",
+    "folioArticle": "Article",
+    "kickerStudy": "étude de cas",
+    "metaHeading": "fiche technique",
+    "metaTag": "discipline",
+    "metaYear": "édition",
+    "metaRole": "rôle",
+    "metaClient": "client",
+    "yearValue": "2026",
+    "challengeTitle": "le défi",
+    "approachTitle": "le procédé",
+    "outcomeTitle": "le tirage",
+    "deliverablesTitle": "livrables",
+    "galleryTitle": "planches",
+    "galleryKicker": "cahier d’images",
+    "plate": "Planche",
+    "nextTitle": "planche suivante",
+    "nextKicker": "à suivre",
+    "colophonStudy": "Étude composée en Fraunces & Space Mono · tirage risographie bichromie · petitchardon, Rambouillet.",
+    "articles": {
+      "lukes-iced-coffees": {
+        "role": "direction artistique, logotype, packaging",
+        "client": "Luke’s Iced Coffees",
+        "lead": "Un café glacé qui voulait sortir du rayon : on lui a dessiné une signature aussi vive que sa recette, un logotype franc et une gamme qui se reconnaît au premier regard.",
+        "challenge": "La marque arrivait sur un marché saturé de canettes anonymes. Il fallait un signe immédiatement mémorable, qui tienne aussi bien en grand sur une devanture qu’en tout petit sur un opercule, sans jamais perdre son énergie.",
+        "approach": "On a posé un logotype dessiné à la main, des contrastes optiques marqués et un système de déclinaisons par parfum. Chaque variante garde la même ossature mais change d’encre : la cohérence se lit, la gamme se distingue.",
+        "outcome": "Une identité qui se décline du gobelet à la fiche produit sans jamais se diluer. La marque a gagné une présence assumée, prête à imprimer sur tous les supports.",
+        "deliverable1": "Logotype principal & déclinaisons",
+        "deliverable2": "Système de packaging par parfum",
+        "deliverable3": "Charte couleurs & typographie",
+        "deliverable4": "Gabarits fiches produits"
+      },
+      "intelligences-atypiques": {
+        "role": "identité visuelle, stratégie réseaux sociaux",
+        "client": "Intelligences Atypiques",
+        "lead": "Donner un visage à la neurodiversité : une identité chaleureuse et structurée, pensée comme une constellation où chaque singularité a sa place.",
+        "challenge": "Le sujet est sensible et riche. Il fallait une image inclusive, ni infantilisante ni clinique, capable de porter un discours nuancé sur les réseaux comme sur les supports imprimés.",
+        "approach": "Une métaphore de constellation structure tout le système : des nœuds reliés, des trajectoires non linéaires, une palette à deux encres lisible et apaisante. La stratégie sociale décline ce langage en gabarits réutilisables.",
+        "outcome": "Une présence cohérente, reconnaissable et facile à animer dans la durée. Le ton inclusif est inscrit dans le système graphique lui-même.",
+        "deliverable1": "Identité visuelle complète",
+        "deliverable2": "Stratégie éditoriale réseaux",
+        "deliverable3": "Bibliothèque de gabarits",
+        "deliverable4": "Guide de ton & accessibilité"
+      },
+      "cocobot": {
+        "role": "ligne éditoriale, templates, gestion de posts",
+        "client": "cocobot",
+        "lead": "Une voix régulière sur LinkedIn : un calendrier éditorial cadré, des gabarits prêts à l’emploi et une gestion suivie pour publier sans effort, semaine après semaine.",
+        "challenge": "Publier vite, souvent et bien sans y passer ses journées. Le défi : un système qui garde une qualité constante tout en restant simple à alimenter par l’équipe.",
+        "approach": "On a défini des rubriques récurrentes, un calendrier clair et une famille de gabarits modulaires en bichromie. Chaque post se monte en quelques minutes tout en restant immédiatement reconnaissable.",
+        "outcome": "Une cadence tenue, une identité de feed cohérente et une charge de production divisée. La marque parle d’une seule voix, plate après plate.",
+        "deliverable1": "Calendrier éditorial LinkedIn",
+        "deliverable2": "Famille de templates modulaires",
+        "deliverable3": "Lignes directrices de ton",
+        "deliverable4": "Gestion & publication des posts"
+      }
+    }
   },
   "notFound": {
     "title": "404 — page introuvable | petitchardon",

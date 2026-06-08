@@ -39,7 +39,8 @@
     "colophonBody": "Set in Fraunces & Space Mono. Printed in duotone on tinted stock. Every visit is a fresh pull.",
     "pressMark": "ready for press",
     "indexLabel": "Contents",
-    "plateLabel": "Plate"
+    "plateLabel": "Plate",
+    "coverCaption": "Pl. 01 — thistle, indigo & citron duotone"
   },
   "hero": {
     "tag": "graphic design · illustration · copywriting",
@@ -140,7 +141,63 @@
     "backToPortfolio": "back to portfolio",
     "backToContact": "contact",
     "metaTitle": "Page under construction | petitchardon",
-    "metaDescription": "This project page is being assembled. Check back soon for details."
+    "metaDescription": "This project page is being assembled. Check back soon for details.",
+    "folioArticle": "Article",
+    "kickerStudy": "case study",
+    "metaHeading": "spec sheet",
+    "metaTag": "discipline",
+    "metaYear": "edition",
+    "metaRole": "role",
+    "metaClient": "client",
+    "yearValue": "2026",
+    "challengeTitle": "the brief",
+    "approachTitle": "the process",
+    "outcomeTitle": "the pull",
+    "deliverablesTitle": "deliverables",
+    "galleryTitle": "plates",
+    "galleryKicker": "picture section",
+    "plate": "Plate",
+    "nextTitle": "next plate",
+    "nextKicker": "up next",
+    "colophonStudy": "Study set in Fraunces & Space Mono · risograph duotone pull · petitchardon, Rambouillet.",
+    "articles": {
+      "lukes-iced-coffees": {
+        "role": "art direction, logotype, packaging",
+        "client": "Luke’s Iced Coffees",
+        "lead": "An iced coffee that wanted to leave the shelf behind: we drew it a signature as lively as its recipe — a bold logotype and a range you recognise at a glance.",
+        "challenge": "The brand was entering a market crowded with anonymous cans. It needed an instantly memorable mark that holds up huge on a storefront and tiny on a lid, without ever losing its energy.",
+        "approach": "We built a hand-drawn logotype, strong optical contrast and a flavour-driven variation system. Each variant keeps the same skeleton and changes its ink: the coherence reads, the range stays distinct.",
+        "outcome": "An identity that travels from cup to product sheet without diluting. The brand earned a confident presence, ready to print on every support.",
+        "deliverable1": "Primary logotype & variations",
+        "deliverable2": "Flavour-based packaging system",
+        "deliverable3": "Colour & type guidelines",
+        "deliverable4": "Product-sheet templates"
+      },
+      "intelligences-atypiques": {
+        "role": "visual identity, social media strategy",
+        "client": "Intelligences Atypiques",
+        "lead": "Giving neurodiversity a face: a warm, structured identity built like a constellation, where every singularity has its place.",
+        "challenge": "A sensitive, rich subject. It needed an inclusive image — neither infantilising nor clinical — able to carry a nuanced message across social feeds and print alike.",
+        "approach": "A constellation metaphor structures the whole system: linked nodes, non-linear paths, a calm and legible two-ink palette. The social strategy turns that language into reusable templates.",
+        "outcome": "A coherent, recognisable presence that is easy to keep alive over time. The inclusive tone is written into the graphic system itself.",
+        "deliverable1": "Full visual identity",
+        "deliverable2": "Social editorial strategy",
+        "deliverable3": "Template library",
+        "deliverable4": "Tone & accessibility guide"
+      },
+      "cocobot": {
+        "role": "editorial line, templates, post management",
+        "client": "cocobot",
+        "lead": "A steady voice on LinkedIn: a framed editorial calendar, ready-to-use templates and ongoing management to publish effortlessly, week after week.",
+        "challenge": "Publish fast, often and well without spending all day on it. The challenge: a system that keeps a constant quality while staying simple for the team to feed.",
+        "approach": "We defined recurring rubrics, a clear calendar and a family of modular duotone templates. Each post is built in minutes while staying instantly recognisable.",
+        "outcome": "A cadence held, a coherent feed identity and a production load cut in half. The brand speaks with one voice, plate after plate.",
+        "deliverable1": "LinkedIn editorial calendar",
+        "deliverable2": "Modular template family",
+        "deliverable3": "Tone-of-voice guidelines",
+        "deliverable4": "Post management & publishing"
+      }
+    }
   },
   "notFound": {
     "title": "404 — page not found | petitchardon",

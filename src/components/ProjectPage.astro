@@ -1,35 +1,171 @@
 ---
 import type { Lang } from '../i18n';
-import { getDict, homeUrl } from '../i18n';
+import { getDict, homeUrl, projectUrl, asset } from '../i18n';
 
 export interface Props {
   lang: Lang;
-  projectTitle?: string;
-  body?: string;
+  slug: string;
+  projectTitle: string;
+  projectTag?: string;
+  index: number;
+  nextSlug: string;
+  nextTitle: string;
 }
 
-const { lang, projectTitle, body } = Astro.props;
+const {
+  lang,
+  slug,
+  projectTitle,
+  projectTag,
+  index,
+  nextSlug,
+  nextTitle,
+} = Astro.props;
+
 const dict = getDict(lang);
+const p = dict.project;
 const home = homeUrl(lang);
-const headline = projectTitle ?? dict.project.underConstruction;
-const text = body ?? dict.project.underConstructionBody;
+
+// Per-project article content, keyed by FR slug (slugs are identical FR/EN).
+const articles = p.articles as Record<string, {
+  role: string; client: string; lead: string;
+  challenge: string; approach: string; outcome: string;
+  deliverable1: string; deliverable2: string; deliverable3: string; deliverable4: string;
+}>;
+const art = articles[slug];
+
+// Bespoke riso banner per project + shared duotone gallery plates.
+const banners: Record<string, string> = {
+  'lukes-iced-coffees': 'assets/numero/banner-lukes.svg',
+  'intelligences-atypiques': 'assets/numero/banner-intelligences.svg',
+  'cocobot': 'assets/numero/banner-cocobot.svg',
+};
+const banner = banners[slug] ?? 'assets/numero/banner-lukes.svg';
+const folioNo = String(index).padStart(2, '0');
+const deliverables = [art.deliverable1, art.deliverable2, art.deliverable3, art.deliverable4];
 ---
 
-<section class="project-hero" data-animate="fade-up">
-  <div class="container project-hero__inner">
-    <div class="project-hero__intro glass-surface">
-      <p class="breadcrumb">{dict.project.breadcrumb}</p>
-      <h1>{headline}</h1>
-      <p>{text}</p>
-      <h2 class="seo-hidden">{dict.project.actionsHeading}</h2>
-      <div class="project-cta__actions">
-        <a class="btn btn--primary" href={`${home}#portfolio`}>
-          {dict.project.backToPortfolio}
-        </a>
-        <a class="btn btn--ghost" href={`${home}#contact`}>
-          {dict.project.backToContact}
-        </a>
+<article class="zine-article">
+  <!-- ===== Article cover / masthead ===== -->
+  <header class="article-cover numero-spread" data-animate="fade-up">
+    <span class="riso-marks" aria-hidden="true">
+      <span class="riso-mark riso-mark--tl"></span>
+      <span class="riso-mark riso-mark--tr"></span>
+      <span class="riso-mark riso-mark--bl"></span>
+      <span class="riso-mark riso-mark--br"></span>
+    </span>
+    <div class="container article-cover__inner">
+      <p class="folio">{`N° ${folioNo} — ${p.folioArticle}`}</p>
+      <nav class="breadcrumb" aria-label={p.breadcrumb}>
+        <a href={`${home}#portfolio`}>{p.breadcrumb}</a>
+        <span aria-hidden="true">/</span>
+        <span>{projectTitle}</span>
+      </nav>
+      <div class="article-cover__head">
+        <div class="article-cover__title">
+          <span class="section-kicker">{projectTag ?? p.kickerStudy}</span>
+          <h1 class="numero-title" data-riso-text={projectTitle}>{projectTitle}</h1>
+          <p class="article-cover__lead lettrine">{art.lead}</p>
+        </div>
+        <figure class="article-cover__plate" aria-hidden="true">
+          <img class="riso-art" src={asset(banner)} alt="" width="640" height="420" loading="eager" />
+          <figcaption>{`${p.plate} ${folioNo}·A`}</figcaption>
+        </figure>
       </div>
     </div>
-  </div>
-</section>
+  </header>
+
+  <!-- ===== Spec sheet ===== -->
+  <section class="article-spec numero-spread" data-animate="fade-in">
+    <div class="container">
+      <h2 class="seo-hidden">{p.metaHeading}</h2>
+      <dl class="article-spec__grid">
+        <div><dt>{p.metaClient}</dt><dd>{art.client}</dd></div>
+        <div><dt>{p.metaTag}</dt><dd>{projectTag ?? p.kickerStudy}</dd></div>
+        <div><dt>{p.metaRole}</dt><dd>{art.role}</dd></div>
+        <div><dt>{p.metaYear}</dt><dd>{p.yearValue}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== Story: challenge / approach / outcome ===== -->
+  <section class="article-body numero-spread" data-animate="fade-in">
+    <div class="container article-body__inner">
+      <div class="article-body__main">
+        <section class="article-block">
+          <p class="plate-overline" aria-hidden="true">{`§ 01`}</p>
+          <h2>{p.challengeTitle}</h2>
+          <p>{art.challenge}</p>
+        </section>
+        <section class="article-block">
+          <p class="plate-overline" aria-hidden="true">{`§ 02`}</p>
+          <h2>{p.approachTitle}</h2>
+          <p>{art.approach}</p>
+        </section>
+        <section class="article-block">
+          <p class="plate-overline" aria-hidden="true">{`§ 03`}</p>
+          <h2>{p.outcomeTitle}</h2>
+          <p>{art.outcome}</p>
+        </section>
+      </div>
+      <aside class="article-deliverables glass-surface">
+        <h2>{p.deliverablesTitle}</h2>
+        <ul>
+          {deliverables.map((d, i) => (
+            <li><span class="article-deliverables__no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{d}</li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== Plates gallery ===== -->
+  <section class="article-gallery numero-spread" data-animate="fade-in">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-kicker">{p.galleryKicker}</span>
+        <h2>{p.galleryTitle}</h2>
+      </header>
+      <div class="article-gallery__grid">
+        <figure class="article-plate">
+          <span class="plate-tag" aria-hidden="true">{p.plate} B</span>
+          <img class="riso-art" src={asset(banner)} alt="" width="640" height="420" loading="lazy" />
+          <figcaption>{`${art.client} — ${art.role}`}</figcaption>
+        </figure>
+        <figure class="article-plate">
+          <span class="plate-tag" aria-hidden="true">{p.plate} C</span>
+          <img class="riso-art" src={asset('assets/numero/plate-specimen.svg')} alt="" width="480" height="340" loading="lazy" />
+          <figcaption>{p.metaTag} · Fraunces / Space Mono</figcaption>
+        </figure>
+        <figure class="article-plate">
+          <span class="plate-tag" aria-hidden="true">{p.plate} D</span>
+          <img class="riso-art" src={asset('assets/numero/plate-overprint.svg')} alt="" width="480" height="340" loading="lazy" />
+          <figcaption>{dict.numero.imprint}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Next plate + actions ===== -->
+  <section class="article-next numero-spread" data-animate="fade-up">
+    <div class="container article-next__inner">
+      <a class="article-next__link" href={projectUrl(lang, nextSlug)}>
+        <span class="section-kicker">{p.nextKicker}</span>
+        <span class="article-next__title">{nextTitle}</span>
+        <span class="article-next__arrow" aria-hidden="true">→</span>
+      </a>
+      <h2 class="seo-hidden">{p.actionsHeading}</h2>
+      <div class="project-cta__actions">
+        <a class="btn btn--primary" href={`${home}#portfolio`}>{p.backToPortfolio}</a>
+        <a class="btn btn--ghost" href={`${home}#contact`}>{p.backToContact}</a>
+      </div>
+    </div>
+  </section>
+
+  <aside class="article-colophon" aria-hidden="true">
+    <div class="container article-colophon__inner">
+      <img class="article-colophon__stamp" src={asset('assets/numero/press-stamp.svg')} alt="" width="80" height="80" loading="lazy" />
+      <p>{p.colophonStudy}</p>
+    </div>
+  </aside>
+</article>

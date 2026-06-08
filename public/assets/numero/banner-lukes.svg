@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs><pattern id="bl-d" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="#0f0e54" opacity="0.15"/></pattern></defs>
+  <rect width="640" height="420" fill="#fffdf6"/>
+  <circle cx="200" cy="210" r="160" fill="#d9f20c"/>
+  <circle cx="190" cy="220" r="160" fill="#d9f20c" opacity="0.5" style="mix-blend-mode:multiply"/>
+  <rect width="640" height="420" fill="url(#bl-d)"/>
+  <g stroke="#0f0e54" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 130h120l-14 158a16 16 0 0 1-16 14h-44a16 16 0 0 1-16-14Z" fill="#fffdf6"/>
+    <path d="M150 130h120l-14 158a16 16 0 0 1-16 14h-44a16 16 0 0 1-16-14Z" fill="#27ccbc" fill-opacity="0.3"/>
+    <path d="M157 192h106"/>
+    <rect x="178" y="150" width="26" height="26" rx="3" fill="#fffdf6"/>
+    <rect x="212" y="164" width="22" height="22" rx="3" fill="#fffdf6"/>
+    <path d="M236 60 214 302M236 60h30"/>
+  </g>
+  <!-- product range repeat marks on the right -->
+  <g stroke="#0f0e54" stroke-width="5" stroke-linejoin="round">
+    <path d="M380 150h60l-8 130h-44Z" fill="#fffdf6"/>
+    <path d="M470 150h60l-8 130h-44Z" fill="#d9f20c" fill-opacity="0.6"/>
+    <path d="M560 150h60l-8 130h-44Z" fill="#27ccbc" fill-opacity="0.4"/>
+  </g>
+  <path d="M40 40v24M28 52h24" stroke="#0f0e54" stroke-width="2.6"/>
+  <path d="M600 356v24M588 368h24" stroke="#0f0e54" stroke-width="2.6"/>
+</svg>

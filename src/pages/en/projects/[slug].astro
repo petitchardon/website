@@ -4,23 +4,36 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ProjectPage from '../../../components/ProjectPage.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects', ({ data }) => !data.draft);
-  return projects.map((project) => ({
-    params: { slug: project.data.slugs.en },
-    props: { project },
-  }));
+  const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+    (a, b) => a.data.order - b.data.order
+  );
+  return projects.map((project, i) => {
+    const next = projects[(i + 1) % projects.length];
+    return {
+      params: { slug: project.data.slugs.en },
+      props: { project, index: i + 1, next },
+    };
+  });
 }
 
-const { project } = Astro.props;
+const { project, index, next } = Astro.props;
 const lang = 'en' as const;
 const pathname = `/en/projects/${project.data.slugs.en}.html`;
 ---
 <BaseLayout
   lang={lang}
-  title={`${project.data.title} | petitchardon`}
+  title={`${project.data.title} — case study | petitchardon`}
   description={project.data.description.en}
   pathname={pathname}
-  bodyPage="project-placeholder"
+  bodyPage="project"
 >
-  <ProjectPage lang={lang} projectTitle={project.data.title} body={project.data.description.en} />
+  <ProjectPage
+    lang={lang}
+    slug={project.data.slugs.fr}
+    projectTitle={project.data.title}
+    projectTag={project.data.tag}
+    index={index}
+    nextSlug={next.data.slugs.en}
+    nextTitle={next.data.title}
+  />
 </BaseLayout>
