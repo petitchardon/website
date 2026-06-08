@@ -471,52 +471,52 @@ html[data-theme="dark"] .hero__background {
 }
 
 /* ===========================================================================
-   11. PORTFOLIO — works as framed plates on the wall.
-   Replace the dark photo-overlay model with a framed plate + always-legible
-   placard below, so the gallery reads on the white-cube too.
+   11. PORTFOLIO — works as framed plates on the wall, with an always-legible
+   placard below (reads on the white-cube too). A definite, non-zero min-height
+   on the card is REQUIRED: a content-sized (auto/0) grid item containing a
+   ratioed image triggers a Chromium layout/paint stall that surfaces as a
+   Lighthouse NO_FCP. The floor is below typical content height, so it never
+   adds visible space — it only breaks the auto-min feedback loop.
    ======================================================================== */
 .portfolio__card {
-  min-height: 0;
-  border-radius: 0;
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  min-height: clamp(300px, 34vw, 460px);
   overflow: visible;
   background: transparent;
-  display: grid;
-  grid-template-rows: auto auto;
-  gap: 1.1rem;
+  border-radius: 0;
+  box-shadow: none;
 }
-
 .portfolio__card figure {
   position: relative;
-  inset: auto;
   margin: 0;
   overflow: hidden;
   background: var(--color-surface);
   padding: clamp(0.5rem, 1.2vw, 0.9rem);
   border: 1px solid var(--color-hairline-soft);
   border-radius: 2px;
+  height: clamp(220px, 26vw, 320px);
   box-shadow: var(--shadow-elevated);
-  aspect-ratio: 5 / 4;
   transition: box-shadow var(--transition-slow), border-color var(--transition-base);
 }
-
 .portfolio__card figure::after {
   content: "";
   position: absolute;
   inset: clamp(0.5rem, 1.2vw, 0.9rem);
   border: 1px solid var(--color-hairline);
   pointer-events: none;
-  z-index: 2;
   transition: border-color var(--transition-base);
 }
-
 .portfolio__card img {
+  position: static;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   background: var(--color-surface-2);
 }
-
-/* placard sits BELOW the frame, always visible (overrides the hover-reveal). */
 .portfolio__content {
   position: static;
   inset: auto;
@@ -527,49 +527,28 @@ html[data-theme="dark"] .hero__background {
   transform: none;
   gap: 0.35rem;
 }
-
-.portfolio__content h3 {
-  color: var(--color-text-strong);
-  margin: 0;
-}
-
-.portfolio__content p {
-  color: var(--color-muted);
-  font-size: 0.98rem;
-}
-
-.portfolio__link {
-  color: var(--color-muted);
-  border-bottom: 1px solid transparent;
-}
-
+.portfolio__content h3 { color: var(--color-text-strong); margin: 0; }
+.portfolio__content p { color: var(--color-muted); font-size: 0.98rem; }
+.portfolio__link { color: var(--color-muted); border-bottom: 1px solid transparent; }
 .portfolio__card:hover figure,
-.portfolio__card:focus-visible figure,
 .portfolio__card:focus-within figure {
   border-color: color-mix(in srgb, var(--color-accent) 50%, var(--color-hairline-soft));
 }
-
 .portfolio__card:hover figure::after,
-.portfolio__card:focus-visible figure::after,
-.portfolio__card:focus-within figure::after {
-  border-color: var(--color-accent);
-}
-
+.portfolio__card:focus-within figure::after { border-color: var(--color-accent); }
 .portfolio__card:hover .portfolio__link,
-.portfolio__card:focus-visible .portfolio__link,
 .portfolio__card:focus-within .portfolio__link {
   color: var(--color-accent-ink);
   border-bottom-color: var(--color-accent);
 }
-
 .portfolio__card--cta {
-  grid-template-rows: 1fr;
+  position: static;
+  display: flex;
   background: var(--color-surface);
   border: 1px solid var(--color-hairline-soft);
   border-radius: 2px;
-  min-height: 0;
+  min-height: clamp(300px, 34vw, 460px);
 }
-
 /* ===========================================================================
    12. PROCESS & ABOUT MARKS — the inline gallery signs follow the wall colour.
    ======================================================================== */
