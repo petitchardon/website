@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-hidden="true" fill="none">
+  <defs>
+    <pattern id="p1dots" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="translate(1 1)">
+      <circle cx="1.4" cy="1.4" r="1.4" fill="#0f0e54" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <!-- citron under-ink, offset (misregistration) -->
+  <g transform="translate(-3 3)">
+    <circle cx="44" cy="48" r="22" fill="#d9f20c"/>
+    <circle cx="78" cy="62" r="22" fill="#d9f20c"/>
+  </g>
+  <!-- indigo line plates: two speech bubbles meeting -->
+  <path d="M22 30h44a8 8 0 0 1 8 8v20a8 8 0 0 1-8 8H40l-12 11V66h-6a8 8 0 0 1-8-8V38a8 8 0 0 1 8-8Z" fill="#fffdf6" stroke="#0f0e54" stroke-width="3.2" stroke-linejoin="round"/>
+    <circle cx="36" cy="48" r="3" fill="#0f0e54"/>
+    <circle cx="48" cy="48" r="3" fill="#0f0e54"/>
+    <circle cx="60" cy="48" r="3" fill="#0f0e54"/>
+  <path d="M62 54h36a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8h-4v10l-11-10H62a8 8 0 0 1-8-8V62a8 8 0 0 1 8-8Z" fill="url(#p1dots)" stroke="#0f0e54" stroke-width="3.2" stroke-linejoin="round" style="fill:#27ccbc;fill-opacity:.18"/>
+  <path d="M62 54h36a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8h-4v10l-11-10H62a8 8 0 0 1-8-8V62a8 8 0 0 1 8-8Z" fill="url(#p1dots)" stroke="#0f0e54" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M66 70h26M66 78h18" stroke="#0f0e54" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- registration cross -->
+  <path d="M100 24v12M94 30h12" stroke="#0f0e54" stroke-width="2"/>
+</svg>

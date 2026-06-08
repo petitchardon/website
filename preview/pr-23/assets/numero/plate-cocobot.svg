@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="cb-dots" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#0f0e54" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="320" fill="#fffdf6"/>
+  <!-- citron field offset -->
+  <rect x="56" y="46" width="300" height="220" rx="20" fill="#d9f20c"/>
+  <rect x="50" y="52" width="300" height="220" rx="20" fill="#d9f20c" opacity="0.5" style="mix-blend-mode:multiply"/>
+  <rect width="400" height="320" fill="url(#cb-dots)"/>
+  <!-- chat bubbles / editorial templates -->
+  <g stroke="#0f0e54" stroke-width="4.5" stroke-linejoin="round">
+    <path d="M78 86h150a14 14 0 0 1 14 14v52a14 14 0 0 1-14 14H120l-26 24v-24h-16a14 14 0 0 1-14-14v-52a14 14 0 0 1 14-14Z" fill="#fffdf6"/>
+    <path d="M96 112h110M96 132h70" stroke-width="5" stroke-linecap="round"/>
+    <path d="M226 168h96a14 14 0 0 1 14 14v44a14 14 0 0 1-14 14h-6v20l-22-20h-82a14 14 0 0 1-14-14v-44a14 14 0 0 1 14-14Z" fill="#27ccbc" fill-opacity="0.4"/>
+    <path d="M244 192h74M244 210h44" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- bot mark: little antenna circle -->
+  <circle cx="300" cy="96" r="20" fill="#27ccbc" stroke="#0f0e54" stroke-width="4.5"/>
+  <path d="M300 76v-12M300 64a5 5 0 1 1 0-.01" stroke="#0f0e54" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="293" cy="96" r="3.5" fill="#0f0e54"/><circle cx="307" cy="96" r="3.5" fill="#0f0e54"/>
+  <path d="M40 40v22M29 51h22" stroke="#0f0e54" stroke-width="2.4"/>
+  <path d="M360 280v22M349 291h22" stroke="#0f0e54" stroke-width="2.4"/>
+</svg>

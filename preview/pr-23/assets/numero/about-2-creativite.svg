@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-hidden="true" fill="none">
+  <!-- overlapping disciplines: type + image + word, a venn of three inks -->
+  <g transform="translate(-3 3)">
+    <circle cx="48" cy="48" r="26" fill="#d9f20c"/>
+    <circle cx="72" cy="48" r="26" fill="#d9f20c"/>
+    <circle cx="60" cy="72" r="26" fill="#d9f20c"/>
+  </g>
+  <circle cx="48" cy="46" r="26" fill="#fffdf6" stroke="#0f0e54" stroke-width="3.2" opacity="0.96"/>
+  <circle cx="72" cy="46" r="26" fill="#27ccbc" fill-opacity="0.5" stroke="#0f0e54" stroke-width="3.2"/>
+  <circle cx="60" cy="70" r="26" fill="none" stroke="#0f0e54" stroke-width="3.2"/>
+  <!-- A glyph (type) -->
+  <path d="M42 56 48 38l6 18M44 50h8" stroke="#0f0e54" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- spark center -->
+  <path d="M60 58v10M55 63h10" stroke="#0f0e54" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-hidden="true" fill="none">
+  <defs>
+    <pattern id="p3dots" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="1.4" cy="1.4" r="1.4" fill="#0f0e54" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <!-- citron under-ink offset -->
+  <g transform="translate(-3 3)">
+    <circle cx="40" cy="44" r="20" fill="#d9f20c"/>
+    <rect x="44" y="58" width="48" height="40" rx="6" fill="#d9f20c"/>
+  </g>
+  <!-- proof board on easel -->
+  <rect x="22" y="22" width="56" height="44" rx="4" fill="#fffdf6" stroke="#0f0e54" stroke-width="3.2"/>
+  <rect x="22" y="22" width="56" height="44" rx="4" fill="url(#p3dots)"/>
+  <path d="M30 34h26M30 44h40M30 54h20" stroke="#0f0e54" stroke-width="3" stroke-linecap="round"/>
+  <path d="M40 66 32 92M58 66 66 92" stroke="#0f0e54" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- exchange arrows / annotation tick -->
+  <g transform="translate(2 -1)">
+    <circle cx="92" cy="74" r="18" fill="#27ccbc" stroke="#0f0e54" stroke-width="3.2"/>
+    <path d="M84 74l6 6 10-12" stroke="#0f0e54" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M24 96v12M18 102h12" stroke="#0f0e54" stroke-width="2"/>
+</svg>

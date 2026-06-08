@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs><pattern id="bc-d" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="#0f0e54" opacity="0.15"/></pattern></defs>
+  <rect width="640" height="420" fill="#fffdf6"/>
+  <rect x="86" y="56" width="490" height="300" rx="24" fill="#d9f20c"/>
+  <rect x="78" y="64" width="490" height="300" rx="24" fill="#d9f20c" opacity="0.5" style="mix-blend-mode:multiply"/>
+  <rect width="640" height="420" fill="url(#bc-d)"/>
+  <g stroke="#0f0e54" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M110 110h220a16 16 0 0 1 16 16v72a16 16 0 0 1-16 16H170l-34 30v-30h-26a16 16 0 0 1-16-16v-72a16 16 0 0 1 16-16Z" fill="#fffdf6"/>
+    <path d="M134 142h160M134 168h100"/>
+    <path d="M330 226h140a16 16 0 0 1 16 16v62a16 16 0 0 1-16 16h-8v28l-30-28H330a16 16 0 0 1-16-16v-62a16 16 0 0 1 16-16Z" fill="#27ccbc" fill-opacity="0.4"/>
+    <path d="M352 256h104M352 282h64"/>
+  </g>
+  <circle cx="450" cy="120" r="28" fill="#27ccbc" stroke="#0f0e54" stroke-width="5"/>
+  <path d="M450 92V72M450 72a6 6 0 1 1 0-.01" stroke="#0f0e54" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="440" cy="120" r="4.5" fill="#0f0e54"/><circle cx="460" cy="120" r="4.5" fill="#0f0e54"/>
+  <path d="M40 40v24M28 52h24" stroke="#0f0e54" stroke-width="2.6"/>
+  <path d="M600 356v24M588 368h24" stroke="#0f0e54" stroke-width="2.6"/>
+</svg>

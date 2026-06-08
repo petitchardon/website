@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="ia-dots" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#0f0e54" opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="320" fill="#fffdf6"/>
+  <!-- citron field, offset -->
+  <path d="M40 220c40-120 120-150 200-120s100 130 60 180-260 60-260-60Z" fill="#d9f20c"/>
+  <path d="M46 226c40-120 120-150 200-120s100 130 60 180-260 60-260-60Z" fill="#d9f20c" opacity="0.5" style="mix-blend-mode:multiply"/>
+  <rect width="400" height="320" fill="url(#ia-dots)"/>
+  <!-- constellation: nodes (atypical minds) connected -->
+  <g stroke="#0f0e54" stroke-width="3.5">
+    <path d="M90 90 170 140 130 220 240 250 300 170 250 90 170 140M300 170 320 250M170 140 110 200"/>
+  </g>
+  <g fill="#27ccbc" stroke="#0f0e54" stroke-width="4">
+    <circle cx="90" cy="90" r="13"/>
+    <circle cx="300" cy="170" r="16"/>
+    <circle cx="130" cy="220" r="11"/>
+    <circle cx="250" cy="90" r="12"/>
+  </g>
+  <g fill="#fffdf6" stroke="#0f0e54" stroke-width="4">
+    <circle cx="170" cy="140" r="20"/>
+    <circle cx="240" cy="250" r="14"/>
+    <circle cx="110" cy="200" r="9"/>
+    <circle cx="320" cy="250" r="10"/>
+  </g>
+  <!-- spark inside the hub node -->
+  <path d="M170 130v20M160 140h20" stroke="#0f0e54" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M40 40v22M29 51h22" stroke="#0f0e54" stroke-width="2.4"/>
+  <path d="M360 280v22M349 291h22" stroke="#0f0e54" stroke-width="2.4"/>
+</svg>
