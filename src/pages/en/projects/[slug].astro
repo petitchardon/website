@@ -20,7 +20,13 @@ const pathname = `/en/projects/${project.data.slugs.en}.html`;
   title={`${project.data.title} | petitchardon`}
   description={project.data.description.en}
   pathname={pathname}
-  bodyPage="project-placeholder"
+  bodyPage="project"
 >
-  <ProjectPage lang={lang} projectTitle={project.data.title} body={project.data.description.en} />
+  <ProjectPage
+    lang={lang}
+    projectTitle={project.data.title}
+    body={project.data.description.en}
+    tag={project.data.tag}
+    slug={project.data.slugs.en}
+  />
 </BaseLayout>

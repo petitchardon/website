@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-hidden="true" fill="none">
+  <!-- ready-to-launch assets: a tied parcel of deliverables -->
+  <g transform="rotate(-4 120 120)">
+    <rect x="52" y="78" width="136" height="110" rx="8" fill="#0f0e54" transform="translate(8 8)"/>
+    <rect x="52" y="78" width="136" height="110" rx="8" fill="#d9f20c"/>
+    <!-- ribbon -->
+    <rect x="110" y="78" width="20" height="110" fill="#0f0e54"/>
+    <rect x="52" y="124" width="136" height="18" fill="#0f0e54"/>
+    <!-- bow -->
+    <path d="M120 78 q-32 -28 -42 0 q24 6 42 0 Z" fill="#27ccbc"/>
+    <path d="M120 78 q32 -28 42 0 q-24 6 -42 0 Z" fill="#27ccbc"/>
+    <circle cx="120" cy="78" r="9" fill="#f7f7ff"/>
+    <circle cx="120" cy="78" r="9" fill="none" stroke="#0f0e54" stroke-width="3"/>
+    <!-- tag -->
+    <g transform="rotate(16 174 150)">
+      <path d="M156 140 L196 140 L208 162 L196 184 L156 184 Z" fill="#0f0e54" transform="translate(5 5)"/>
+      <path d="M156 140 L196 140 L208 162 L196 184 L156 184 Z" fill="#f7f7ff"/>
+      <circle cx="166" cy="162" r="6" fill="#0f0e54"/>
+    </g>
+  </g>
+</svg>

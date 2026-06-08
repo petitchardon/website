@@ -36,7 +36,9 @@ html[data-theme="dark"] {
    1. PAPER GRAIN — a faint fibrous texture over the whole page, so every
    surface feels like cut paper rather than flat screen.
    --------------------------------------------------------------------- */
-body[data-page="home"]::after {
+body[data-page="home"]::after,
+body[data-page="project"]::after,
+body[data-page="not-found"]::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -61,7 +63,9 @@ body[data-page="home"]::after {
   mix-blend-mode: multiply;
 }
 
-html[data-theme="dark"] body[data-page="home"]::after {
+html[data-theme="dark"] body[data-page="home"]::after,
+html[data-theme="dark"] body[data-page="project"]::after,
+html[data-theme="dark"] body[data-page="not-found"]::after {
   mix-blend-mode: screen;
 }
 
@@ -532,4 +536,660 @@ html[data-theme="dark"] .hero__note {
 a.portfolio__card:focus-visible {
   outline: 3px solid var(--color-secondary);
   outline-offset: 4px;
+}
+
+/* =====================================================================
+   16. HERO COLLAGE — bespoke cut-paper artwork pinned beside the headline.
+   Two-column on desktop, stacked under the copy on mobile. The artwork is
+   purely decorative (aria-hidden) — the headline carries the meaning.
+   First-paint safe: the image is visible immediately, no opacity gate.
+   ===================================================================== */
+.hero__inner--collage {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 5vw, 4rem);
+  text-align: left;
+}
+
+.hero__inner--collage .hero__copy {
+  text-align: left;
+  flex: 1 1 56%;
+  align-items: flex-start;
+}
+
+.hero__collage {
+  position: relative;
+  flex: 0 0 clamp(280px, 36vw, 440px);
+  width: clamp(280px, 36vw, 440px);
+  align-self: center;
+  --pspeed: -22px;
+  filter: drop-shadow(12px 16px 0 rgba(5, 4, 24, 0.55));
+}
+
+.hero__collage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: rotate(-2deg);
+}
+
+.hero__collage .hero__stamp {
+  position: absolute;
+  left: -1.6rem;
+  bottom: 1.4rem;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(6, 5, 31, 0.5);
+  opacity: 0.95;
+}
+
+.hero__collage .washi--tl { top: -10px; left: 8%; }
+.hero__collage .washi--tr { top: -10px; right: 12%; }
+
+@media (max-width: 920px) {
+  .hero__inner--collage {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero__inner--collage .hero__copy {
+    text-align: center;
+    align-items: center;
+  }
+  .hero__collage {
+    flex-basis: auto;
+    width: clamp(220px, 64vw, 340px);
+    margin-top: 0.5rem;
+  }
+}
+
+/* =====================================================================
+   17. ATELIER MARKS — rubber-stamped section labels above the kicker, like
+   a maker's ink stamp pressed onto the board. CSS/aria-hidden decorative.
+   ===================================================================== */
+.section-header--stamped {
+  position: relative;
+}
+
+.atelier-mark {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  padding: 0.28rem 0.95rem;
+  font-family: var(--font-soft);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  border: 2.5px solid var(--color-primary);
+  border-radius: 7px;
+  transform: rotate(-3deg);
+  opacity: 0.78;
+}
+
+.atelier-mark--teal {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+html[data-theme="dark"] .atelier-mark {
+  color: var(--color-secondary-soft);
+  border-color: var(--color-secondary-soft);
+}
+html[data-theme="dark"] .atelier-mark--teal {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* Process band sits on a teal-soft field: keep the mark inked but legible. */
+.process .atelier-mark {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+html[data-theme="dark"] .process .atelier-mark {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* =====================================================================
+   18. PORTFOLIO PIN — a small "pinned" paper ticket on the hero project,
+   reinforcing the corkboard metaphor. Decorative only.
+   ===================================================================== */
+.portfolio__pin {
+  position: absolute;
+  z-index: 7;
+  top: 0.9rem;
+  right: 0.9rem;
+  padding: 0.25rem 0.8rem;
+  font-family: var(--font-soft);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+
+/* =====================================================================
+   19. ABOUT — portrait as a cut-out sticker, plus a torn caption tag and
+   a studio stamp on the section head.
+   ===================================================================== */
+.about__head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  margin-bottom: clamp(2rem, 4vw, 2.8rem);
+}
+.about__head .atelier-mark {
+  margin-bottom: 0;
+}
+
+.about__photo {
+  padding-bottom: 2.4rem;
+}
+
+/* Cut-out sticker: thick white paper border, hard offset shadow, tilt. */
+.about__photo img {
+  border: 8px solid #ffffff !important;
+  border-radius: 4px !important;
+  box-shadow: 14px 16px 0 var(--color-ink) !important;
+  transform: rotate(-3deg) !important;
+  outline: 1px solid rgba(15, 14, 84, 0.12);
+}
+html[data-theme="dark"] .about__photo img {
+  border-color: #f1f1ff !important;
+  box-shadow: 14px 16px 0 #050418 !important;
+}
+
+.about__caption {
+  position: absolute;
+  left: 50%;
+  bottom: -0.4rem;
+  transform: translateX(-50%) rotate(-2deg);
+  padding: 0.4rem 0.9rem;
+  max-width: 18rem;
+  font-family: var(--font-soft);
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  border: 2px solid var(--color-ink);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--color-ink);
+  z-index: 3;
+}
+html[data-theme="dark"] .about__caption {
+  box-shadow: 4px 4px 0 #050418;
+}
+
+@media (max-width: 720px) {
+  .hero__collage img,
+  .about__photo img,
+  .atelier-mark,
+  .portfolio__pin {
+    transform: none !important;
+  }
+  .about__caption {
+    transform: translateX(-50%) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__collage,
+  .hero__collage img,
+  .about__photo img,
+  .atelier-mark,
+  .portfolio__pin {
+    transform: none !important;
+  }
+  .about__caption {
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* =====================================================================
+   20. PROJECT SPREAD — each project detail page is a collage scrapbook:
+   a taped board, torn index cards, a pinned gallery and a stamped CTA.
+   Works in both themes; all rotations collapse under reduced-motion.
+   ===================================================================== */
+.project-spread {
+  display: block;
+}
+
+/* ---- hero: copy + bespoke board, side by side ---- */
+.project-hero--collage {
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+.project-hero--collage .project-hero__inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+.project-hero__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.project-hero--collage .breadcrumb {
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.1em;
+}
+.project-hero--collage .breadcrumb a:hover,
+.project-hero--collage .breadcrumb a:focus-visible {
+  color: var(--color-secondary);
+}
+.project-hero__title {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  margin: 0.3rem 0 0.6rem;
+}
+.project-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.6rem;
+  padding: 0.35rem 0.9rem;
+  border: var(--border-bold);
+  border-radius: 999px;
+  background: var(--color-secondary);
+  box-shadow: var(--shadow-hard-sm);
+  transform: rotate(-1.5deg);
+}
+.project-hero__tag-label {
+  font-family: var(--font-soft);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+.project-hero__tag-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-transform: lowercase;
+  color: var(--color-primary);
+}
+.project-hero__lede {
+  font-size: 1.22rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 40ch;
+  margin: 0.4rem 0 0.2rem;
+}
+html[data-theme="dark"] .project-hero__lede { color: var(--color-text); }
+.project-hero__note {
+  display: inline-block;
+  font-family: var(--font-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  padding: 0.45rem 0.9rem;
+  border: 2px dashed rgba(15, 14, 84, 0.45);
+  border-radius: 8px;
+  transform: rotate(-1deg);
+  max-width: 42ch;
+}
+html[data-theme="dark"] .project-hero__note {
+  border-color: rgba(191, 247, 233, 0.4);
+}
+.project-hero--collage .project-cta__actions {
+  margin-top: 1.4rem;
+}
+
+.project-hero__board {
+  position: relative;
+  --pspeed: -18px;
+  filter: drop-shadow(12px 14px 0 var(--color-shadow));
+}
+.project-hero__board img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: var(--border-bold);
+  border-radius: 6px;
+  box-shadow: var(--shadow-hard);
+  transform: rotate(2deg);
+}
+.project-hero__board .washi--tl { top: -12px; left: 10%; }
+.project-hero__board .washi--tr { top: -12px; right: 12%; }
+.project-hero__board .project-hero__stamp {
+  position: absolute;
+  bottom: -1.4rem;
+  right: -1rem;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(15, 14, 84, 0.4);
+}
+
+/* ---- index cards ---- */
+.project-cards {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) !important;
+}
+.project-cards__grid {
+  display: grid;
+  gap: clamp(1.6rem, 3.5vw, 2.6rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.project-card {
+  background: var(--atelier-paper);
+  border: var(--border-bold);
+  border-radius: 14px;
+  box-shadow: var(--shadow-hard);
+  padding: clamp(1.6rem, 2.6vw, 2.2rem) !important;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.project-card--brief { transform: rotate(-1.6deg); }
+.project-card--approach { transform: rotate(1.2deg); }
+.project-card--deliver { transform: rotate(-0.8deg); }
+.project-card:hover,
+.project-card:focus-within {
+  transform: rotate(0deg) translate(-4px, -6px);
+  box-shadow: var(--atelier-lift-shadow);
+}
+.project-card h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  margin-bottom: 0.8rem;
+  color: var(--color-text-strong);
+}
+.project-card p {
+  color: var(--color-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.project-card__list {
+  display: grid;
+  gap: 0.7rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.project-card__list li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+.project-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--color-accent);
+  border: 2px solid var(--color-ink);
+  border-radius: 3px;
+  transform: rotate(8deg);
+}
+
+/* ---- pinned gallery ---- */
+.project-gallery {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) !important;
+}
+.project-gallery .section-header--stamped {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.project-gallery__grid {
+  display: grid;
+  gap: clamp(1.6rem, 3vw, 2.4rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.project-gallery__item {
+  position: relative;
+  margin: 0;
+  background: var(--color-surface);
+  border: var(--border-bold);
+  border-radius: 8px;
+  box-shadow: var(--shadow-hard);
+  padding: 0.7rem 0.7rem 0;
+  overflow: visible;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.project-gallery__item:nth-child(1) { transform: rotate(-2deg); }
+.project-gallery__item:nth-child(2) { transform: rotate(1.6deg); }
+.project-gallery__item:nth-child(3) { transform: rotate(-1.2deg); }
+.project-gallery__item:hover {
+  transform: rotate(0deg) translate(-4px, -6px);
+  box-shadow: var(--atelier-lift-shadow);
+  z-index: 4;
+}
+.project-gallery__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+.project-gallery__item figcaption {
+  margin: 0 !important;
+  padding: 0.7rem 0.3rem 0.9rem;
+  font-family: var(--font-soft);
+  font-weight: 600;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* ---- stamped next CTA ---- */
+.project-next {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) !important;
+}
+.project-next__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: var(--color-primary);
+  border: var(--border-bold);
+  border-radius: var(--radius-chunky);
+  box-shadow: var(--shadow-hard);
+  padding: clamp(2rem, 4vw, 3rem) !important;
+  transform: rotate(-0.6deg);
+}
+.project-next__text { max-width: 46ch; }
+.project-next__inner h2 { color: var(--color-accent); margin-bottom: 0.6rem; }
+.project-next__inner p { color: rgba(255, 255, 255, 0.92); margin: 0; }
+.project-next__stamp {
+  top: -1.6rem;
+  left: -1.2rem;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(6, 5, 31, 0.4);
+}
+
+@media (max-width: 1080px) {
+  .project-cards__grid,
+  .project-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .project-card--deliver,
+  .project-gallery__item:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .project-hero--collage .project-hero__inner {
+    grid-template-columns: 1fr;
+  }
+  .project-cards__grid,
+  .project-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card,
+  .project-card--brief,
+  .project-card--approach,
+  .project-card--deliver,
+  .project-hero__board img,
+  .project-hero__tag,
+  .project-hero__note,
+  .project-gallery__item,
+  .project-gallery__item:nth-child(n),
+  .project-next__inner {
+    transform: none !important;
+  }
+  .project-hero__intro { align-items: center; text-align: center; }
+  .project-hero__lede { max-width: 100%; }
+  .project-next__inner { flex-direction: column; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card--brief,
+  .project-card--approach,
+  .project-card--deliver,
+  .project-hero__board img,
+  .project-hero__tag,
+  .project-hero__note,
+  .project-gallery__item,
+  .project-gallery__item:nth-child(n),
+  .project-next__inner {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* =====================================================================
+   21. 404 — the lost-in-the-brambles page as a torn collage note.
+   ===================================================================== */
+body[data-page="not-found"] .project-hero {
+  position: relative;
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+body[data-page="not-found"] .project-hero__intro {
+  position: relative;
+  transform: rotate(-1.2deg);
+}
+body[data-page="not-found"] .project-hero__intro::before {
+  content: "404";
+  position: absolute;
+  top: -2.4rem;
+  right: -1rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 9vw, 6rem);
+  color: var(--color-accent);
+  -webkit-text-stroke: 3px var(--color-ink);
+  paint-order: stroke fill;
+  transform: rotate(8deg);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.95;
+}
+body[data-page="not-found"] .nf-scrap {
+  position: absolute;
+  pointer-events: none;
+  border: var(--border-bold);
+  box-shadow: var(--shadow-hard-sm);
+}
+body[data-page="not-found"] .nf-scrap--citron {
+  width: 70px; height: 70px;
+  background: var(--color-accent);
+  border-radius: 30% 70% 64% 36% / 42% 39% 61% 58%;
+  top: 12%; left: 8%;
+  transform: rotate(-12deg);
+}
+body[data-page="not-found"] .nf-scrap--teal {
+  width: 54px; height: 54px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  bottom: 16%; right: 12%;
+  transform: rotate(10deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="not-found"] .project-hero__intro,
+  body[data-page="not-found"] .project-hero__intro::before,
+  body[data-page="not-found"] .nf-scrap {
+    transform: none !important;
+  }
+}
+@media (max-width: 720px) {
+  body[data-page="not-found"] .project-hero__intro,
+  body[data-page="not-found"] .nf-scrap {
+    transform: none !important;
+  }
+}
+
+/* =====================================================================
+   22. FOOTER & HEADER — tie the chrome into the collage language with a
+   torn citron top edge, a maker stamp, and a taped seam under the header.
+   ===================================================================== */
+.site-footer {
+  position: relative;
+}
+.footer__tape {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 14px;
+  background: var(--color-accent);
+  pointer-events: none;
+  z-index: 2;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 8 L8 5 L16 10 L24 6 L32 11 L40 7 L48 12 L56 7 L64 11 L72 6 L80 10 L88 5 L96 10 L104 6 L112 11 L120 7 L120 0 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 8 L8 5 L16 10 L24 6 L32 11 L40 7 L48 12 L56 7 L64 11 L72 6 L80 10 L88 5 L96 10 L104 6 L112 11 L120 7 L120 0 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 120px 14px;
+  mask-size: 120px 14px;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+}
+.footer__brand {
+  position: relative;
+}
+.footer__stamp {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.28rem 0.85rem;
+  font-family: var(--font-soft);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  border-radius: 6px;
+  transform: rotate(-3deg);
+  opacity: 0.85;
+}
+@media (max-width: 720px) {
+  .footer__stamp { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer__stamp { transform: none; }
+}
+
+/* Taped seam under the sticky header — a citron washi strip. */
+.site-header {
+  position: sticky;
+}
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-accent) 0 22px,
+    transparent 22px 34px
+  );
+  opacity: 0.55;
+  pointer-events: none;
 }

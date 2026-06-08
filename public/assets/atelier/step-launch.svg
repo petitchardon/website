@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-hidden="true" fill="none">
+  <!-- cut-paper paper plane launching -->
+  <g transform="rotate(-8 100 100)">
+    <!-- trail -->
+    <path d="M30 158 q40 -14 70 -52" stroke="#27ccbc" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="3 12"/>
+    <!-- plane shadow -->
+    <g transform="translate(7 7)">
+      <path d="M60 60 L168 44 L96 118 Z" fill="#0f0e54"/>
+      <path d="M60 60 L96 118 L88 156 Z" fill="#0f0e54"/>
+    </g>
+    <!-- plane body -->
+    <path d="M60 60 L168 44 L96 118 Z" fill="#d9f20c"/>
+    <path d="M60 60 L96 118 L88 156 Z" fill="#27ccbc"/>
+    <path d="M96 118 L168 44 L88 156 Z" fill="#bff7e9"/>
+    <path d="M60 60 L168 44 L88 156" stroke="#0f0e54" stroke-width="3.5" stroke-linejoin="round" fill="none"/>
+    <line x1="96" y1="118" x2="168" y2="44" stroke="#0f0e54" stroke-width="3.5"/>
+  </g>
+  <!-- spark stars -->
+  <path d="M158 130 l4 -14 l4 14 l14 4 l-14 4 l-4 14 l-4 -14 l-14 -4 Z" fill="#d9f20c"/>
+</svg>

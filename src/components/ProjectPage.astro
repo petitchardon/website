@@ -1,35 +1,125 @@
 ---
 import type { Lang } from '../i18n';
-import { getDict, homeUrl } from '../i18n';
+import { getDict, homeUrl, asset } from '../i18n';
 
 export interface Props {
   lang: Lang;
   projectTitle?: string;
   body?: string;
+  tag?: string;
+  slug?: string;
 }
 
-const { lang, projectTitle, body } = Astro.props;
+const { lang, projectTitle, body, tag, slug } = Astro.props;
 const dict = getDict(lang);
 const home = homeUrl(lang);
 const headline = projectTitle ?? dict.project.underConstruction;
 const text = body ?? dict.project.underConstructionBody;
+
+// Map each project slug to its bespoke cut-paper hero artwork.
+const heroArt: Record<string, string> = {
+  'lukes-iced-coffees': 'assets/atelier/pf-lukes.svg',
+  'intelligences-atypiques': 'assets/atelier/pf-intelligences.svg',
+  'cocobot': 'assets/atelier/pf-cocobot.svg',
+};
+const boardArt = (slug && heroArt[slug]) || 'assets/atelier/project-board.svg';
 ---
 
-<section class="project-hero" data-animate="fade-up">
-  <div class="container project-hero__inner">
-    <div class="project-hero__intro glass-surface">
-      <p class="breadcrumb">{dict.project.breadcrumb}</p>
-      <h1>{headline}</h1>
-      <p>{text}</p>
-      <h2 class="seo-hidden">{dict.project.actionsHeading}</h2>
-      <div class="project-cta__actions">
-        <a class="btn btn--primary" href={`${home}#portfolio`}>
-          {dict.project.backToPortfolio}
-        </a>
-        <a class="btn btn--ghost" href={`${home}#contact`}>
-          {dict.project.backToContact}
-        </a>
+<article class="project-spread" data-page="project">
+  <section class="project-hero project-hero--collage" data-animate="fade-up">
+    <div class="container project-hero__inner">
+      <div class="project-hero__intro">
+        <p class="breadcrumb">
+          <a href={`${home}#portfolio`}>{dict.project.breadcrumb}</a>
+          <span aria-hidden="true"> · </span>
+          <span>{headline}</span>
+        </p>
+        <span class="atelier-mark atelier-mark--teal" aria-hidden="true">{dict.project.spread}</span>
+        <h1 class="project-hero__title">{headline}</h1>
+        {tag && (
+          <p class="project-hero__tag">
+            <span class="project-hero__tag-label">{dict.project.tagLabel}</span>
+            <span class="project-hero__tag-value">{tag}</span>
+          </p>
+        )}
+        <p class="project-hero__lede">{text}</p>
+        <p class="project-hero__note">{dict.project.intro}</p>
+        <h2 class="seo-hidden">{dict.project.actionsHeading}</h2>
+        <div class="project-cta__actions">
+          <a class="btn btn--primary" href={`${home}#contact`}>{dict.project.backToContact}</a>
+          <a class="btn btn--ghost" href={`${home}#portfolio`}>{dict.project.backToPortfolio}</a>
+        </div>
+      </div>
+      <div class="project-hero__board" data-parallax aria-hidden="true">
+        <span class="washi washi--teal washi--tl" aria-hidden="true"></span>
+        <span class="washi washi--tr" aria-hidden="true"></span>
+        <img src={asset(boardArt)} alt="" role="presentation" width="600" height="480" fetchpriority="high" />
+        <span class="stamp stamp--round project-hero__stamp" aria-hidden="true">{dict.atelier.heroStamp}</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="project-cards" data-animate="fade-up">
+    <div class="container project-cards__grid">
+      <article class="project-card glass-surface project-card--brief">
+        <span class="washi washi--tl" aria-hidden="true"></span>
+        <h2>{dict.project.briefHeading}</h2>
+        <p>{text}</p>
+      </article>
+      <article class="project-card glass-surface project-card--approach">
+        <span class="washi washi--teal washi--tr" aria-hidden="true"></span>
+        <h2>{dict.project.approachHeading}</h2>
+        <p>{dict.project.approachBody}</p>
+      </article>
+      <article class="project-card glass-surface project-card--deliver">
+        <span class="washi washi--bl" aria-hidden="true"></span>
+        <h2>{dict.project.deliverablesHeading}</h2>
+        <ul class="project-card__list">
+          <li>{dict.project.deliverable1}</li>
+          <li>{dict.project.deliverable2}</li>
+          <li>{dict.project.deliverable3}</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="project-gallery" data-animate="fade-in">
+    <div class="container">
+      <header class="section-header section-header--stamped">
+        <span class="atelier-mark" aria-hidden="true">{dict.atelier.portfolioStamp}</span>
+        <h2>{dict.project.galleryHeading}</h2>
+      </header>
+      <div class="project-gallery__grid">
+        <figure class="project-gallery__item">
+          <span class="washi washi--teal washi--tl" aria-hidden="true"></span>
+          <img src={asset(boardArt)} alt="" role="presentation" width="600" height="480" loading="lazy" />
+          <figcaption>{dict.project.captionBoard}</figcaption>
+        </figure>
+        <figure class="project-gallery__item">
+          <span class="washi washi--tr" aria-hidden="true"></span>
+          <img src={asset('assets/atelier/scrap-shapes.svg')} alt="" role="presentation" width="400" height="320" loading="lazy" />
+          <figcaption>{dict.project.captionShapes}</figcaption>
+        </figure>
+        <figure class="project-gallery__item">
+          <span class="washi washi--bl" aria-hidden="true"></span>
+          <img src={asset('assets/atelier/scrap-grid.svg')} alt="" role="presentation" width="400" height="320" loading="lazy" />
+          <figcaption>{dict.project.captionGrid}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-next" data-animate="fade-up">
+    <div class="container project-next__inner glass-surface">
+      <span class="stamp stamp--round project-next__stamp" aria-hidden="true">{dict.atelier.contactStamp}</span>
+      <div class="project-next__text">
+        <h2>{dict.project.nextHeading}</h2>
+        <p>{dict.project.nextBody}</p>
+      </div>
+      <div class="project-cta__actions">
+        <a class="btn btn--primary" href={`${home}#contact`}>{dict.project.backToContact}</a>
+        <a class="btn btn--ghost" href={`${home}#portfolio`}>{dict.project.backToPortfolio}</a>
+      </div>
+    </div>
+  </section>
+</article>

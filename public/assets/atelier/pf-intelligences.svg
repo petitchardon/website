@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" role="img" aria-hidden="true" fill="none">
+  <defs>
+    <clipPath id="ia-clip"><rect width="600" height="480" rx="2"/></clipPath>
+    <filter id="ia-grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/></filter>
+  </defs>
+  <g clip-path="url(#ia-clip)">
+    <rect width="600" height="480" fill="#0f0e54"/>
+    <rect width="600" height="480" fill="#292881" opacity="0.5"/>
+    <!-- torn citron mountain -->
+    <path d="M0 300 L80 250 L150 290 L250 230 L340 286 L430 236 L520 288 L600 244 L600 480 L0 480 Z" fill="#292881"/>
+    <!-- cut-paper head silhouette -->
+    <g transform="translate(168 70) rotate(-3 132 170)">
+      <path d="M40 40 q90 -64 184 0 q44 60 6 150 q-12 30 -42 40 l-2 56 -120 0 q4 -50 -18 -78 q-46 -56 -8 -168 Z" fill="#f7f7ff"/>
+      <!-- citron mind burst inside -->
+      <circle cx="130" cy="130" r="50" fill="#d9f20c"/>
+      <!-- teal puzzle/atypical nodes -->
+      <circle cx="96" cy="96" r="16" fill="#27ccbc"/>
+      <rect x="150" y="78" width="30" height="30" rx="7" fill="#27ccbc" transform="rotate(18 165 93)"/>
+      <path d="M168 150 l26 -8 l-6 28 Z" fill="#0f0e54"/>
+      <circle cx="104" cy="170" r="12" fill="#0f0e54"/>
+      <!-- connecting threads -->
+      <path d="M96 96 L130 130 L165 93 M130 130 L104 170 M130 130 L181 164" stroke="#0f0e54" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+    <!-- sparks -->
+    <path d="M430 110 l6 -22 l6 22 l22 6 l-22 6 l-6 22 l-6 -22 l-22 -6 Z" fill="#d9f20c"/>
+    <path d="M118 80 l4 -16 l4 16 l16 4 l-16 4 l-4 16 l-4 -16 l-16 -4 Z" fill="#27ccbc"/>
+    <!-- washi -->
+    <rect x="60" y="40" width="140" height="28" fill="#27ccbc" opacity="0.8" transform="rotate(-8 130 54)"/>
+    <rect x="60" y="40" width="140" height="28" fill="none" stroke="#bff7e9" stroke-width="2" stroke-dasharray="2 5" transform="rotate(-8 130 54)"/>
+    <rect width="600" height="480" filter="url(#ia-grain)"/>
+  </g>
+</svg>

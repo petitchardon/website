@@ -13,8 +13,10 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
+  <span class="footer__tape" aria-hidden="true"></span>
   <div class="container footer__inner">
     <div class="footer__brand">
+      <span class="footer__stamp" aria-hidden="true">{dict.atelier.scrapNote}</span>
       <img src={asset('assets/images/logo-petitchardon.svg')} alt="petitchardon" width="140" height="56" />
       <p>{dict.footer.brandTagline}</p>
     </div>

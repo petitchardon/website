@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-hidden="true" fill="none">
+  <!-- scissors cutting citron paper -->
+  <g transform="rotate(-4 100 100)">
+    <!-- paper sheet being cut -->
+    <path d="M40 60 L150 50 L160 150 L52 162 Z" fill="#0f0e54" transform="translate(6 6)"/>
+    <path d="M40 60 L150 50 L160 150 L52 162 Z" fill="#d9f20c"/>
+    <!-- cut zigzag line -->
+    <path d="M52 96 l16 -8 l16 10 l16 -10 l16 10 l16 -10 l18 8" stroke="#0f0e54" stroke-width="4" stroke-linecap="round" fill="none" stroke-dasharray="2 8"/>
+    <!-- teal scrap corner lifting -->
+    <path d="M120 60 L150 56 L156 100 Z" fill="#27ccbc"/>
+  </g>
+  <!-- scissors -->
+  <g transform="rotate(28 150 120)">
+    <circle cx="148" cy="64" r="15" fill="#0f0e54"/>
+    <circle cx="148" cy="64" r="7" fill="#bff7e9"/>
+    <circle cx="148" cy="104" r="15" fill="#0f0e54"/>
+    <circle cx="148" cy="104" r="7" fill="#bff7e9"/>
+    <path d="M148 70 L96 130 M148 98 L96 38" stroke="#0f0e54" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>

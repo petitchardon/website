@@ -1022,8 +1022,8 @@ html[data-theme="dark"] .process {
 .portfolio__card img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  background: #05051c;
+  object-fit: cover;
+  background: var(--atelier-paper);
   transition: transform var(--transition-slow);
 }
 
@@ -1834,9 +1834,8 @@ html[data-theme="dark"] .hero {
 .hero__background {
   position: absolute;
   inset: 0;
-  background: url("../assets/images/hero-background.svg") center/cover no-repeat;
-  filter: saturate(150%) contrast(115%);
-  opacity: 0.4;
+  background: url("../assets/atelier/hero-backdrop.svg") center/cover no-repeat;
+  opacity: 0.55;
   mix-blend-mode: screen;
   z-index: -1;
 }

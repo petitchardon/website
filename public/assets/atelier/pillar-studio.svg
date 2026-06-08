@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-hidden="true" fill="none">
+  <!-- human-scale studio: a little workbench with a paper chardon -->
+  <g transform="rotate(-4 120 120)">
+    <!-- desk -->
+    <rect x="36" y="150" width="168" height="20" rx="6" fill="#0f0e54" transform="translate(7 7)"/>
+    <rect x="36" y="150" width="168" height="20" rx="6" fill="#0f0e54"/>
+    <!-- pot -->
+    <path d="M96 150 L84 110 L156 110 L144 150 Z" fill="#0f0e54" transform="translate(7 7)"/>
+    <path d="M96 150 L84 110 L156 110 L144 150 Z" fill="#d9f20c"/>
+    <!-- chardon stem -->
+    <path d="M120 110 q-6 -34 0 -54" stroke="#0f0e54" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <!-- bloom -->
+    <circle cx="120" cy="50" r="22" fill="#f7f7ff"/>
+    <g stroke="#0f0e54" stroke-width="4" stroke-linecap="round">
+      <line x1="120" y1="50" x2="120" y2="22"/><line x1="120" y1="50" x2="142" y2="34"/>
+      <line x1="120" y1="50" x2="150" y2="56"/><line x1="120" y1="50" x2="98" y2="34"/>
+      <line x1="120" y1="50" x2="90" y2="56"/><line x1="120" y1="50" x2="138" y2="72"/>
+      <line x1="120" y1="50" x2="102" y2="72"/>
+    </g>
+    <circle cx="120" cy="50" r="10" fill="#27ccbc"/>
+    <!-- leaves -->
+    <path d="M120 96 q-26 -6 -34 -24 q24 -2 34 24 Z" fill="#0f0e54"/>
+  </g>
+</svg>
