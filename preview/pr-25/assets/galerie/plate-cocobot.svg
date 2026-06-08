@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="cb-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef0fb"/>
+      <stop offset="1" stop-color="#dde0f3"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="640" fill="url(#cb-wall)"/>
+  <!-- editorial calendar grid: the cadence of a content plan -->
+  <g transform="translate(150 130)">
+    <rect x="0" y="0" width="500" height="320" rx="14" fill="#ffffff" stroke="#0f0e54" stroke-width="3"/>
+    <rect x="0" y="0" width="500" height="58" rx="14" fill="#0f0e54"/>
+    <rect x="0" y="44" width="500" height="14" fill="#0f0e54"/>
+    <!-- header dots -->
+    <circle cx="34" cy="29" r="7" fill="#27ccbc"/>
+    <circle cx="60" cy="29" r="7" fill="#bff7e9"/>
+    <circle cx="86" cy="29" r="7" fill="#d9f20c"/>
+    <!-- grid of posts -->
+    <g>
+      <rect x="34" y="92" width="120" height="86" rx="8" fill="#bff7e9"/>
+      <rect x="190" y="92" width="120" height="86" rx="8" fill="#e3e3f6" stroke="#292881" stroke-width="2"/>
+      <rect x="346" y="92" width="120" height="86" rx="8" fill="#27ccbc"/>
+      <rect x="34" y="200" width="120" height="86" rx="8" fill="#e3e3f6" stroke="#292881" stroke-width="2"/>
+      <rect x="190" y="200" width="120" height="86" rx="8" fill="#292881"/>
+      <rect x="346" y="200" width="120" height="86" rx="8" fill="#bff7e9"/>
+    </g>
+    <!-- text ticks inside cells -->
+    <g fill="#0f0e54" opacity="0.5">
+      <rect x="48" y="108" width="64" height="7" rx="3.5"/>
+      <rect x="48" y="122" width="44" height="7" rx="3.5"/>
+      <rect x="360" y="216" width="64" height="7" rx="3.5"/>
+      <rect x="360" y="230" width="44" height="7" rx="3.5"/>
+    </g>
+  </g>
+  <!-- a small "in" social marker, lit citron on the leading post -->
+  <g transform="translate(596 168)">
+    <circle r="26" fill="#d9f20c"/>
+    <text x="0" y="9" text-anchor="middle" fill="#0f0e54" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="700">in</text>
+  </g>
+  <text x="400" y="556" text-anchor="middle" fill="#0f0e54" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="600" letter-spacing="2">cocobot</text>
+  <text x="400" y="592" text-anchor="middle" fill="#27ccbc" font-family="Inter, system-ui, sans-serif" font-size="15" letter-spacing="8">SOCIAL · ÉDITORIAL</text>
+</svg>

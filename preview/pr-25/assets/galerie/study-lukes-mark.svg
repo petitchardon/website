@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="560" fill="#0f0e54"/>
+  <!-- construction-grid logotype study, reversed on indigo -->
+  <g stroke="#27ccbc" stroke-width="1" opacity="0.35">
+    <line x1="200" y1="120" x2="200" y2="440"/>
+    <line x1="400" y1="120" x2="400" y2="440"/>
+    <line x1="600" y1="120" x2="600" y2="440"/>
+    <line x1="120" y1="200" x2="680" y2="200"/>
+    <line x1="120" y1="360" x2="680" y2="360"/>
+  </g>
+  <circle cx="400" cy="280" r="150" fill="none" stroke="#bff7e9" stroke-width="1" opacity="0.4"/>
+  <!-- the mark: an L formed of a straw + glass silhouette -->
+  <g transform="translate(400 280)">
+    <path d="M-70 -120 L-70 90 L70 90" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="40" y="-130" width="14" height="120" rx="7" fill="#d9f20c"/>
+  </g>
+  <text x="400" y="500" text-anchor="middle" fill="#bff7e9" font-family="Inter, system-ui, sans-serif" font-size="16" letter-spacing="10">LOGOTYPE · GRILLE</text>
+</svg>

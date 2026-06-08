@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="560" fill="#0f0e54"/>
+  <text x="60" y="76" fill="#bff7e9" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="3">CADENCE</text>
+  <line x1="60" y1="96" x2="740" y2="96" stroke="#27ccbc" stroke-width="2" opacity="0.6"/>
+  <!-- an editorial rhythm: weeks as a timeline of posts -->
+  <line x1="80" y1="300" x2="720" y2="300" stroke="#bff7e9" stroke-width="2" opacity="0.4"/>
+  <g>
+    <g transform="translate(110 300)"><circle r="22" fill="#27ccbc"/><line x1="0" y1="-22" x2="0" y2="-80" stroke="#27ccbc" stroke-width="2" opacity="0.5"/><text x="0" y="-92" text-anchor="middle" fill="#bff7e9" font-family="Inter, system-ui, sans-serif" font-size="13">lun</text></g>
+    <g transform="translate(240 300)"><circle r="16" fill="#bff7e9"/></g>
+    <g transform="translate(370 300)"><circle r="26" fill="#d9f20c"/><line x1="0" y1="26" x2="0" y2="84" stroke="#27ccbc" stroke-width="2" opacity="0.5"/><text x="0" y="104" text-anchor="middle" fill="#bff7e9" font-family="Inter, system-ui, sans-serif" font-size="13">mer</text></g>
+    <g transform="translate(500 300)"><circle r="16" fill="#bff7e9"/></g>
+    <g transform="translate(630 300)"><circle r="22" fill="#27ccbc"/><line x1="0" y1="-22" x2="0" y2="-80" stroke="#27ccbc" stroke-width="2" opacity="0.5"/><text x="0" y="-92" text-anchor="middle" fill="#bff7e9" font-family="Inter, system-ui, sans-serif" font-size="13">ven</text></g>
+  </g>
+  <text x="400" y="500" text-anchor="middle" fill="#bff7e9" font-family="Inter, system-ui, sans-serif" font-size="16" letter-spacing="8">CALENDRIER ÉDITORIAL</text>
+</svg>

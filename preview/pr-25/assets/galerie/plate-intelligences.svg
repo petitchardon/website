@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ia-wall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ececfa"/>
+      <stop offset="1" stop-color="#dcdcf2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="640" fill="url(#ia-wall)"/>
+  <!-- a constellation of atypical minds: nodes + connections, brain-as-network -->
+  <g stroke="#27ccbc" stroke-width="2.5" opacity="0.7" fill="none">
+    <path d="M250 200 L400 150 L540 220"/>
+    <path d="M250 200 L320 330 L400 150"/>
+    <path d="M320 330 L470 400 L540 220"/>
+    <path d="M470 400 L600 330 L540 220"/>
+    <path d="M320 330 L210 420"/>
+    <path d="M470 400 L420 510"/>
+    <path d="M600 330 L640 450"/>
+  </g>
+  <!-- nodes, each a distinct mind -->
+  <g>
+    <circle cx="400" cy="150" r="30" fill="#0f0e54"/>
+    <circle cx="250" cy="200" r="22" fill="#292881"/>
+    <circle cx="540" cy="220" r="26" fill="#292881"/>
+    <circle cx="320" cy="330" r="20" fill="#27ccbc"/>
+    <circle cx="470" cy="400" r="28" fill="#0f0e54"/>
+    <circle cx="600" cy="330" r="18" fill="#27ccbc"/>
+    <circle cx="210" cy="420" r="16" fill="#bff7e9" stroke="#0f0e54" stroke-width="2"/>
+    <circle cx="420" cy="510" r="20" fill="#292881"/>
+    <circle cx="640" cy="450" r="15" fill="#bff7e9" stroke="#0f0e54" stroke-width="2"/>
+    <!-- one node lit citron: the singular spark -->
+    <circle cx="400" cy="150" r="11" fill="#d9f20c"/>
+  </g>
+  <!-- enclosing thought-frame -->
+  <rect x="120" y="80" width="560" height="420" rx="20" fill="none" stroke="#0f0e54" stroke-width="2" opacity="0.18"/>
+  <text x="400" y="566" text-anchor="middle" fill="#0f0e54" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="3">intelligences</text>
+  <text x="400" y="600" text-anchor="middle" fill="#27ccbc" font-family="Inter, system-ui, sans-serif" font-size="16" letter-spacing="9">ATYPIQUES</text>
+</svg>

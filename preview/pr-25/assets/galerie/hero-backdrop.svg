@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+  <!-- An empty gallery room in one-point perspective: the threshold of the
+       exhibition. Teal hairlines on transparent so it sits quietly on either
+       wall; the hero copy always dominates. -->
+  <g fill="none" stroke="#27ccbc" stroke-width="1.4" opacity="0.5" stroke-linejoin="round">
+    <!-- floor / ceiling / back wall converging to the vanishing point -->
+    <rect x="560" y="300" width="320" height="300"/>
+    <line x1="0" y1="0" x2="560" y2="300"/>
+    <line x1="1440" y1="0" x2="880" y2="300"/>
+    <line x1="0" y1="900" x2="560" y2="600"/>
+    <line x1="1440" y1="900" x2="880" y2="600"/>
+    <!-- floor cadence lines -->
+    <line x1="300" y1="780" x2="640" y2="600" opacity="0.5"/>
+    <line x1="1140" y1="780" x2="800" y2="600" opacity="0.5"/>
+  </g>
+  <!-- framed works lining the side walls -->
+  <g fill="none" stroke="#0f0e54" stroke-width="2" opacity="0.32">
+    <rect x="150" y="300" width="120" height="150"/>
+    <rect x="330" y="320" width="90" height="115"/>
+    <rect x="1170" y="300" width="120" height="150"/>
+    <rect x="1020" y="320" width="90" height="115"/>
+    <!-- the work straight ahead, on the back wall -->
+    <rect x="640" y="370" width="160" height="160"/>
+  </g>
+  <!-- a single picture-light glow on the central work -->
+  <circle cx="720" cy="450" r="120" fill="#27ccbc" opacity="0.05"/>
+</svg>
