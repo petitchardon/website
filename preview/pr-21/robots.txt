@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /preview/
-
-Sitemap: https://www.petitchardon.fr/sitemap-index.xml
