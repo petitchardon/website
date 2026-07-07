@@ -7,7 +7,7 @@ tag: identité visuelle
 description:
   fr: Création du logotype et des déclinaisons produits pour une enseigne de café glacé artisanal.
   en: Logotype design and product range variations for an artisan iced coffee brand.
-cover: /assets/images/portfolio-aurore.svg
+cover: /assets/images/cover-lukes-iced-coffees.svg
 order: 1
 draft: false
 services:

@@ -7,7 +7,7 @@ tag: identité visuelle & réseaux sociaux
 description:
   fr: Création de l'identité visuelle et mise en place d'une stratégie réseaux sociaux pour une marque spécialisée dans l'accompagnement des profils atypiques.
   en: Visual identity design and social media strategy for a brand specialising in support for atypical profiles.
-cover: /assets/images/portfolio-origines.svg
+cover: /assets/images/cover-intelligences-atypiques.svg
 order: 2
 draft: false
 services:
