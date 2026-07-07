@@ -7,7 +7,7 @@ tag: social media & copywriting
 description:
   fr: Définition du calendrier éditorial LinkedIn, création des templates visuels et gestion des publications pour une marque tech.
   en: LinkedIn editorial calendar, visual template design and post management for a tech brand.
-cover: /assets/images/cover-cocobot.svg
+cover: /assets/images/portfolio-constellation.svg
 order: 3
 draft: false
 services:
