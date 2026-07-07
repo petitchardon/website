@@ -1,0 +1,51 @@
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="orig-pack-bg" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#091036" />
+      <stop offset="100%" stop-color="#16235A" />
+    </linearGradient>
+    <linearGradient id="orig-pack-card" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F0E54" />
+      <stop offset="100%" stop-color="#27CCBC" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" rx="36" fill="url(#orig-pack-bg)" />
+  <rect x="120" y="120" width="180" height="280" rx="28" fill="#FFFFFF" opacity="0.08" />
+  <rect x="156" y="156" width="108" height="180" rx="18" fill="url(#orig-pack-card)" />
+  <rect x="156" y="360" width="108" height="40" rx="16" fill="#D9F20C" opacity="0.7" />
+  <rect x="320" y="144" width="280" height="208" rx="28" fill="#0F0E54" opacity="0.85" />
+  <rect x="348" y="172" width="224" height="68" rx="18" fill="#27CCBC" opacity="0.75" />
+  <rect x="348" y="256" width="224" height="68" rx="18" fill="#BFF7E9" opacity="0.8" />
+  <path
+    d="M368 320h184"
+    stroke="#D9F20C"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+  <path
+    d="M368 352h148"
+    stroke="#FFFFFF"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+  <circle cx="210" cy="214" r="28" fill="#BFF7E9" opacity="0.9" />
+  <circle cx="368" cy="206" r="12" fill="#0F0E54" opacity="0.5" />
+  <path
+    d="M420 206c12-12 36-12 48 0"
+    stroke="#0F0E54"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.5"
+  />
+  <path
+    d="M420 290c12-12 36-12 48 0"
+    stroke="#0F0E54"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.5"
+  />
+</svg>
