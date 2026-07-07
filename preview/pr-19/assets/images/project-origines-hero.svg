@@ -1,0 +1,42 @@
+<svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="po-hero-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F0E54" />
+      <stop offset="100%" stop-color="#1E235C" />
+    </linearGradient>
+    <linearGradient id="po-hero-block" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F0E54" />
+      <stop offset="50%" stop-color="#205B6A" />
+      <stop offset="100%" stop-color="#27CCBC" />
+    </linearGradient>
+  </defs>
+  <rect width="520" height="520" rx="40" fill="url(#po-hero-bg)" />
+  <rect x="80" y="96" width="160" height="240" rx="22" fill="#11163D" />
+  <rect x="260" y="96" width="180" height="96" rx="22" fill="url(#po-hero-block)" />
+  <rect x="260" y="216" width="180" height="120" rx="22" fill="#BFF7E9" opacity="0.78" />
+  <circle cx="160" cy="192" r="48" fill="#27CCBC" opacity="0.75" />
+  <circle cx="180" cy="164" r="14" fill="#D9F20C" opacity="0.75" />
+  <path
+    d="M292 258c22-10 58-10 80 0"
+    stroke="#0F0E54"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.6"
+  />
+  <path
+    d="M292 300c22-10 58-10 80 0"
+    stroke="#27CCBC"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.6"
+  />
+  <path
+    d="M120 360h280"
+    stroke="#BFF7E9"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.4"
+  />
+</svg>
