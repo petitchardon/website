@@ -32,6 +32,7 @@ jobs:
           PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.PUBLIC_UMAMI_WEBSITE_ID }}
           PUBLIC_SENTRY_DSN: ${{ secrets.PUBLIC_SENTRY_DSN }}
           PUBLIC_RELEASE_SHA: ${{ github.sha }}
+          PUBLIC_GSC_VERIFICATION: ${{ secrets.PUBLIC_GSC_VERIFICATION }}
         run: npm run build
 
       - name: Upload sourcemaps to Sentry
