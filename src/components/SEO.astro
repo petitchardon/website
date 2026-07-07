@@ -45,12 +45,18 @@ const ogLocaleAlt = lang === 'fr' ? 'en_US' : 'fr_FR';
 // Any deploy under /preview/pr-N/ is a PR preview — never let it index.
 const isPreview = import.meta.env.BASE_URL !== '/';
 const finalNoindex = noindex || isPreview;
+
+// Google Search Console domain verification. Value comes from a public env
+// var (set in CI for production); only emitted on the real production build,
+// never on noindex previews where verification is meaningless.
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION;
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content="Anne Della Gaspera" />
 {finalNoindex && <meta name="robots" content="noindex,nofollow" />}
+{gscVerification && !isPreview && <meta name="google-site-verification" content={gscVerification} />}
 
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

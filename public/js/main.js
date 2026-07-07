@@ -268,6 +268,7 @@ docReady(() => {
           feedback.hidden = false;
           feedback.dataset.state = "success";
         }
+        window.trackEvent?.("contact_submit");
       } catch (error) {
         if (feedback) {
           feedback.hidden = false;
@@ -278,6 +279,30 @@ docReady(() => {
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
       }
+    });
+  }
+
+  // ---------- Analytics: conversion events ----------
+  // Emitted via window.trackEvent, exposed by the bundled observability module
+  // in production. It is undefined on previews and local dev, so every call
+  // below is a safe no-op there.
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      window.trackEvent?.("email_click", { href: link.getAttribute("href") });
+    });
+  });
+
+  document.querySelectorAll("[data-lang-toggle]").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      window.trackEvent?.("lang_switch", { to: toggle.getAttribute("hreflang") });
+    });
+  });
+
+  if ((body.dataset.page || "").startsWith("project")) {
+    // Defer to the load event so the deferred observability module has run and
+    // window.trackEvent is available before we fire the view event.
+    window.addEventListener("load", () => {
+      window.trackEvent?.("project_view", { path: window.location.pathname });
     });
   }
 
