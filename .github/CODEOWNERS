@@ -58,6 +58,10 @@
 /observability/           @annedellagaspera @adriendellagaspera
 /docs/                    @annedellagaspera @adriendellagaspera
 
+# Documentation dev / agents — technique (README & LICENSE restent à Anne)
+/AGENTS.md                @annedellagaspera @adriendellagaspera
+/CONTRIBUTING.md          @annedellagaspera @adriendellagaspera
+
 # --- Partie design : Anne SEULE owner (ré-affirmé pour clarté) ---
 /src/assets/              @annedellagaspera
 /src/content/projects/    @annedellagaspera
