@@ -21,19 +21,6 @@ challenge:
 outcome:
   fr: Une charte graphique forte, ancrée dans l'univers de la cognition et du mouvement, qui se décline en toute autonomie sur Instagram et LinkedIn. La stratégie éditoriale posée dès le départ a permis de construire une communauté engagée dès les premières semaines de lancement.
   en: A bold visual identity rooted in cognition and movement, fully deployable across Instagram and LinkedIn. The editorial strategy laid from day one helped build an engaged community within the first weeks of launch.
-gallery:
-  - src: /assets/images/project-origines-hero.svg
-    alt:
-      fr: Identité visuelle Intelligences Atypiques — vue d'ensemble
-      en: Intelligences Atypiques visual identity — overview
-  - src: /assets/images/project-origines-board.svg
-    alt:
-      fr: Planche moodboard et direction artistique
-      en: Moodboard and art direction board
-  - src: /assets/images/project-origines-packaging.svg
-    alt:
-      fr: Déclinaisons réseaux sociaux et templates éditoriaux
-      en: Social media rollout and editorial templates
 ---
 
 ## Brief

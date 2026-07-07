@@ -37,19 +37,6 @@ outcome:
     visual templates for every format. A documented editorial line enabling
     the team to publish autonomously. Result — steady organic reach growth
     from month one.
-gallery:
-  - src: /assets/images/project-constellation-hero.svg
-    alt:
-      fr: Système éditorial cocobot — vue d'ensemble
-      en: cocobot editorial system — overview
-  - src: /assets/images/project-constellation-board.svg
-    alt:
-      fr: Calendrier éditorial et architecture des formats
-      en: Editorial calendar and format architecture
-  - src: /assets/images/project-constellation-kit.svg
-    alt:
-      fr: Templates LinkedIn prêts à l'emploi
-      en: Ready-to-use LinkedIn templates
 ---
 
 ## Brief

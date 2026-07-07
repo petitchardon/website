@@ -26,19 +26,6 @@ challenge:
 outcome:
   fr: Un logotype déclinable sur gobelets, étiquettes et supports digitaux. Une palette chromatique et un système typographique qui unifient toute la gamme produits et renforcent la reconnaissance en rayon.
   en: A logo system deployable across cups, labels and digital assets. A colour palette and typographic system that unify the full product range and drive shelf recognition.
-gallery:
-  - src: /assets/images/project-aurore-hero.svg
-    alt:
-      fr: Vue d'ensemble de l'identité Luke's Iced Coffees
-      en: Luke's Iced Coffees identity overview
-  - src: /assets/images/project-aurore-board.svg
-    alt:
-      fr: Planche de direction artistique et palette chromatique
-      en: Art direction board and colour palette
-  - src: /assets/images/project-aurore-mockup.svg
-    alt:
-      fr: Déclinaisons produits sur gobelets et emballages
-      en: Product range mockups on cups and packaging
 ---
 
 ## Brief
