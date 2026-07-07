@@ -1080,8 +1080,17 @@ html[data-theme="dark"] .process {
 }
 
 .project-hero__visual {
+  position: relative;
   justify-self: center;
+  width: 100%;
   max-width: 520px;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  box-shadow: 0 34px 58px -28px rgba(15, 14, 84, 0.55);
+}
+
+.project-hero__visual img {
+  width: 100%;
 }
 
 .project-story__inner {
@@ -1122,7 +1131,11 @@ html[data-theme="dark"] .process {
 }
 
 .project-gallery figure {
+  position: relative;
+  margin: 0;
   overflow: hidden;
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 48px -30px rgba(15, 14, 84, 0.5);
 }
 
 .project-gallery figcaption {

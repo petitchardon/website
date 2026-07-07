@@ -16,6 +16,13 @@ const projects = defineCollection({
     cover: z.string(),
     order: z.number().default(0),
     draft: z.boolean().default(false),
+    services: z.array(z.string()).default([]),
+    challenge: z.object({ fr: z.string(), en: z.string() }).optional(),
+    outcome: z.object({ fr: z.string(), en: z.string() }).optional(),
+    gallery: z.array(z.object({
+      src: z.string(),
+      alt: z.object({ fr: z.string(), en: z.string() }),
+    })).default([]),
   }),
 });
 
