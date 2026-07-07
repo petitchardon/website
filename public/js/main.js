@@ -62,21 +62,56 @@ docReady(() => {
     });
   }
 
+  // ---------- Theme toggle (light/dark) ----------
+  const themeToggles = document.querySelectorAll("[data-theme-toggle]");
+  if (themeToggles.length) {
+    const lang = (root.getAttribute("lang") || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
+    const labels = {
+      fr: { light: "Activer le thème clair", dark: "Activer le thème sombre" },
+      en: { light: "Switch to light theme", dark: "Switch to dark theme" },
+    };
+    const syncLabels = () => {
+      const isDark = root.getAttribute("data-theme") === "dark";
+      const nextAction = isDark ? "light" : "dark";
+      themeToggles.forEach((btn) => {
+        btn.setAttribute("aria-label", labels[lang][nextAction]);
+        btn.setAttribute("aria-pressed", String(isDark));
+      });
+    };
+    syncLabels();
+    themeToggles.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try {
+          localStorage.setItem("theme", next);
+        } catch (_) {
+          /* localStorage unavailable */
+        }
+        syncLabels();
+      });
+    });
+  }
+
   // ---------- Scroll-triggered animations ----------
   const animatedElements = document.querySelectorAll("[data-animate]");
   if (animatedElements.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
-    );
-    animatedElements.forEach((el) => observer.observe(el));
+    if (prefersReducedMotion) {
+      animatedElements.forEach((el) => el.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+      );
+      animatedElements.forEach((el) => observer.observe(el));
+    }
   }
 
   const storylineSteps = Array.from(document.querySelectorAll("[data-scroll-step]"));
@@ -121,8 +156,6 @@ docReady(() => {
       element.addEventListener("pointerleave", reset);
     });
   }
-
-  root.setAttribute("data-theme", "dark");
 
   // ---------- Current year in footer ----------
   const yearEl = document.getElementById("annee-actuelle");
