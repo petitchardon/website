@@ -48,22 +48,6 @@ const htmlLang = lang === 'fr' ? 'fr' : 'en';
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script is:inline>
-      // Anti-FOUC: apply the chosen theme before first paint. petitchardon is
-      // a dark-first brand, so dark is the default; an explicit user choice
-      // (persisted) always wins.
-      (() => {
-        try {
-          const stored = localStorage.getItem('theme');
-          document.documentElement.setAttribute(
-            'data-theme',
-            stored === 'light' || stored === 'dark' ? stored : 'dark'
-          );
-        } catch (_) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      })();
-    </script>
     <SEO
       title={title}
       description={description}
