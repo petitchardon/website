@@ -1,0 +1,44 @@
+<svg viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ia-bg" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#0F0E54" />
+      <stop offset="55%" stop-color="#241247" />
+      <stop offset="100%" stop-color="#3B1240" />
+    </linearGradient>
+    <radialGradient id="ia-glow" cx="60%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#D9F20C" stop-opacity="0.28" />
+      <stop offset="60%" stop-color="#0F0E54" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="620" height="620" rx="44" fill="url(#ia-bg)" />
+  <ellipse cx="380" cy="220" rx="260" ry="200" fill="url(#ia-glow)" />
+
+  <!-- pensée en réseau : connexions neuronales organiques -->
+  <g stroke-linecap="round" fill="none" opacity="0.85">
+    <path d="M130 230c48-60 96-84 150-70s72 66 132 60 96-64 150-34" stroke="#27CCBC" stroke-width="5" />
+    <path d="M110 340c60-24 110-14 156 20s94 48 148 22 84-58 140-52" stroke="#BFF7E9" stroke-width="4" opacity="0.7" />
+    <path d="M160 420c56-40 108-46 160-18s100 40 150 6" stroke="#D9F20C" stroke-width="4" opacity="0.6" />
+  </g>
+
+  <g fill="#27CCBC">
+    <circle cx="130" cy="230" r="12" />
+    <circle cx="280" cy="160" r="9" />
+    <circle cx="412" cy="220" r="14" />
+    <circle cx="562" cy="186" r="9" />
+  </g>
+  <g fill="#D9F20C">
+    <circle cx="266" cy="380" r="10" />
+    <circle cx="414" cy="382" r="8" />
+    <circle cx="160" cy="420" r="8" />
+  </g>
+  <g fill="#FFFFFF" opacity="0.9">
+    <circle cx="110" cy="340" r="7" />
+    <circle cx="358" cy="292" r="7" />
+    <circle cx="500" cy="238" r="7" />
+    <circle cx="470" cy="426" r="7" />
+  </g>
+  <g fill="#BFF7E9" opacity="0.85">
+    <circle cx="204" cy="292" r="6" />
+    <circle cx="320" cy="452" r="6" />
+  </g>
+</svg>
